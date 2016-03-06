@@ -11,15 +11,21 @@ This repository includes the two files that **must be included** in all project 
 SacHomeless
 
 ### Project Description
-[Enter a short description]
+SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals. 
 
 ### Team Members
 - [Team Leader Name, email address]
-- [Additional Team Members, email address]
-- [...]
+- Joanne Werneke
+- Jeff 
+- Kevin Fries
+- Emily Quinn Finney
+- Jared Garst
+- Kevin
+- Hillary
+- 
 
 ### Stakeholder Engagement
-- [If you worked with County staff to develop your project, please enter the name and department of your contact]
+- Julie - Dept. of Human Services, Sacramento County 
 - [Include any nonprofits or other stakeholders you engaged in the development your project]
 
 ### Developer Documentation
