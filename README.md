@@ -22,10 +22,10 @@ SacHomeless provides Homeless_resources information for the Sacramento County ar
 - Jared Garst
 - Kevin
 - Hillary
-- 
+- Michael Tel, michael@hollyhox.com
 
 ### Stakeholder Engagement
-- Julie - Dept. of Human Services, Sacramento County 
+- Julie Field - Dept. of Human Services, Sacramento County 
 - [Include any nonprofits or other stakeholders you engaged in the development your project]
 
 ### Developer Documentation
