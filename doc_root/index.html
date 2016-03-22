@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app="hrApp">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <title>Sac Homeless Resources</title>
+    
+    <!-- Styles -->
+ <!-- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
+-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
+
+
+
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3ays483Ixy2Gr76BAvjGZBrls4j6ZOUI" ></script> <!-- async defer &callback=aaa -->
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/service/InitService.js"></script>
+    <script type="text/javascript" src="js/service/DataService.js"></script>
+    <script type="text/javascript" src="js/controller/IndexPageController.js"></script>
+    <script type="text/javascript" src="js/controller/DetailPageController.js"></script>
+    <script type="text/javascript" src="js/controller/CommentPageController.js"></script>
+    
+     <style>
+    .bigbutton-outer {
+    	height:100px;
+    }
+    .bigbutton{
+    	height:100%;
+    	width:100%;
+    	font-size: 25px;
+    	padding-top: 25px;
+    	text-align: -webkit-center;
+    }
+    .color1{
+    	background-color: #cccccc
+    }
+    .color2{
+         background-color: #aaaaaa
+    }
+    </style>
+    
+   <!--  
+    <style>
+    .bigbutton{
+    	height:100%;
+    	width:100%;
+    	text-align: -webkit-center;
+    	
+    	font-size: 25px;
+    	color: white;
+     }
+     .color1{
+    	 background-color:green;
+     }
+     .color2{
+    	 background-color:#aaaaaa;
+     }
+    </style>
+    -->
+  </head>
+  <body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="views">
+      <div class="view view-main">
+        
+        <!-- Navbar -->
+        <div class="navbar no-border">
+          <div class="navbar-inner" data-page="frontPage">
+            <div class="left"></div>
+            <div class="center sliding">Home</div>
+            <div class="right"></div>
+          </div>
+          
+          <div class="navbar-inner cached" data-page="indexPage">
+            <div class="left sliding">  <a href="index" class="link back"> <i class="icon icon-back"></i><span>Back</span> </a>  </div>
+            <div class="center sliding">Meals Today</div>
+            <div class="right "><a href="#frontPage">  <i class="icon icon-home"></i><span>Home</span> </a>  </div>
+          </div>
+          
+          <div class="navbar-inner cached" data-page="detailsPage">
+            <div class="left sliding">  <a href="index" class="link back"> <i class="icon icon-back"></i><span>Back</span> </a>  </div>
+            <div class="center sliding">Details</div>
+            <div class="right "><a href="#frontPage">  <i class="icon icon-home"></i><span>Home</span> </a>  </div>
+          </div>
+        </div>
+        
+             
+        <!-- Pages -->
+        <div class="pages navbar-through toolbar-through">
+        
+           <!-- front page-->
+          <div data-page="frontPage" class="page " >         
+            <!-- Page content-->
+            <div class="page-content">
+              <div><img src="http://media.governing.com/images/780*519/columbus-ohio.jpg" style="width:100%"></div>
+              <div><b>Welcome to the Sacramento Home less Resource guide.</b> Fusce eros lectus, accumsan eget mi vel, iaculis tincidunt felis. Nulla tincidunt pharetra sagittis. Fusce in felis eros. Nulla sit amet aliquam lorem, et gravida ipsum. Mauris consectetur nisl non sollicitudin  </div>
+              <div class="row no-gutter">
+		        	<div class=" col-50 bigbutton-outer color1"><a href="#indexPage"><div class='bigbutton'>Meals</div></a></div>
+		        	<div  class="col-50 bigbutton-outer color2"><a href="about.html"><div class='bigbutton'>Housing</div></a></div>
+      		   </div>
+      		  <div class="row no-gutter">
+		        	<div  class="col-50 bigbutton-outer color2"><a href="#indexPage"><div class='bigbutton'>Medical</div></a></div>
+		        	<div  class="col-50 bigbutton-outer color1"><a href="about.html"><div class='bigbutton'>about</div></a></div>
+      		   </div>
+            </div>
+          </div>
+          
+          
+          <!-- Listing Page -->
+          <div data-page="indexPage" class="page cached" ng-controller="IndexPageController">         
+            <!-- Page content-->
+            <div class="page-content ">   
+            
+	            <div class="content-block">
+	      			<p class="buttons-row">   
+	        		<a href="#" ng-click="onOpenTodayClicked(1)" class="button" ng-class="openToday ? 'button active':'button'" >Open Today</a>
+	        		<a href="#" ng-click="onOpenTodayClicked(0)" class="button" ng-class="openToday ? 'button':'button active'" >All</a>
+	     			 </p>
+	   			 </div>
+	            
+	            <div class="content-block">
+	                <google-map id="google-map1" style="height:200px"></google-map>
+	            </div>
+              
+	             <div class=" list-block media-list ">
+	                  
+	              <ul ng-repeat="kitchen in kitchens "><!-- | openFilter : openToday  -->
+	                <li>
+	                  <a href="#detailsPage" ng-click="onItemClicked(kitchen)" class="item-link item-content">
+	                    <!-- div class="item-media"><img ng-src="{{kitchen.posters.thumbnail}}" width="80"></div -->
+	                    <div class="item-inner">
+	                      <div class="item-title-row">
+	                        <div class="item-title">{{kitchen.title}}</div>
+	                        <div class="item-after">{{kitche.open_time}} - {{kitchen.close_time}}</div>
+	                      </div>
+	                      <div class="item-text">{{kitchen.description}}</div>
+	                    </div>
+	                  </a>
+	                </li>
+	              </ul>
+	            </div> <!-- list block media list -->
+            </div> <!-- content -->
+          </div> <!-- page -->
+
+
+          <!-- Detail Page -->
+          <div data-page="detailsPage" class="page cached" ng-controller="DetailPageController">
+            <!-- Page content-->
+            <div class="page-content" ng-model="kitchen">
+              <div class="content-block-title">Kitchen details</div>
+                <div class="card">
+                  <div class="card-header">{{kitchen.title}}</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">{{kitchen.description}}
+                    </div>
+                    <div class="card-footer"><a class="link" ng-click="onCommentClicked()"  href="#commentPage">Leave a Comment</a></div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          
+ 		<!-- Comment Page -->
+          <div data-page="commentPage" class="page cached" ng-controller="CommentPageController">
+            <!-- Page content-->
+            <div class="page-content" ng-model="Comment">
+              leave a comment
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
