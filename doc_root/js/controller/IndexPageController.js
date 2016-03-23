@@ -25,12 +25,14 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$http', 'InitService
   
   
   InitService.addEventListener('ready', function () {
+	  
     DataService.getKitchens('http://localhost/kitchens/kitchendata.json').then(function (result) {
       console.log(result.data.kitchens);
       $scope.kitchens = result.data.kitchens;
     }, function (err) {
       console.error(err);
     });
+    
   });
   
 }]);

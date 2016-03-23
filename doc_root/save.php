@@ -1,41 +1,49 @@
 <?php
-// save.php     save comments
-$_POST= ['resource_id'=>4,'type'=>'kitchen','body'=>'very nice people','rating'=>3];
-if(empty($_POST))
-	die ('empty');
+// save.php     save comments, or any other file for that matter
 
-	$fname= '../hresources.sqlite';
-	if(!file_exists($fname))
-		die("cant find $fname");
-	$db = new SQLite3($fname);
+$postdata = file_get_contents("php://input");
+$params = json_decode($postdata);
+
+//var_dump($request);
+
+//if(empty($_POST))
+//	die ('empty');
+
+$fname= '../hresources.sqlite';
+if(!file_exists($fname))
+	die("cant find $fname");
+$db = new SQLite3($fname);
+
 /*	
 	$results = $db->query('SELECT * FROM kitchens');
 	while ($row = $results->fetchArray()) {
 		var_dump($row);
 	}
 */	
+
+$ret;
+
+
+if($params->table == 'comments')
+	$ret= saveComment($db, $params);
+
 	
-	$table = $_POST['table'];
-	if($table=='comment')
-		$ret= saveComment($db);
+$error= $db->lastErrorMsg();
+$db->close();
+
+if($ret==false){
+	die($error);
+}
+
+die("ok");
 	
 		
-	$error= $db->lastErrorMsg();
-	$db->close();
+function saveComment($db,$params){		
 	
-	if($ret==false){
-		die($error);
-	}
-	
-	die("ok");
-	
-		
-function saveComment($db){		
-	
-	$resource_id= intval($_POST['resource_id']);
-	$type = $_POST['type'];
-	$body = $_POST['body'];
-	$rating= intval($_POST['rating']);
+	$resource_id = intval($params->resource_id);
+	$type = $params->resource_type;
+	$body = $params->body;
+	$rating= intval($params->rating);
 	if(empty($resource_id) || empty($type))
 		die ('missing resource_id type');
 	

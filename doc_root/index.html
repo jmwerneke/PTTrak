@@ -33,7 +33,7 @@
     <script type="text/javascript" src="js/controller/IndexPageController.js"></script>
     <script type="text/javascript" src="js/controller/DetailPageController.js"></script>
     <script type="text/javascript" src="js/controller/CommentPageController.js"></script>
-    
+  <!--   
      <style>
     .bigbutton-outer {
     	height:100px;
@@ -52,27 +52,10 @@
          background-color: #aaaaaa
     }
     </style>
-    
-   <!--  
-    <style>
-    .bigbutton{
-    	height:100%;
-    	width:100%;
-    	text-align: -webkit-center;
-    	
-    	font-size: 25px;
-    	color: white;
-     }
-     .color1{
-    	 background-color:green;
-     }
-     .color2{
-    	 background-color:#aaaaaa;
-     }
-    </style>
     -->
+  
   </head>
-  <body>
+  <body class="theme-red">
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"></div>
     <div class="views">
@@ -82,7 +65,7 @@
         <div class="navbar no-border">
           <div class="navbar-inner" data-page="frontPage">
             <div class="left"></div>
-            <div class="center sliding">Home</div>
+            <div class="center sliding">Sac Homeless Resources</div>
             <div class="right"></div>
           </div>
           
@@ -146,7 +129,7 @@
 	                    <div class="item-inner">
 	                      <div class="item-title-row">
 	                        <div class="item-title">{{kitchen.title}}</div>
-	                        <div class="item-after">{{kitche.open_time}} - {{kitchen.close_time}}</div>
+	                        <div class="item-after">{{kitchen.hours}}</div>
 	                      </div>
 	                      <div class="item-text">{{kitchen.description}}</div>
 	                    </div>
@@ -166,21 +149,72 @@
                 <div class="card">
                   <div class="card-header">{{kitchen.title}}</div>
                   <div class="card-content">
-                    <div class="card-content-inner">{{kitchen.description}}
-                    </div>
-                    <div class="card-footer"><a class="link" ng-click="onCommentClicked()"  href="#commentPage">Leave a Comment</a></div>
+                    <div class="card-content-inner">{{kitchen.description}} </div>
+                    
                   </div>
-                </div>
+                </div> <!-- card -->
+                
+                 <div class="card">
+                  	<div class="card-header">Comments</div>
+                  	<div class="card-content">
+                  	
+                  		<div class="list">
+                    		<ul ng-repeat="comment in comments ">
+                     			<li><div class="item-content">{{comment.body}}</div></li>
+                     		</ul>
+                    	</div>
+                  		<div class="card-footer"><a class="link" ng-click="onCommentClicked(kitchen)"  href="#commentPage">Leave a Comment</a></div>
+                  	
+                  	</div>
+                  	
+                 </div> <!-- card -->
+                
             </div>
           </div>
           
  		<!-- Comment Page -->
           <div data-page="commentPage" class="page cached" ng-controller="CommentPageController">
             <!-- Page content-->
-            <div class="page-content" ng-model="Comment">
-              leave a comment
-            </div>
-          </div>
+            <div class="page-content" >
+            	<form name="userForm" ng-submit="submitForm()">
+            	<input type=hidden name=id value="{{comment.resource_id}}"/>
+            	<input type=hidden name=type value="{{comment.resource_type}}"/>
+            	
+            	<div class="content-block">
+            		You can leave comment or suggestion
+            	</div>
+            	<div class="list-block">
+              		<ul>
+              			<li>
+	            		<div class="item-content">
+		            		<div class="item-inner">
+			            		<div class="item-title label"> comment</div>
+			            		<div class="item-input">
+			            			<textarea placeholder="your comment" ng-model="comment.body"></textarea>
+			            		</div>
+			            	</div>
+	            		</div>	
+	            		</li>
+             		</ul>
+            	</div>
+            	<div class="content-block">
+            		<div class="row">
+            			<div class="col-20"><a href="#" class="button button-big ">1<i class="icon icon-plus"></i></a></div>
+            			<div class="col-20"><a href="#" class="button button-big">2</a></div>
+            			<div class="col-20"><a href="#" class="button button-big">3</a></div>
+            			<div class="col-20"><a href="#" class="button button-big">4</a></div>
+            			<div class="col-20"><a href="#" class="button button-big">5</a></div>
+            			
+            		</div>
+            	</div>
+            	<div class="content-block">
+            		<div class="row">
+            			<div class="col-50"><input type="submit" class="button button-big active"    value="Submit"/></div>
+            			<div class="col-50"><a href="#" class="button button-big link back" >Cancel</a></div>
+            		</div>
+            	</div>
+            	</form>
+          	</div> <!-- page-content -->
         </div>
       </div>
     </div>

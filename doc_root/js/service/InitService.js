@@ -17,7 +17,7 @@ hrApp.angular.factory('InitService', ['$document', function ($document) {
     var fw7 = hrApp.fw7,
       i;
 
-    fw7.views.push(fw7.app.addView('.view-main', fw7.options));
+    hrApp.fw7.mainView = fw7.views.push(fw7.app.addView('.view-main', fw7.options));
     
     for (i = 0; i < eventListeners.ready.length; i = i + 1) {
       eventListeners.ready[i]();

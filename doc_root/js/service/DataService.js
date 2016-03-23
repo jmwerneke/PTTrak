@@ -21,11 +21,15 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   };
   
   pub.commentClicked = function (resource) {
-	    for (var i=0; i<eventListeners.resourceClicked.length; i++) {
+	    for (var i=0; i<eventListeners.commentClicked.length; i++) {
 	      eventListeners.commentClicked[i](resource);
 	    }
  };
   
+ 
+ pub.getComments = function(resource_id, resource_type){
+	 return $http.get('get.php?table=comments&resource_id='+ resource_id + '&resource_type='+resource_type);
+ }
  
  
   pub.getKitchens = function () {

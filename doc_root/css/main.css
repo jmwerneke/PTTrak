@@ -5,27 +5,48 @@
   }
 }
 
+/* the buttons on the homepage */
+.bigbutton-outer {
+    	height:100px;
+ }
+ .bigbutton{
+    	height:100%;
+    	width:100%;
+    	font-size: 25px;
+    	padding-top: 25px;
+    	text-align: -webkit-center;
+ }
+.color1{
+    	background-color: #cccccc
+}
+.color2{
+         background-color: #aaaaaa
+}
+
+
 .ft-detail-header-img .card-header {
   height: 40vw;
   background-size: cover;
   background-position: center;
 }
+/* #F22B2B;*/
 .navbar {
-    background: #F22B2B;
-    color: white;
+    background: #ff3b30; 
+    color: white; 
 }
 .navbar a{
     color: white;
 }
-
+*/
 .buttons-row {
     max-width:420px;
     margin-left: auto;
     margin-right: auto;
 }
+/* use the theme instead
     .button {
-        border-color: #F22B2B;
-        color:#F22B2B;
+        border-color: #F22B2B; 
+        color:#F22B2B; 
     }
     .button.active-state {
         background-color: rgba(242, 43, 43, 0.5);
@@ -33,5 +54,6 @@
     .button.active {
         
         background-color: #F22B2B;
-        color: white;
+        color: white; 
     }
+*/
