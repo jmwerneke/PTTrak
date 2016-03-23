@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/service/InitService.js"></script>
     <script type="text/javascript" src="js/service/DataService.js"></script>
+    <script type="text/javascript" src="js/service/MapService.js"></script>
     <script type="text/javascript" src="js/controller/IndexPageController.js"></script>
     <script type="text/javascript" src="js/controller/DetailPageController.js"></script>
     <script type="text/javascript" src="js/controller/CommentPageController.js"></script>
@@ -55,9 +56,23 @@
     -->
   
   </head>
-  <body class="theme-red">
+  <body class="theme-green">
     <div class="statusbar-overlay"></div>
-    <div class="panel-overlay"></div>
+    <div class="panel-overlay"> </div> <!-- panel-overlay -->
+   	<div class="panel panel-left panel-cover"> <!-- side panels left -->
+   		<div class="content-block">
+     			<p>Left Panel content here</p>
+     			<!-- Click on link with "close-panel" class will close panel -->
+     			<p><a href="#" class="close-panel">Close me</a></p>
+     			
+   		</div>
+	</div><!-- left panel -->
+    
+    
+   
+    
+    
+    
     <div class="views">
       <div class="view view-main">
         
@@ -97,7 +112,7 @@
 		        	<div  class="col-50 bigbutton-outer color2"><a href="about.html"><div class='bigbutton'>Housing</div></a></div>
       		   </div>
       		  <div class="row no-gutter">
-		        	<div  class="col-50 bigbutton-outer color2"><a href="#indexPage"><div class='bigbutton'>Medical</div></a></div>
+		        	<div  class="col-50 bigbutton-outer color2"><a href="#" data-panel="left" class="open-panel"><div class='bigbutton'>Medical</div></a></div>
 		        	<div  class="col-50 bigbutton-outer color1"><a href="about.html"><div class='bigbutton'>about</div></a></div>
       		   </div>
             </div>
@@ -109,18 +124,16 @@
             <!-- Page content-->
             <div class="page-content ">   
             
-	            <div class="content-block">
+	            <div class="content-block" style="margin:20px 0">
 	      			<p class="buttons-row">   
 	        		<a href="#" ng-click="onOpenTodayClicked(1)" class="button" ng-class="openToday ? 'button active':'button'" >Open Today</a>
 	        		<a href="#" ng-click="onOpenTodayClicked(0)" class="button" ng-class="openToday ? 'button':'button active'" >All</a>
 	     			 </p>
 	   			 </div>
+	         <div id="google-map1" style="height:200px"></div>   
 	            
-	            <div class="content-block">
-	                <google-map id="google-map1" style="height:200px"></google-map>
-	            </div>
               
-	             <div class=" list-block media-list ">
+	             <div class=" list-block media-list " style="margin:0">
 	                  
 	              <ul ng-repeat="kitchen in kitchens "><!-- | openFilter : openToday  -->
 	                <li>
@@ -215,8 +228,12 @@
             	</div>
             	</form>
           	</div> <!-- page-content -->
-        </div>
-      </div>
+        </div><!-- comment page -->
+      </div> <!-- pages -->
+
+
+
+
     </div>
     
   </body>

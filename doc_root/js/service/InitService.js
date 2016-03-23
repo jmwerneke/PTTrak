@@ -7,12 +7,15 @@ hrApp.angular.factory('InitService', ['$document', function ($document) {
   var pub = {},
     eventListeners = {
       'ready' : []
+      
     };
   
   pub.addEventListener = function (eventName, listener) {
     eventListeners[eventName].push(listener);
   };
 
+  
+  
   function onReady() {
     var fw7 = hrApp.fw7,
       i;

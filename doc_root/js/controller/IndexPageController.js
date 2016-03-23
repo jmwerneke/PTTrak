@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 /*global console, hrApp*/
 
-hrApp.angular.controller('IndexPageController', ['$scope', '$http', 'InitService', 'DataService', function ($scope, $http, InitService, DataService) {
+hrApp.angular.controller('IndexPageController', ['$scope', '$http', 'InitService', 'DataService', 'GMapService', function ($scope, $http, InitService, DataService, GMapService) {
   'use strict';
   
   $scope.openToday=true;
@@ -21,8 +21,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$http', 'InitService
 		  console.error('all kitchens');
 	  }
 	
-  }
-  
+  };
+   
   
   InitService.addEventListener('ready', function () {
 	  
