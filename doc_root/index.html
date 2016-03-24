@@ -34,35 +34,34 @@
     <script type="text/javascript" src="js/controller/IndexPageController.js"></script>
     <script type="text/javascript" src="js/controller/DetailPageController.js"></script>
     <script type="text/javascript" src="js/controller/CommentPageController.js"></script>
-  <!--   
-     <style>
-    .bigbutton-outer {
-    	height:100px;
-    }
-    .bigbutton{
-    	height:100%;
-    	width:100%;
-    	font-size: 25px;
-    	padding-top: 25px;
-    	text-align: -webkit-center;
-    }
-    .color1{
-    	background-color: #cccccc
-    }
-    .color2{
-         background-color: #aaaaaa
-    }
-    </style>
-    -->
-  
+ 
+  <style>
+       .button-green {background-color:green !important;}
+  </style>
   </head>
-  <body class="theme-red">
+  <body class="theme-grey">
+ 
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"> </div> <!-- panel-overlay -->
    	<div class="panel panel-left panel-cover"> <!-- side panels left -->
    		<div class="content-block">
      			<p>Left Panel content here</p>
      			<!-- Click on link with "close-panel" class will close panel -->
+     			<div class="content-block-title">List block buttons</div>
+				<div class="list-block">
+				  <ul>
+				    <li>
+				      <a href="#" class="item-link list-button">Hot Meals</a>
+				    </li>
+				    <li>
+				      <a href="#" class="item-link list-button">Food Pantries</a>
+				    </li>
+				    <li>
+				      <a href="#" class="item-link list-button">EFT </a>
+				    </li>
+				  </ul>
+				</div>
+     			
      			<p><a href="#" class="close-panel">Close me</a></p>
      			
    		</div>
@@ -105,8 +104,18 @@
           <div data-page="frontPage" class="page " >         
             <!-- Page content-->
             <div class="page-content">
-              <div><img src="http://media.governing.com/images/780*519/columbus-ohio.jpg" style="width:100%"></div>
-              <div><b>Welcome to the Sacramento Home less Resource guide.</b> Fusce eros lectus, accumsan eget mi vel, iaculis tincidunt felis. Nulla tincidunt pharetra sagittis. Fusce in felis eros. Nulla sit amet aliquam lorem, et gravida ipsum. Mauris consectetur nisl non sollicitudin  </div>
+            
+             
+              	<img src="/img/b_wtower_bridge_sacramento2_720.png" style="width:100%">
+              
+              <div class="content-block" style="margin:10px 0">
+            	<p><a href="#indexPage" class="button  button-fill button-big button-green">Food</a></p>
+             	<p><a href="#"          class="button  button-fill button-big button-green open-panel" data-panel="left"  >Housing</a></p>
+             	<p><a href="#"          class="button  button-fill button-big button-green">MentalHealth</a></p>
+             	<p><a href="#"          class="button  button-fill button-big button-green">Health Care</a></p>
+             	<p><a href="#"          class="button  button-fill button-big button-green">Employment</a></p>
+             	<p><a href="about.html" class="button  button-fill button-big button-green">Employment</a></p>
+             <!--  
               <div class="row no-gutter">
 		        	<div class=" col-50 bigbutton-outer color1"><a href="#indexPage"><div class='bigbutton'>Meals</div></a></div>
 		        	<div  class="col-50 bigbutton-outer color2"><a href="about.html"><div class='bigbutton'>Housing</div></a></div>
@@ -114,6 +123,8 @@
       		  <div class="row no-gutter">
 		        	<div  class="col-50 bigbutton-outer color2"><a href="#" data-panel="left" class="open-panel"><div class='bigbutton'>Medical</div></a></div>
 		        	<div  class="col-50 bigbutton-outer color1"><a href="about.html"><div class='bigbutton'>about</div></a></div>
+      		   </div>
+      		   -->
       		   </div>
             </div>
           </div>

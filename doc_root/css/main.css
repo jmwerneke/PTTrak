@@ -5,7 +5,7 @@
   }
 }
 
-/* the buttons on the homepage */
+/* the buttons on the homepage 
 .bigbutton-outer {
     	height:100px;
  }
@@ -22,7 +22,7 @@
 .color2{
          background-color: #aaaaaa
 }
-
+*/
 
 .ft-detail-header-img .card-header {
   height: 40vw;
@@ -31,7 +31,7 @@
 }
 /* #F22B2B;*/
 .navbar {
-    background: #ff3b30; 
+    background: green /*#ff3b30   this is my red*/; 
     color: white; 
 }
 .navbar a{
