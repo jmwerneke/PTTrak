@@ -36,34 +36,28 @@
     <script type="text/javascript" src="js/controller/CommentPageController.js"></script>
  
   <style>
-       .button-green {background-color:#77c043 !important;}
+       .button-green {background-color:#009900 !important;} /*  #77c043  */
        .button-turqois {background-color:#00aae8 !important;}
   </style>
   </head>
-  <body class="theme-grey">
+  <body > <!-- class="theme-green" -->
  
     <div class="statusbar-overlay"></div>
     <div class="panel-overlay"> </div> <!-- panel-overlay -->
-   	<div class="panel panel-left panel-cover"> <!-- side panels left -->
+   	<div class="panel panel-left panel-cover" style="background:#efeff4;"> <!--  #efeff4   side panels left -->
    		<div class="content-block">
-     			<p>Left Panel content here</p>
+     			<p>There are many food options </p>
      			<!-- Click on link with "close-panel" class will close panel -->
-     			<div class="content-block-title">List block buttons</div>
-				<div class="list-block">
-				  <ul>
-				    <li>
-				      <a href="#" class="item-link list-button">Hot Meals</a>
-				    </li>
-				    <li>
-				      <a href="#" class="item-link list-button">Food Pantries</a>
-				    </li>
-				    <li>
-				      <a href="#" class="item-link list-button">EFT </a>
-				    </li>
-				  </ul>
-				</div>
+     			<div class="content-block-title">Food Options</div>
+     			<p><a href="#indexPage" class="button button-round button-fill  button-green close-panel">Hot meals</a></p>
+     			<p><a href="#"          class="button button-round button-fill  button-green">Food pantries</a></p>
+     			<p><a href="#"          class="button button-round button-fill  button-green">EBT</a></p>
+			    <p><a href="#"          class="button button-round button-fill  button-green">WIC</a></p>
+				
+				
+     			<p style="margin-top:40px"><a href="#"          class="button button-round close-panel">Cancel</a></p>
      			
-     			<p><a href="#" class="close-panel">Close me</a></p>
+     			
      			
    		</div>
 	</div><!-- left panel -->
@@ -80,7 +74,7 @@
         <div class="navbar no-border">
           <div class="navbar-inner" data-page="frontPage">
             <div class="left"></div>
-            <div class="center sliding">Sac Homeless Resources</div>
+            <div class="center sliding">HelpHub Sacramento</div>
             <div class="right"></div>
           </div>
           
@@ -107,15 +101,17 @@
             <div class="page-content">
             
              
-              	<img src="/img/b_wtower_bridge_sacramento2_720.png" style="width:100%">
-              
+              <img src="/img/b_wtower_bridge_sacramento2_720.png" style="width:100%">
+               <div class="content-block" style="margin:20px 0">
+              <p>HelpHub Sacramento is a continuously updated list of free and low-cost resources available to Sacramanto residents</p>
+              </div>
               <div class="content-block" style="margin:10px 0">
-            	<p><a href="#indexPage" class="button button-round button-fill button-big button-green">Food</a></p>
+            	<p><a href="#"          class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Food</a></p>
              	<p><a href="#"          class="button button-round button-fill button-big button-green open-panel" data-panel="left"  >Housing</a></p>
              	<p><a href="#"          class="button button-round button-fill button-big button-green">MentalHealth</a></p>
              	<p><a href="#"          class="button button-round button-fill button-big button-green">Health Care</a></p>
              	<p><a href="#"          class="button button-round button-fill button-big button-green">Employment</a></p>
-             	<p><a href="about.html" class="button button-round button-fill button-big button-green">Employment</a></p>
+             	<p><a href="about.html" class="button button-round button-fill button-big button-green">Safety</a></p>
              <!--  
               <div class="row no-gutter">
 		        	<div class=" col-50 bigbutton-outer color1"><a href="#indexPage"><div class='bigbutton'>Meals</div></a></div>
@@ -154,9 +150,10 @@
 	                    <div class="item-inner">
 	                      <div class="item-title-row">
 	                        <div class="item-title">{{kitchen.title}}</div>
-	                        <div class="item-after">{{kitchen.hours}}</div>
 	                      </div>
-	                      <div class="item-text">{{kitchen.description}}</div>
+	                      <div class="item-text">     
+	                          {{kitchen.address}}, {{kitchen.city}}<br>
+	                          Open {{kitchen.days}}  {{kitchen.hours}}</div>
 	                    </div>
 	                  </a>
 	                </li>
@@ -174,8 +171,13 @@
                 <div class="card">
                   <div class="card-header">{{kitchen.title}}</div>
                   <div class="card-content">
-                    <div class="card-content-inner">{{kitchen.description}} </div>
-                    
+                    <div class="card-content-inner"><p>{{kitchen.description}} </p>
+	                    <p><b>{{kitchen.address}}, {{kitchen.city}} </b><br>phone: {{kitchen.phone}}<br>
+	                         <a href="{{kitchen.website}}"  >website</a>
+	                    </p>
+	                    <p> Open {{kitchen.days}}  {{kitchen.hours}}</p>
+                    </div>
+                                      
                   </div>
                 </div> <!-- card -->
                 
