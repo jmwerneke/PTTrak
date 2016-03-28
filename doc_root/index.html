@@ -149,10 +149,10 @@
 	                    <!-- div class="item-media"><img ng-src="{{kitchen.posters.thumbnail}}" width="80"></div -->
 	                    <div class="item-inner">
 	                      <div class="item-title-row">
-	                        <div class="item-title">{{kitchen.title}}</div>
+	                        <div class="item-title">{{kitchen.name}}</div>
 	                      </div>
 	                      <div class="item-text">     
-	                          {{kitchen.address}}, {{kitchen.city}}<br>
+	                          {{kitchen.address.address_1}}, {{kitchen.address.city}}<br>
 	                          Open {{kitchen.days}}  {{kitchen.hours}}</div>
 	                    </div>
 	                  </a>
@@ -169,10 +169,10 @@
             <div class="page-content" ng-model="kitchen">
               <div class="content-block-title">Kitchen details</div>
                 <div class="card">
-                  <div class="card-header">{{kitchen.title}}</div>
+                  <div class="card-header">{{kitchen.name}}</div>
                   <div class="card-content">
                     <div class="card-content-inner"><p>{{kitchen.description}} </p>
-	                    <p><b>{{kitchen.address}}, {{kitchen.city}} </b><br>phone: {{kitchen.phone}}<br>
+	                    <p><b>{{kitchen.address.address_1}}, {{kitchen.address.city}} </b><br>phone: {{kitchen.phone}}<br>
 	                         <a href="{{kitchen.website}}"  >website</a>
 	                    </p>
 	                    <p> Open {{kitchen.days}}  {{kitchen.hours}}</p>

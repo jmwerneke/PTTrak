@@ -4,24 +4,46 @@
 hrApp.angular.factory('GMapService', function () {
   'use strict';
 
-  var pub = {};
+  var pub = {
+		  gmap:null,
+		  myLatLng: {lat: 38.575, lng: -121.485}
+  };
   
-   function initMap(mapDivId) {
-		 console.log('map  Initialized'); 
-		  var myLatLng = {lat: 38.575, lng: -121.485};
-		
-		  // Create a map object and specify the DOM element for display.
-		  var map = new google.maps.Map(document.getElementById(mapDivId), {
-		    center: myLatLng,
-		    scrollwheel: false,
-		    zoom: 14
+  function updateMap(mypos){
+	  pub.myLatLng.lat = mypos.coords.latitude;
+      pub.myLatLng.lng = mypos.coords.longitude;
+      //console.log(pub.myLatLng);
+      
+   //   pub.gmap.panTo(pub.myLatLng);
+   //   pub.placeMarker(pub.myLatLng.lat, pub.myLatLng.lng)
+  }
+  
+  pub.placeMarker = function(lat, lng, letter)
+  {
+	  var marker = new google.maps.Marker({
+		    map: pub.gmap,
+		    position: {lat: lat, lng: lng}
+		  //  ,title: 'this is you'
 		  });
-		
-		  // Create a marker and set its position.
-		  var marker = new google.maps.Marker({
-		    map: map,
-		    position: myLatLng,
-		    title: 'this is you'
+	  return marker;
+  };  
+  
+  pub.initMap = function (mapDivId) {
+  // function initMap(mapDivId) {
+		 console.log('map  Initialized'); 
+		 /*pub.myLatLng = {lat: 38.575, lng: -121.485};
+		 if (navigator.geolocation) {
+		      navigator.geolocation.getCurrentPosition(updateMap);		       
+		  }
+		  */
+		  // Create a map object and specify the DOM element for display.
+		  pub.gmap = new google.maps.Map(document.getElementById(mapDivId), {
+		    center: pub.myLatLng,
+		    scrollwheel: false,
+		    mapTypeControl: false,
+		    zoomControl:false,
+		    streetViewControl: false,
+		    zoom: 13   //14
 		  });
 		
 	}
@@ -33,13 +55,19 @@ hrApp.angular.factory('GMapService', function () {
        
    // Init
    function initService(){
+	   if (navigator.geolocation) {
+		      navigator.geolocation.getCurrentPosition(updateMap);		       
+		  }
+	   /*
        hrApp.fw7.app.onPageInit('indexPage', function(page) { 
 	       	console.log('onPageInit'); 	       	
        		initMap('google-map1');   // run function 
 	    });
+	    */
    }	
   
    initService();
+   
    return pub;
 
 });

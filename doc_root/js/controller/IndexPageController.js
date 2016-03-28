@@ -22,17 +22,37 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$http', 'InitService
 	  }
 	
   };
+  
+  
+  hrApp.fw7.app.onPageInit('indexPage', function(page) { 
+     	console.log('onPageInit2'); 	       	
+ 		getKitchenData();   // run function 
+  });
    
   
-  InitService.addEventListener('ready', function () {
-	  
-    DataService.getKitchens('http://localhost/kitchens/kitchendata.json').then(function (result) {
-      console.log(result.data.kitchens);
-      $scope.kitchens = result.data.kitchens;
-    }, function (err) {
-      console.error(err);
-    });
-    
-  });
+ /*InitService.addEventListener('ready', function () {
+	});
+*/
+  
+	function getKitchenData(){
+	    DataService.getLocations('wellness',1)
+	    	.then(function (result) {	    		
+	    		$scope.kitchens = angular.fromJson(result.data);
+	    		//console.log($scope);
+	    		
+	    		GMapService.initMap('google-map1');
+	    		for(var idx in $scope.kitchens){
+	    			var r= $scope.kitchens[idx];
+	    			if(angular.isNumber(r.latitude) && angular.isNumber(r.latitude)){
+	    				r.marker= GMapService.placeMarker(r.latitude,r.longitude);
+	    				//console.log("adding marker for " + r.name);
+	    		    }   			
+	    		}
+	    	}, 
+	    	function (err) {
+	    		console.error('error getting data '+err);
+	    	}    	);
+	    
+	}
   
 }]);
