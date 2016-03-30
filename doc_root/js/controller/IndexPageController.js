@@ -24,6 +24,10 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
     DataService.resourceClicked(resource);
   }
   
+  $scope.resources = {};
+  $scope.markers = {};
+  
+  
 //Angular event listener. Gets called when user clicks on upcoming movies tab
   $scope.onOpenTodayClicked= function(today){
 	  if(today>0){
@@ -39,39 +43,54 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
   
   
   hrApp.fw7.app.onPageInit('indexPage', function(page) { 
+	  initScope(page);
+	  /*
 	  $scope.page = pages[category];
 	  $rootScope.title = $scope.page.title;
-     	console.log('onPageInit2 with: '+ category); 	       	
+    // 	console.log('onPageInit2 with: '+ category); 	       	
  		getResourceData();   // run function 
+ 		*/
   });
   hrApp.fw7.app.onPageReinit('indexPage', function(page) { 
-	  $scope.page = pages[category];
-	  $rootScope.title = $scope.page.title;
-   	  console.log('onPageReInit2 with: '+ category); 	  	       	
-	  getResourceData();   // run function 
+	  initScope(page);
    });
   
  /*InitService.addEventListener('ready', function () {
 	});
 */
   
+    function initScope(page){
+    	$scope.resources = {};
+    	$scope.markers = {};
+    	$scope.page = pages[category];
+   	  	$rootScope.title = $scope.page.title;
+   	  	getResourceData();  
+    }
+  
+  
 	function getResourceData(){
-		console.log('keyword: '+$scope.page.keyword);
+		//console.log('keyword: '+$scope.page.keyword);
 	    DataService.getLocations($scope.page.keyword,2)
 	    	.then(function (result) {	    		
-	    		$scope.resources = angular.fromJson(result.data);
-	    		//console.log($scope);
+	    		//$scope.resources = angular.fromJson(result.data);
+	    		var locations = angular.fromJson(result.data);
+	    		
 	    		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	    		var labelIndex = 0;
 	    		GMapService.initMap('google-map1');
-	    		for(var idx in $scope.resources){
-	    			var r= $scope.resources[idx];
+	    		for(var idx in locations){
+		    		//for(var idx in $scope.resources){
+	    			var r= locations[idx];
+	    			$scope.resources[r.slug]= r;
 	    			if(angular.isNumber(r.latitude) && angular.isNumber(r.latitude)){
 	    				var label = labels[labelIndex++ % labels.length];
-	    				$scope.resources[idx].label = label;
-	    				r.marker= GMapService.placeMarker(r.latitude,r.longitude, label);
+	    				//$scope.resources[idx].label = label;
+	    				//r.marker= GMapService.placeMarker(r.latitude,r.longitude, label);
+	  
+	    				$scope.markers[r.slug]=  GMapService.placeMarker(r.latitude,r.longitude, label);
 	    				//console.log("adding marker for " + r.name);
-	    		    }   			
+	    		    }
+	    			getResourceDetails(r);
 	    		}
 	    	}, 
 	    	function (err) {
@@ -79,5 +98,14 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    	}    	);
 	    
 	}
-  
+	
+	function getResourceDetails(resource){
+		DataService.getDetailInfo(resource.slug)
+    	.then(function (result) {	 
+    		$scope.resources[resource.slug] = result.data;
+    		console.log(result.data);
+    	});
+		
+	}
+	
 }]);

@@ -30,7 +30,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
  pub.getComments = function(resource_id, resource_type){
 	 return $http.get('get.php?table=comments&resource_id='+ resource_id + '&resource_type='+resource_type);
  }
- // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=wellness&location=95831&org_name=&radius=2
+ // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
  
   pub.getLocations = function (keyword, radius) {
 	 
@@ -56,6 +56,19 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	  
 	  
   };
+  
+  pub.getDetailInfo = function(slug){
+	  //http://api.helphubsac.org/api/locations/weave
+	  return $http({
+	        url: 'http://api.helphubsac.org/api/locations/'+ slug,
+	        method: "GET",
+	        withCredentials: true,
+	        headers: {
+	                    'Content-Type': 'application/json; charset=utf-8'
+	        }
+	    });
+	  
+  }
   
   return pub;
   

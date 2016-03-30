@@ -50,12 +50,12 @@
      			<!-- Click on link with "close-panel" class will close panel -->
      			<div class="content-block-title">Food Options</div>
      			<p><a href="#indexPage" onclick="category='meal' " class="button button-round button-fill  button-green close-panel">Hot meals</a></p>
-     			<p><a href="#indexPage" onclick="category='pantry' " class="button button-round button-fill  button-green">Food pantries</a></p>
-     			<p><a href="#indexPage" onclick="category='ebt' " class="button button-round button-fill  button-green">EBT</a></p>
-			    <p><a href="#indexPage" onclick="category='wic' " class="button button-round button-fill  button-green">WIC</a></p>
+     			<p><a href="#indexPage" onclick="category='pantry' " class="button button-round button-fill  button-green close-panel">Food pantries</a></p>
+     			<p><a href="#indexPage" onclick="category='ebt' " class="button button-round button-fill  button-green close-panel">EBT</a></p>
+			    <p><a href="#indexPage" onclick="category='wic' " class="button button-round button-fill  button-green close-panel">WIC</a></p>
 				
 				
-     			<p style="margin-top:40px"><a href="#"          class="button button-round close-panel">Cancel</a></p>
+     			<p style="margin-top:40px"><a href="#"          class="button button-round button-fill button-green close-panel">Cancel</a></p>
         			
      			
    		</div>
@@ -175,14 +175,29 @@
                   <div class="card-content">
                     <div class="card-content-inner"><p>{{resource.description}} </p>
 	                    <p><b>{{resource.address.address_1}}, {{resource.address.city}} </b><br>
-	                    phone: <span ng-repeat="phone  in resource.phones "> {{phone.number}} <br>
-	                         <a href="{{resource.website}}" target='_blank' class="external" >website</a>
+	                    phone: <span ng-repeat="phone  in resource.phones "><a href="tel:{{phone.number}}">{{phone.number}}</a> <br><br>
+	                         <a ng-if="resource.website!=null"    href="{{resource.website}}" target='_blank' class="external" >website</a>
 	                    </p>
 	                    <p> Open {{resource.days}}  {{resource.hours}}</p>
                     </div>
                                       
                   </div>
                 </div> <!-- card -->
+                
+                <!-- services  -->
+                <div class="content-block-title"   ng-if="resource.services[0]" >Services</div>
+                <div  ng-repeat="service in resource.services "          class="card">
+                  	<div class="card-header">{{service.name}}</div>
+                  	<div class="card-content">
+                  	 	<div class="card-content-inner">
+	                  		<p>{{service.description}}</p>
+	                  		<b>How to apply:</b>
+	                  		<p>{{service.application_process}}</p>
+                  		</div>
+                  	</div>
+                  	
+                 </div> <!-- card -->
+                
                 
                  <div class="card">
                   	<div class="card-header">Comments</div>
