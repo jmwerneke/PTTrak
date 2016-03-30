@@ -1,0 +1,31 @@
+            <!-- Page content-->
+            <!-- div class="page-content "-->   
+            
+	            <div class="content-block" style="margin:20px 0">
+	      			<p class="buttons-row">   
+	        		<a href="#" ng-click="onOpenTodayClicked(1)" class="button" ng-class="openToday ? 'button active':'button'" >Open Today</a>
+	        		<a href="#" ng-click="onOpenTodayClicked(0)" class="button" ng-class="openToday ? 'button':'button active'" >All</a>
+	     			 </p>
+	   			 </div>
+	              <div id="google-map1" style="height:200px"></div>   
+	            
+              
+	             <div class=" list-block media-list " style="margin:0">
+	                  
+	              <ul ng-repeat="kitchen in kitchens "><!-- | openFilter : openToday  -->
+	                <li>
+	                  <a href="#detailsPage" ng-click="onItemClicked(kitchen)" class="item-link item-content">
+	                    <!-- div class="item-media"><img ng-src="{{kitchen.posters.thumbnail}}" width="80"></div -->
+	                    <div class="item-inner">
+	                      <div class="item-title-row">
+	                        <div class="item-title"> {{kitchen.label}} {{kitchen.name}}</div>
+	                      </div>
+	                      <div class="item-text">     
+	                          {{kitchen.address.address_1}}, {{kitchen.address.city}}<br>
+	                          Open {{kitchen.days}}  {{kitchen.hours}}</div>
+	                    </div>
+	                  </a>
+	                </li>
+	              </ul>
+	            </div> <!-- list block media list -->
+            <!-- /div --> <!-- content -->

@@ -18,11 +18,12 @@ hrApp.angular.factory('GMapService', function () {
    //   pub.placeMarker(pub.myLatLng.lat, pub.myLatLng.lng)
   }
   
-  pub.placeMarker = function(lat, lng, letter)
+  pub.placeMarker = function(lat, lng, label)
   {
 	  var marker = new google.maps.Marker({
 		    map: pub.gmap,
-		    position: {lat: lat, lng: lng}
+		    position: {lat: lat, lng: lng},
+	  		label: label
 		  //  ,title: 'this is you'
 		  });
 	  return marker;

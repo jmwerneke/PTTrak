@@ -8,6 +8,9 @@ hrApp.config = {
 };
 
 hrApp.angular = angular.module('hrApp', []);
+hrApp.angular.run(function($rootScope) {
+    $rootScope.keyword = 'meal';
+});
 
 hrApp.fw7 = {
   app : new Framework7({

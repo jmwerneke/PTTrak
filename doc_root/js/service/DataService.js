@@ -35,16 +35,19 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   pub.getLocations = function (keyword, radius) {
 	 
     //return $http.get('kitchens.json');
+	  var zip = "95816";
+	  var queryString = encodeURI("?action=index&controller=locations&keyword="+ keyword +"&location="+ zip +"&radius="+radius); 
+	  
 	  return $http({
-	        url: 'http://api.helphubsac.org/api/search',
+	        url: 'http://api.helphubsac.org/api/search'+ queryString,
 	        method: "GET",
-	        data:{	controller:'locations',
+	  /*      data:{	controller:'locations',
 	        		action:'index',
 	        		location: 95816, //95831,
 	        		org_name:'',
 	        		keyword: keyword,
 	        		radius: radius
-	        	},
+	        	}, */
 	        withCredentials: true,
 	        headers: {
 	                    'Content-Type': 'application/json; charset=utf-8'
