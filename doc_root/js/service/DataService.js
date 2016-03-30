@@ -6,7 +6,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 
   var pub = {},
     eventListeners = {
-      'kitchenClicked' : []
+      'resourceClicked' : []
      ,'commentClicked' : []
     };
   
@@ -14,9 +14,9 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
     eventListeners[eventName].push(callback);
   };
   
-  pub.kitchenClicked = function (kitchen) {
-    for (var i=0; i<eventListeners.kitchenClicked.length; i++) {
-      eventListeners.kitchenClicked[i](kitchen);
+  pub.resourceClicked = function (resource) {
+    for (var i=0; i<eventListeners.resourceClicked.length; i++) {
+      eventListeners.resourceClicked[i](resource);
     }
   };
   

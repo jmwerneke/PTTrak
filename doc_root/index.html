@@ -145,17 +145,17 @@
               
 	             <div class=" list-block media-list " style="margin:0">
 	                  
-	              <ul ng-repeat="kitchen in kitchens "><!-- | openFilter : openToday  -->
+	              <ul ng-repeat="resource in resources "><!-- | openFilter : openToday  -->
 	                <li>
-	                  <a href="#detailsPage" ng-click="onItemClicked(kitchen)" class="item-link item-content">
-	                    <!-- div class="item-media"><img ng-src="{{kitchen.posters.thumbnail}}" width="80"></div -->
+	                  <a href="#detailsPage" ng-click="onItemClicked(resource)" class="item-link item-content">
+	                    <!-- div class="item-media"><img ng-src="{{resource.posters.thumbnail}}" width="80"></div -->
 	                    <div class="item-inner">
 	                      <div class="item-title-row">
-	                        <div class="item-title">({{kitchen.label}}) {{kitchen.name}}</div>
+	                        <div class="item-title">({{resource.label}}) {{resource.name}}</div>
 	                      </div>
 	                      <div class="item-text">     
-	                          {{kitchen.address.address_1}}, {{kitchen.address.city}}<br>
-	                          Open {{kitchen.days}}  {{kitchen.hours}}</div>
+	                          {{resource.address.address_1}}, {{resource.address.city}}<br>
+	                          Open {{resource.days}}  {{resource.hours}}</div>
 	                    </div>
 	                  </a>
 	                </li>
@@ -168,16 +168,17 @@
           <!-- Detail Page -->
           <div data-page="detailsPage" class="page cached" ng-controller="DetailPageController">
             <!-- Page content-->
-            <div class="page-content" ng-model="kitchen">
+            <div class="page-content" ng-model="resource">
               <div class="content-block-title"></div>
                 <div class="card">
-                  <div class="card-header">{{kitchen.name}}</div>
+                  <div class="card-header">{{resource.name}}</div>
                   <div class="card-content">
-                    <div class="card-content-inner"><p>{{kitchen.description}} </p>
-	                    <p><b>{{kitchen.address.address_1}}, {{kitchen.address.city}} </b><br>phone: {{kitchen.phone}}<br>
-	                         <a href="{{kitchen.website}}"  >website</a>
+                    <div class="card-content-inner"><p>{{resource.description}} </p>
+	                    <p><b>{{resource.address.address_1}}, {{resource.address.city}} </b><br>
+	                    phone: <span ng-repeat="phone  in resource.phones "> {{phone.number}} <br>
+	                         <a href="{{resource.website}}" target='_blank' class="external" >website</a>
 	                    </p>
-	                    <p> Open {{kitchen.days}}  {{kitchen.hours}}</p>
+	                    <p> Open {{resource.days}}  {{resource.hours}}</p>
                     </div>
                                       
                   </div>
@@ -192,7 +193,7 @@
                      			<li><div class="item-content">{{comment.body}}</div></li>
                      		</ul>
                     	</div>
-                  		<div class="card-footer"><a class="link" ng-click="onCommentClicked(kitchen)"  href="#commentPage">Leave a Comment</a></div>
+                  		<div class="card-footer"><a class="link" ng-click="onCommentClicked(resource)"  href="#commentPage">Leave a Comment</a></div>
                   	
                   	</div>
                   	

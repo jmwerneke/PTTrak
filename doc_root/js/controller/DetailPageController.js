@@ -5,16 +5,16 @@ hrApp.angular.controller('DetailPageController', ['$scope', '$http', 'InitServic
   'use strict';
   
   $scope.onCommentClicked = function () {
-	    DataService.commentClicked($scope.kitchen);
+	    DataService.commentClicked($scope.resource);
 	  }
   
   $scope.comments= [];
   
-  DataService.addEventListener('kitchenClicked', function (kitchen) {
-    $scope.kitchen = kitchen;
-    console.log(kitchen);
+  DataService.addEventListener('resourceClicked', function (resource) {
+    $scope.resource = resource;
+    console.log(resource);
     
-    DataService.getComments(kitchen.id, kitchen.type).then(function (result) {
+    DataService.getComments(resource.id, resource.type).then(function (result) {
         console.log(result.data.comments);
         $scope.comments = result.data.comments;
       }, function (err) {
