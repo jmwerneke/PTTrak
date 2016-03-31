@@ -14,7 +14,9 @@ hrApp.angular.run(function($rootScope) {
 
 hrApp.fw7 = {
   app : new Framework7({
-    animateNavBackIcon: true
+    animateNavBackIcon: true,
+    pushState: true,
+    swipePanel:'left'
   }),
   options : {
     dynamicNavbar: true,
