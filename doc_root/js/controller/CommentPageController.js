@@ -4,7 +4,13 @@
 hrApp.angular.controller('CommentPageController', ['$scope', '$http', 'InitService', 'DataService', function ($scope, $http, InitService, DataService) {
   'use strict';
   
-  $scope.comment = {};
+  $scope.onRate = function(rating){
+	 $scope.comment.stars=rating;
+	 console.log(rating+' stars'); 
+  }
+  
+  $scope.comment = {stars:0};
+  
   // calling our submit function.
     $scope.submitForm = function() {
     	console.log('click submit comment');

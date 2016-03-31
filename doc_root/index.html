@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     
     <title>Sac Homeless Resources</title>
     
@@ -78,17 +79,24 @@
           </div>
           
           <div class="navbar-inner cached" data-page="indexPage">
-            <div class="left sliding">  <a href="index" class="link back"> <i class="icon icon-back"></i><span>Back</span> </a>  </div>
+            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left""></i><span>Back</span> </a>  </div>
             <div class="center sliding">{{title}}</div>
-            <div class="right "><a href="#frontPage">  <i class="icon icon-home"></i><span>Home</span> </a>  </div>
+            <div class="right "><a href="#frontPage">  <i style="padding:10px" class="fa fa-home fa-lg"></i> </a>  </div>
           </div>
           
           
           <div class="navbar-inner cached" data-page="detailsPage">
-            <div class="left sliding">  <a href="index" class="link back"> <i class="icon icon-back"></i><span>Back</span> </a>  </div>
+            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left"></i><span>Back</span> </a>  </div>
             <div class="center sliding">Details</div>
-            <div class="right "><a href="#frontPage">  <i class="icon icon-home"></i><span>Home</span> </a>  </div>
+            <div class="right "><a href="#frontPage">  <i style="padding:10px" class="fa fa-home fa-lg"></i></i> </a>  </div>
           </div>
+          
+           <div class="navbar-inner cached" data-page="commnentPage">
+            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left"></i><span>Back</span> </a>  </div>
+            <div class="center sliding">Comment</div>
+            <div class="right "><a href="#frontPage">  <i style="padding:10px" class="fa fa-home fa-lg"></i> </a>  </div>
+          </div>
+          
         </div>
         
              
@@ -233,7 +241,7 @@
               			<li>
 	            		<div class="item-content">
 		            		<div class="item-inner">
-			            		<div class="item-title label"> comment</div>
+			            		<!-- div class="item-title label"> comment</div-->
 			            		<div class="item-input">
 			            			<textarea placeholder="your comment" ng-model="comment.body"></textarea>
 			            		</div>
@@ -242,16 +250,22 @@
 	            		</li>
              		</ul>
             	</div>
+            	
+            
+            	
             	<div class="content-block">
-            		<div class="row">
-            			<div class="col-20"><a href="#" class="button button-big ">1<i class="icon icon-plus"></i></a></div>
-            			<div class="col-20"><a href="#" class="button button-big">2</a></div>
-            			<div class="col-20"><a href="#" class="button button-big">3</a></div>
-            			<div class="col-20"><a href="#" class="button button-big">4</a></div>
-            			<div class="col-20"><a href="#" class="button button-big">5</a></div>
-            			
-            		</div>
+            		<div>You can rate this organization</div>
+            		<p class="buttons-row">
+            			<a href="#" ng-click="onRate(1)" class="button" ng-class="comment.stars==1 ? 'button active':'button'" ><i class="fa fa-star"></i></a>
+            			<a href="#" ng-click="onRate(2)" class="button" ng-class="comment.stars==2 ? 'button active':'button'"><i class="fa fa-star"></i><i class="fa fa-star "></i></a>
+            			<a href="#" ng-click="onRate(3)" class="button" ng-class="comment.stars==3 ? 'button active':'button'"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></a>
+            			<a href="#" ng-click="onRate(4)" class="button" ng-class="comment.stars==4 ? 'button active':'button'"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></a>
+            		</p>
             	</div>
+            	<div class="content-block">		
+            		<label style="font-size:15px"><input style="width:18px; height:18px;" type="checkbox" name='needs_updating'>This listing is out of date</label>
+            	</div>           		
+            	
             	<div class="content-block">
             		<div class="row">
             			<div class="col-50"><input type="submit" class="button button-big active"    value="Submit"/></div>
