@@ -11,28 +11,26 @@ This repository includes the two files that **must be included** in all project 
 SacHomeless
 
 ### Project Description
-SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals. 
+SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals and provides a way to engage the community organizations and volunteers to provide resources.
 
 ### Team Members
-- [Team Leader Name, email address]
-- Joanne Werneke
-- Jeff 
-- Kevin Fries
-- Emily Quinn Finney
-- Jared Garst
-- Kevin
-- Hillary
+- Team Leader Name Joanne Werneke, joannemwerneke@gmail.com
+- Jeff Roush, 
 - Michael Tel, michael@hollyhox.com
+- Kevin Fries
+- Emily Quinn Finney 
+- Jared Garst
+- Hillary Gaines - customer/client experience
 
 ### Stakeholder Engagement
 - Julie Field - Dept. of Human Services, Sacramento County 
-- [Include any nonprofits or other stakeholders you engaged in the development your project]
+- Veronica Beaty - The People's Guide, sachousingalliance.org 
 
 ### Developer Documentation
 [Include any necessary instructions for developers to setup their local development environment and deploy your project to a production server]
 
 ### Additional Information (optional)
-At the moment, we're looking at using [Ohana](https://github.com/jeff-r/ohana-api)
+We are using the Ohana standard api 
 
 ## Submission Instructions
 
