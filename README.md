@@ -4,8 +4,7 @@ This repository includes the two files that **must be included** in all project 
 2. a `LICENSE` that allows anyone to do anything they want with your code as long as they provide attribution back to you and don’t hold you liable.
 
 ## Project Information
-
-*Please complete the information below:*
+Sacramento County Hack4Sac Project to provide Homeless Resource Information for Sacramento County Area and way to engage community organizations and volunteers to provide resources.  
 
 ### Project Name
 SacHomeless
@@ -24,13 +23,16 @@ SacHomeless provides Homeless_resources information for the Sacramento County ar
 
 ### Stakeholder Engagement
 - Julie Field - Dept. of Human Services, Sacramento County 
-- Veronica Beaty - The People's Guide, sachousingalliance.org 
+- Veronica Beaty - The People's Guide, veronica@sachousingalliance.org 
+- Dave Coburn - Pilgrimage Sacramento - Corburn180@gmail.com 
+- Hillary Gaines - 
 
 ### Developer Documentation
-[Include any necessary instructions for developers to setup their local development environment and deploy your project to a production server]
+
 
 ### Additional Information (optional)
-We are using the Ohana standard api 
+We are using the Ohana standard api and tools
+There is also a mobil web version 
 
 ## Submission Instructions
 
