@@ -69,27 +69,25 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
   
   
 	function getResourceData(){
+		
+		var myLatLng = GMapService.myLatLng;
 		//console.log('keyword: '+$scope.page.keyword);
-	    DataService.getLocations($scope.page.keyword,2)
+	    DataService.getLocations($scope.page.keyword, myLatLng)
 	    	.then(function (result) {	    		
 	    		//$scope.resources = angular.fromJson(result.data);
 	    		var locations = angular.fromJson(result.data);
-	    		
+	    		locations= orderByDistance(locations, myLatLng);
 	    		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	    		var labelIndex = 0;
 	    		GMapService.initMap('google-map1');
-	    		for(var idx in locations){
-		    		//for(var idx in $scope.resources){
-	    			var r= locations[idx];
-	    			$scope.resources[r.slug]= r;
+	    		for(var idx in locations){		    		
+	    			var r= locations[idx];		
 	    			if(angular.isNumber(r.latitude) && angular.isNumber(r.latitude)){
 	    				var label = labels[labelIndex++ % labels.length];
-	    				//$scope.resources[idx].label = label;
-	    				//r.marker= GMapService.placeMarker(r.latitude,r.longitude, label);
-	  
-	    				$scope.markers[r.slug]=  GMapService.placeMarker(r.latitude,r.longitude, label);
-	    				//console.log("adding marker for " + r.name);
+	    				// save the markers and distances in a separate array, since the locations are overwritten
+	    				$scope.markers[r.slug]= {label:label, distance:r.distance, marker: GMapService.placeMarker(r.latitude,r.longitude, label) };	    				
 	    		    }
+	    			$scope.resources[r.slug]= r;
 	    			getResourceDetails(r);
 	    		}
 	    	}, 
@@ -98,6 +96,26 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    	}    	);
 	    
 	}
+	
+	function orderByDistance(locations, myLoc){
+		var myLat= myLoc.lat;
+		var myLng = myLoc.lng;
+		console.log('mylat: '+myLat+'  mylong: '+myLng)
+		var unlocs=[];
+		for(var idx in locations){		    		
+			var r= locations[idx];	
+			var deltaLat = Math.abs(r.latitude - myLat) * 68; //62.5; //1/0.016;
+			var deltaLng = Math.abs(r.longitude - myLng) * 57; //52.6; //1/0.019;
+			console.log(r.slug +' dlat: '+deltaLat +'   dlng: '+deltaLng);
+			r.distance= Math.round(Math.pow(Math.pow(deltaLat,2) + Math.pow(deltaLng,2), 0.5) *10)/10;
+			unlocs.push(r); 			
+		}
+		var olocs = unlocs.sort(function(a, b) {
+		        return ((a.distance < b.distance) ? -1 : 1);
+		    });
+		return olocs;
+	}
+	
 	
 	function getResourceDetails(resource){
 		DataService.getDetailInfo(resource.slug)

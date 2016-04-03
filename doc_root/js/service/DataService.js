@@ -29,32 +29,17 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
  
  pub.getComments = function(resource_id, resource_type){
 	 return $http.get('get.php?table=comments&resource_id='+ resource_id + '&resource_type='+resource_type);
- }
+ };
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
  
-  pub.getLocations = function (keyword, radius) {
-	 
-    //return $http.get('kitchens.json');
-	  var zip = "95816";
-	  var queryString = encodeURI("?action=index&controller=locations&keyword="+ keyword +"&location="+ zip +"&radius="+radius); 
-	  
+  pub.getLocations = function (keyword, lat_lng) {
+	  var queryString = encodeURI("?action=index&controller=locations&keyword="+ keyword +"&lat_lng="+ lat_lng.lat+','+lat_lng.lng); 	  
 	  return $http({
 	        url: 'http://api.helphubsac.org/api/search'+ queryString,
 	        method: "GET",
-	  /*      data:{	controller:'locations',
-	        		action:'index',
-	        		location: 95816, //95831,
-	        		org_name:'',
-	        		keyword: keyword,
-	        		radius: radius
-	        	}, */
 	        withCredentials: true,
-	        headers: {
-	                    'Content-Type': 'application/json; charset=utf-8'
-	        }
-	    });
-	  
-	  
+	        headers: { 'Content-Type': 'application/json; charset=utf-8' }
+	    });	  	  
   };
   
   pub.getDetailInfo = function(slug){
@@ -63,11 +48,8 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	        url: 'http://api.helphubsac.org/api/locations/'+ slug,
 	        method: "GET",
 	        withCredentials: true,
-	        headers: {
-	                    'Content-Type': 'application/json; charset=utf-8'
-	        }
-	    });
-	  
+	        headers: { 'Content-Type': 'application/json; charset=utf-8'  }
+	    });	  
   }
   
   return pub;
