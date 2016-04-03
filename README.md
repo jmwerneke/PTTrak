@@ -4,35 +4,35 @@ This repository includes the two files that **must be included** in all project 
 2. a `LICENSE` that allows anyone to do anything they want with your code as long as they provide attribution back to you and don’t hold you liable.
 
 ## Project Information
-
-*Please complete the information below:*
+Sacramento County Hack4Sac Project to provide Homeless Resource Information for Sacramento County Area and way to engage community organizations and volunteers to provide resources.  
 
 ### Project Name
 SacHomeless
 
 ### Project Description
-SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals. 
+SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals and provides a way to engage the community organizations and volunteers to provide resources.
 
 ### Team Members
-- [Team Leader Name, email address]
-- Joanne Werneke
-- Jeff 
-- Kevin Fries
-- Emily Quinn Finney
-- Jared Garst
-- Kevin
-- Hillary
+- Team Leader Name Joanne Werneke, joannemwerneke@gmail.com
+- Jeff Roush, 
 - Michael Tel, michael@hollyhox.com
+- Kevin Fries
+- Emily Quinn Finney 
+- Jared Garst
+- Hillary Gaines - customer/client experience
 
 ### Stakeholder Engagement
 - Julie Field - Dept. of Human Services, Sacramento County 
-- [Include any nonprofits or other stakeholders you engaged in the development your project]
+- Veronica Beaty - The People's Guide, veronica@sachousingalliance.org 
+- Dave Coburn - Pilgrimage Sacramento - Corburn180@gmail.com 
+- Hillary Gaines - 
 
 ### Developer Documentation
-[Include any necessary instructions for developers to setup their local development environment and deploy your project to a production server]
+
 
 ### Additional Information (optional)
-At the moment, we're looking at using [Ohana](https://github.com/jeff-r/ohana-api)
+We are using the Ohana standard api and tools
+There is also a mobil web version 
 
 ## Submission Instructions
 
