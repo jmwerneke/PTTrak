@@ -32,8 +32,20 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
  };
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
  
-  pub.getLocations = function (keyword, lat_lng) {
-	  var queryString = encodeURI("?action=index&controller=locations&keyword="+ keyword +"&lat_lng="+ lat_lng.lat+','+lat_lng.lng); 	  
+  pub.getLocations = function (category, lat_lng, keyword) {
+	  //var queryString = encodeURI("?action=index&controller=locations&keyword="+ keyword +"&lat_lng="+ lat_lng.lat+','+lat_lng.lng); 	  
+	  var keywordStr = "";
+	  var categoryStr = "";
+	  
+	  if(keyword)
+		  keywordStr = "&keyword="+keyword;	 
+	  
+	  if(category)
+		  categoryStr = "&category="+category;
+	  
+	  
+	  var queryString = encodeURI("?radius=20&lat_lng="+ lat_lng.lat+','+lat_lng.lng+ categoryStr+ keywordStr); 
+console.log(queryString);	  	  
 	  return $http({
 	        url: 'http://api.helphubsac.org/api/search'+ queryString,
 	        method: "GET",
@@ -52,11 +64,73 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    });	  
   }
   
+//======================================================  local storage
+  
+  pub.getFavorites = function(){
+	  if(typeof(Storage) == "undefined") {
+		  console.log("local storage not supported");
+		  return;
+	  }
+	  var favorites = localStorage.getItem("favorites");
+	  if(! favorites )
+		  favorites = [];
+	  else
+		  favorites = angular.fromJson(favorites);
+	  return favorites; 
+  }
+  
+  pub.addToFavorites= function(resource){
+	  var slug = resource.slug;
+	  
+	  if(typeof(Storage) == "undefined") {
+		  return;
+	  }
+	  
+	  var favorites = localStorage.getItem("favorites");
+	  if(! favorites)
+		  favorites = [slug];
+	  else{
+		  favorites = angular.fromJson(favorites);
+		  if(favorites.indexOf(slug) == -1)
+		  	favorites.push(slug);
+  	  }
+	  localStorage.setItem("favorites", angular.toJson(favorites));	  
+  }
+  
+  pub.removeFromFavorites= function(resource){
+	  var slug = resource.slug;
+	  if(typeof(Storage) == "undefined") {
+		    // Code for localStorage/sessionStorage.
+		  console.log("local storage not supported");
+		  return;
+	  }
+	  
+	  var favorites = localStorage.getItem("favorites");
+	  if(! favorites)
+		  return;
+	  else
+		  favorites = angular.fromJson(favorites);
+	  
+	  var newFavorites = favorites.filter(function(e){return e!== slug })
+	  
+	  localStorage.setItem("favorites", angular.toJson(newFavorites));
+	  
+  }
+//======================================================  local storage
+  
+  
   return pub;
   
 }]);
 
 
+//======================================================  local storage
+
+
+
+
+
+//======================================================
 ///filter
 hrApp.angular.filter('openFilter', function() {
 	    return function(items, openToday) {

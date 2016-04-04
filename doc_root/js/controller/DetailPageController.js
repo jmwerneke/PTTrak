@@ -8,6 +8,14 @@ hrApp.angular.controller('DetailPageController', ['$scope', '$http', 'InitServic
 	    DataService.commentClicked($scope.resource);
 	  }
   
+  $scope.onAddToFavorites = function () {
+	   if($scope.resource.isFavorite)
+	       DataService.removeFromFavorites($scope.resource);
+	   else
+		   DataService.addToFavorites($scope.resource);
+	   $scope.resource.isFavorite = ! $scope.resource.isFavorite;
+  }
+  
   $scope.comments= [];
   
   DataService.addEventListener('resourceClicked', function (resource) {

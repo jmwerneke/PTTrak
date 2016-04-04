@@ -1,21 +1,60 @@
 /*jslint browser: true*/
 /*global console, hrApp*/
 
-var category = 'meal';  // in the gloval scope
+var globalCat = '';  // in the gloval scope
+var globalKeyword='';
 
 hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http', 'InitService', 'DataService', 'GMapService', function ($scope, $rootScope, $http, InitService, DataService, GMapService) {
   'use strict';
   
   var pages = {
-	meal :{title: "Hot Meals",keyword:'meal'},
-	pantry :{title: "Food Pantries", keyword:'pantry'},
-	wic :{title: "WIC", keyword:'wic'},
-	ebt :{title: "EBT",keyword:'ebt'},
-	housing: {title: "Housing",keyword:'shelter'},
-	mental_health: {title: "Mental Health",keyword:'mental health'},
-	healthcare:{title: "Health Care",keyword:'healthcare'},
-	employment:{title:"Employment",keyword:'employment'},
-	safety:{title:'Safety', keyword:'safety'}
+	youth :{title: "Youth",category:'Youth'}, //
+	
+	// emergency
+	medical :{title: "Medical",category:'Medical'},
+	mental_health :{title: "Mental Health",category:'Mental Health'},
+
+	//safety
+	domestic_violence:{title:'Domestic Violence', category:'domestic_violence'},//
+	human_trafficking:{title:'Human Trafficking', category:'Human Trafficking'},//
+	sex_trafficking:{title:'Sex Trafficking', category:'Sex Trafficking'},//
+
+	//housing 
+	shelter: {title: "Shelter",category:'shelter'},
+	affordable_housing: {title: "Affordble Housing",category:'Affordable Housing'},
+	transitional_housing: {title: "Transitional Housing",category:'transitional_housing'},
+	supportive_Housing: {title: "Permanent Supportive Housing",category:'Permanent Supportive Housing'},
+	
+	//food
+	meals :{title: "Hot Meals",category:'Hot Meals'},
+	food_closets :{title: "Food Closets", category:'Food Closets'},
+	wic :{title: "WIC", category:'WIC'},
+	ebt :{title: "EBT",category:'EBT'},   //
+	
+	//healthcare
+	clinics:{title: 'Community Clinics',category:'Community Clinics'},
+	immunization:{title: 'Immunization',category:'Immunization'},
+	std:{title: 'STD Testing and Treatment',category:'STD Testing and Treatment'},
+	
+	
+	//mental health
+	amental_health: {title: "Adult Mental Health",category:'Adult Mental Health'},//
+	cmental_health: {title: "Children's Mental Health",category:"Children\'s Mental Health"},//
+	substance_use: {title: "Substance Use",category:'Substance Use'},	
+	crisis:{title:'Crisis Support', category:'Crisis Support'},
+	groups:{title:'Support Groups', category:'Support Groups'},
+	
+	legal: {title: "Legal Services",category:'Legal Services'},
+	
+	employment:{title:"Employment",category:'employment'},
+	
+	vocational: {title: "Vocational",category:'Vocational'},
+	school_districts: {title: "School Districts",category:'School Districts'},
+	colleges: {title: "Community Colleges",category:'Community Colleges'},
+	
+	
+	
+	
   } ;
   
   $scope.openToday=true;
@@ -60,9 +99,11 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 */
   
     function initScope(page){
+    	if(globalCat=='' && globalKeyword =='')
+    		return;
     	$scope.resources = {};
     	$scope.markers = {};
-    	$scope.page = pages[category];
+    	$scope.page = pages[globalCat];
    	  	$rootScope.title = $scope.page.title;
    	  	getResourceData();  
     }
@@ -72,7 +113,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 		
 		var myLatLng = GMapService.myLatLng;
 		//console.log('keyword: '+$scope.page.keyword);
-	    DataService.getLocations($scope.page.keyword, myLatLng)
+	    DataService.getLocations($scope.page.category, myLatLng, globalKeyword)
 	    	.then(function (result) {	    		
 	    		//$scope.resources = angular.fromJson(result.data);
 	    		var locations = angular.fromJson(result.data);
