@@ -127,6 +127,13 @@ body {
 				<p> <a href="#indexPage" onclick="globalCat='groups' "	class="button button-round button-fill  button-green close-panel">Support Groups</a></p>
 			</div>
 
+			<div id="panel_education" class="paneldiv">
+				<p>Education/Training</p>
+				<p>	<a href="#indexPage" onclick="globalCat='vocational' "	class="button button-round button-fill  button-green close-panel">Vocational Training</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='school_districts' "	class="button button-round button-fill  button-green close-panel">School Districts</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='colleges' "class="button button-round button-fill  button-green close-panel">Community Colleges</a>	</p>
+			</div>
+
 
 			<p style="margin-top: 40px"><a href="#"	class="button button-round button-fill button-green close-panel">Cancel</a>	</p>
 
@@ -248,7 +255,7 @@ body {
 									data-panel="left">Mental Health</a>
 							</p>
 							<p>
-								<a href="#indexPage" onclick="globalCat='panel_legal'"
+								<a href="#indexPage" onclick="globalCat='legal'"
 									class="button button-round button-fill button-big button-green">Legal
 									Service</a>
 							</p>
@@ -276,10 +283,10 @@ body {
 
 						<div class="content-block" style="margin: 20px 0">
 							<p class="buttons-row">
-								<a href="#" ng-click="onOpenTodayClicked(1)" class="button"
-									ng-class="openToday ? 'button active':'button'">Open Today</a>
-								<a href="#" ng-click="onOpenTodayClicked(0)" class="button"
-									ng-class="openToday ? 'button':'button active'">All</a>
+								<a href="#" ng-click="allListings=false;" class="button"
+									ng-class="allListings ? 'button ':'button active'">Open Today</a>
+								<a href="#" ng-click="allListings=true" class="button"
+									ng-class="allListings ? 'button active':'button '">All</a>
 							</p>
 						</div>
 						<div id="google-map1" style="height: 200px"></div>
@@ -289,21 +296,22 @@ body {
 
 							<ul ng-repeat="resource in resources ">
 								<!-- | openFilter : openToday  -->
-								<li><a href="#detailsPage"
-									ng-click="onItemClicked(resource)"
-									class="item-link item-content"> <!-- div class="item-media"><img ng-src="{{resource.posters.thumbnail}}" width="80"></div -->
+								<li ng-if="resource.open_today || allListings">
+									<a href="#detailsPage" ng-click="onItemClicked(resource)"class="item-link item-content"> 
 										<div class="item-inner">
 											<div class="item-title-row">
-												<div class="item-title">({{markers[resource.slug].label}})
-													{{resource.name}}</div>
+												<div class="item-title">({{markers[resource.slug].label}})	{{resource.name}}</div>
 											</div>
-											<div class="item-text">
-												{{resource.address.address_1}}, {{resource.address.city}}<br>
-												<span>{{markers[resource.slug].distance}} mile</span>&nbsp;
-												Open {{resource.days}} {{resource.hours}}
+											<div class="item-text">												
+												<span>{{markers[resource.slug].distance}} miles</span>&nbsp; &nbsp;
+												<span ng-if="resource.open_today">Open Today {{resource.open_today}}</span>
+												<span ng-if="! resource.open_today && resource.open_days">Open {{resource.open_days}}</span>
+												<br>
+												{{resource.address.address_1}}, {{resource.address.city}}
 											</div>
 										</div>
-								</a></li>
+									</a>
+								</li>
 							</ul>
 						</div>
 						<!-- list block media list -->

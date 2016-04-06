@@ -50,16 +50,12 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
 	employment:{title:"Employment",category:'employment'},
 	
-	vocational: {title: "Vocational",category:'Vocational'},
+	vocational: {title: "Vocational",category:'Vocational Training'},
 	school_districts: {title: "School Districts",category:'School Districts'},
-	colleges: {title: "Community Colleges",category:'Community Colleges'},
-	
-	
-	
-	
+	colleges: {title: "Community Colleges",category:'Community Colleges'},	
   } ;
   
-  $scope.openToday=true;
+  $scope.allListings=true;
   
   $scope.onItemClicked = function (resource) {
     DataService.resourceClicked(resource);
@@ -67,20 +63,6 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
   
   $scope.resources = {};
   $scope.markers = {};
-  
-  
-//Angular event listener. Gets called when user clicks on upcoming movies tab
-  $scope.onOpenTodayClicked= function(today){
-	  if(today>0){
-		  $scope.openToday=true;
-		  console.error('todays resources');
-	  }
-	  else{
-		  $scope.openToday=false;
-		  console.error('all resources');
-	  }
-	
-  };
   
   
   hrApp.fw7.app.onPageInit('indexPage', function(page) { 
@@ -160,11 +142,46 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
 	function getResourceDetails(resource){
 		DataService.getDetailInfo(resource.slug)
-    	.then(function (result) {	 
-    		$scope.resources[resource.slug] = result.data;
+    	.then(function (result) {
+    		var resource = extractSchedule(result.data)
+    		$scope.resources[resource.slug] = resource;
     		console.log(result.data);
     	});
 		
+	}
+	
+	
+	function extractSchedule(resource)
+	{
+		var weekdays= ['Sun ','Mon ','Tue ','Wed ','Thu ','Fri ','Sat ','Sun '];
+		var schedules = resource.regular_schedules;
+		if(!schedules)
+			return resource;
+		
+		var today = new Date(); 
+		today= today.getDay();
+		
+		var days= [];
+		var open_today= '';
+		
+		for(var idx in schedules){
+			var s = schedules[idx];
+			if(s.weekday == today){				
+				var closes = s.closes_at.substr(11,2);
+				if(closes >12)
+					closes = (closes -12 )+' PM';
+				open_today += s.opens_at.substr(11,2) +' to '+ closes + ' ';
+			}
+			if(days.indexOf(s.weekday) == -1)
+				days.push(s.weekday);
+		}
+		var open_days='';
+		for(var idx in days)
+			open_days += weekdays[days[idx]];
+		
+		resource.open_days = open_days;
+		resource.open_today = open_today; 
+		return resource;
 	}
 	
 }]);
