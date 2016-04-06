@@ -45,7 +45,8 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	  
 	  
 	  var queryString = encodeURI("?radius=20&lat_lng="+ lat_lng.lat+','+lat_lng.lng+ categoryStr+ keywordStr); 
-console.log(queryString);	  	  
+
+	  console.log(queryString);	  	  
 	  return $http({
 	        url: 'http://api.helphubsac.org/api/search'+ queryString,
 	        method: "GET",

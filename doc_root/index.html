@@ -1,383 +1,520 @@
 <!DOCTYPE html>
 <html ng-app="hrApp">
-  <head>
-    <!--   joan 470 0917     hillary: 519 0574 http://api.helphubsac.org/admin/sign_in -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    
-    <title>Sac Homeless Resources</title>
-    
-    <!-- Styles -->
- <!-- 
+<head>
+<!--   joan 470 0917     hillary: 519 0574 http://api.helphubsac.org/admin/sign_in -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<title>Sac Homeless Resources</title>
+
+<!-- Styles -->
+<!-- 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
 
 
 
 
-    <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/main.css">
 
-    <!-- Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3ays483Ixy2Gr76BAvjGZBrls4j6ZOUI" ></script> <!-- async defer &callback=aaa -->
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/js/framework7.min.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/service/InitService.js"></script>
-    <script type="text/javascript" src="js/service/DataService.js"></script>
-    <script type="text/javascript" src="js/service/MapService.js"></script>
-    <script type="text/javascript" src="js/controller/IndexPageController.js"></script>
-    <script type="text/javascript" src="js/controller/DetailPageController.js"></script>
-    <script type="text/javascript" src="js/controller/CommentPageController.js"></script>
-    <script type="text/javascript" src="js/controller/FavoritesPageController.js"></script>
- 
-  <style>
-  		.goog-te-banner-frame.skiptranslate {display: none !important;} 
-		body { top: 0px !important; }
-       .button-green {background-color:#009900 !important;} /*  #77c043  */
-       .button-turqois {background-color:#00aae8 !important;}
-  </style>
-  </head>
-  <body > <!-- class="theme-green" -->
- 
-    <div class="statusbar-overlay"></div>
-    <div class="panel-overlay"> </div> <!-- panel-overlay -->
-   	<div class="panel panel-left panel-cover" style="background:#efeff4;"> <!--  #efeff4   side panels left -->
-   		<div class="content-block">
-   		       
-     			
-     			<div id="panel_emergecy" >
-					<p>Emergency</p>
-				    <p><a href="#indexPage" onclick="globalCat='medical' " class="button button-round button-fill  button-green close-panel">Medical</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='mental_health' " class="button button-round button-fill  button-green close-panel">mental health</a></p>
-				</div>
-     			
-     			<div id="panel_safety">
-					<p>Safety</p>
-				    <p><a href="#indexPage" onclick="globalCat='domestic_violence' " class="button button-round button-fill  button-green close-panel">Domestic Violence</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='human_trafficking' " class="button button-round button-fill  button-green close-panel">Human Trafficking</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='sex_trafficking' " class="button button-round button-fill  button-green close-panel">Sex Trafficking</a></p>
-				</div>
-				
-				<div id="panel_housing">
-	     			<p>Housing </p>
-	     			<p><a href="#indexPage" onclick="globalCat='shelter' " class="button button-round button-fill  button-green close-panel">Shelter</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='affordable_housing' " class="button button-round button-fill  button-green close-panel">Affordble Housing</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='transitional_housing' " class="button button-round button-fill  button-green close-panel">Transitional Housing</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='supportive_Housing' " class="button button-round button-fill  button-green close-panel">Permanent Supportive Housing</a></p>
-				</div>
-				
-     		
-     			<div id="panel_food">
-	     			<p>Food </p>
-	     			<p><a href="#indexPage" onclick="globalCat='meals' " class="button button-round button-fill  button-green close-panel">Hot meals</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='food_closets' " class="button button-round button-fill  button-green close-panel">Food pantries</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='ebt' " class="button button-round button-fill  button-green close-panel">EBT</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='wic' " class="button button-round button-fill  button-green close-panel">WIC</a></p>
-				</div>
-				
-				<div id="panel_healthcare">
-	     			<p>Healthcare</p>
-	     			<p><a href="#indexPage" onclick="globalCat='clinics' " class="button button-round button-fill  button-green close-panel">Community Clinics</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='std' " class="button button-round button-fill  button-green close-panel">STD Testing and Treatment</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='immunizations' " class="button button-round button-fill  button-green close-panel">Immunization</a></p>
-				</div>
-				
-				<div id="panel_mental">
-	     			<p>Mental Health</p>
-				    <p><a href="#indexPage" onclick="globalCat='crisis' " class="button button-round button-fill  button-green close-panel">Crisis Support</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='amental_health' " class="button button-round button-fill  button-green close-panel">Adult Mental Health</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='cmental_health' " class="button button-round button-fill  button-green close-panel">Children's Mental Health</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='substance_use' " class="button button-round button-fill  button-green close-panel">Substance Use</a></p>
-				    <p><a href="#indexPage" onclick="globalCat='groups' " class="button button-round button-fill  button-green close-panel">Support Groups</a></p>
-				</div>
-				
-				
-				
-				
-     			<p style="margin-top:40px"><a href="#"          class="button button-round button-fill button-green close-panel">Cancel</a></p>
-        			
-     			
-   		</div>
-	</div><!-- left panel -->
-    
-    <!--  popover menu    --> 
-	<div class="popover popover-links">
-   		<div class="popover-inner">
-   			<div class="list-block">
-   				<ul>
-				   	<li><a class="list-button item-link close-popover external"href="/"> Home</a>
-				   	<li><a class="list-button item-link close-popover"href="#favoritesPage">My Favorites</a>
-			   	</ul>
-   			</div>
-   		</div>
-   </div>
-    
-    
-    
-    <div class="views">
-      <div class="view view-main">
-        
-        <!-- Navbar -->
-        <div class="navbar no-border">
-          <div class="navbar-inner" data-page="frontPage">
-			<div class="left sliding">  </div>
-            <div class="center sliding">SacSOS</div>
-            <div class="right "><a href="#"  class="open-popover">  <i style="padding:10px" class="fa fa-bars fa-lg"></i> </a>  </div>
-          </div>
+<!-- Scripts -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3ays483Ixy2Gr76BAvjGZBrls4j6ZOUI"></script>
+<!-- async defer &callback=aaa -->
 
-          <div class="navbar-inner cached" data-page="indexPage">
-            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left""></i><span>Back</span> </a>  </div>
-            <div class="center sliding">{{title}}</div>
-             <div class="right "><a href="#"  class="open-popover">  <i style="padding:10px" class="fa fa-bars fa-lg"></i> </a>  </div>
-          </div>
-          
-           <div class="navbar-inner cached" data-page="favoritesPage">
-            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left""></i><span>Back</span> </a>  </div>
-            <div class="center sliding">My Favorites</div>
-             <div class="right "><a href="#"  class="open-popover">  <i style="padding:10px" class="fa fa-bars fa-lg"></i> </a>  </div>
-           </div>
-          
-          <div class="navbar-inner cached" data-page="detailsPage">
-            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left"></i><span>Back</span> </a>  </div>
-            <div class="center sliding">Details</div>
-             <div class="right "><a href="#"  class="open-popover">  <i style="padding:10px" class="fa fa-bars fa-lg"></i> </a>  </div>
-          </div>
-          
-           <div class="navbar-inner cached" data-page="commnentPage">
-            <div class="left sliding">  <a href="index" class="link back"> <i class="fa fa-chevron-left"></i><span>Back</span> </a>  </div>
-            <div class="center sliding">Comment</div>
-             <div class="right "><a href="#"  class="open-popover">  <i style="padding:10px" class="fa fa-bars fa-lg"></i> </a>  </div>
-          </div>
-          
-        </div>
-        
-             
-        <!-- Pages -->
-        <div class="pages navbar-through toolbar-through">
-        
-           <!-- front page-->
-          <div data-page="frontPage" class="page " >         
-            <!-- Page content-->
-            <div class="page-content">
-            
-             
-              <img src="/img/b_wtower_bridge_sacramento2_720.png" style="width:100%">
-               <div class="content-block" style="margin:20px 0">
-              <p>HelpHub Sacramento is a continuously updated list of free and low-cost resources available to Sacramento residents</p>
-              </div>
-           
-              <div class="content-block" style="margin:10px 0">
-             	<p><a href="#indexPage" onclick="globalCat='youth'" class="button button-round button-fill button-big button-green">Youth</a></p>
-            	<p><a href="#" onclick="globalPanel='emergency'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Emergency</a></p>
-            	<p><a href="#" onclick="globalPanel='safety'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Safety</a></p>
-            	<p><a href="#" onclick="globalPanel='housing'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Housing/Shelter</a></p>
-            	<p><a href="#" onclick="globalPanel='food'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Food</a></p>
-            	<p><a href="#" onclick="globalPanel='healthcare'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Healthcare</a></p>            	
-            	<p><a href="#" onclick="globalPanel='mental'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Mental Health</a></p>
-            	<p><a href="#indexPage" onclick="globalCat='legal'" class="button button-round button-fill button-big button-green">Legal Service</a></p>
-            	<p><a href="#indexPage" onclick="globalCat='employment'" class="button button-round button-fill button-big button-green">Employment</a></p>
-            	<p><a href="#" onclick="globalPanel='education'" class="button button-round button-fill button-big button-green open-panel" data-panel="left" >Education/Traning</a></p>
-            
-      		   </div>
-            </div>
-          </div>
-						                  
-          
-          <!-- Listing Page -->
-          <div data-page="indexPage" class="page cached" ng-controller="IndexPageController">     
-                
-            <!-- Page content-->
-            <div class="page-content ">   
-            
-	            <div class="content-block" style="margin:20px 0">
-	      			<p class="buttons-row">   
-	        		<a href="#" ng-click="onOpenTodayClicked(1)" class="button" ng-class="openToday ? 'button active':'button'" >Open Today</a>
-	        		<a href="#" ng-click="onOpenTodayClicked(0)" class="button" ng-class="openToday ? 'button':'button active'" >All</a>
-	     			 </p>
-	   			 </div>
-	              <div id="google-map1" style="height:200px"></div>   
-	            
-              
-	             <div class=" list-block media-list " style="margin:0">
-	                  
-	              <ul ng-repeat="resource in resources "><!-- | openFilter : openToday  -->
-	                <li>
-	                  <a href="#detailsPage" ng-click="onItemClicked(resource)" class="item-link item-content">
-	                    <!-- div class="item-media"><img ng-src="{{resource.posters.thumbnail}}" width="80"></div -->
-	                    <div class="item-inner">
-	                      <div class="item-title-row">
-	                        <div class="item-title">({{markers[resource.slug].label}}) {{resource.name}} </div>
-	                      </div>
-	                      <div class="item-text">     
-	                          {{resource.address.address_1}}, {{resource.address.city}}<br>
-	                          <span >{{markers[resource.slug].distance}} mile</span>&nbsp; Open {{resource.days}}  {{resource.hours}}</div>
-	                    </div>
-	                  </a>
-	                </li>
-	              </ul>
-	            </div> <!-- list block media list -->
-            </div> <!-- content -->
-          </div> <!-- page -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/js/framework7.min.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/service/InitService.js"></script>
+<script type="text/javascript" src="js/service/DataService.js"></script>
+<script type="text/javascript" src="js/service/MapService.js"></script>
+<script type="text/javascript"
+	src="js/controller/IndexPageController.js"></script>
+<script type="text/javascript"
+	src="js/controller/DetailPageController.js"></script>
+<script type="text/javascript"
+	src="js/controller/CommentPageController.js"></script>
+<script type="text/javascript"
+	src="js/controller/FavoritesPageController.js"></script>
+<script type="text/javascript"
+	src="js/controller/FrontPageController.js"></script>
 
-
-       <!-- Favorites Page -->
-          <div data-page="favoritesPage" class="page cached" ng-controller="FavoritesPageController">     
-                
-            <!-- Page content-->
-            <div class="page-content ">   
-                <div> These are the listings you marked as favorite</div>
-                                                          
-                
-	             <div class=" list-block media-list " style="margin:0">
-	                  
-	              <ul ng-repeat="resource in resources "><!-- | openFilter : openToday  -->
-	                <li>
-	                  <a href="#detailsPage" ng-click="onItemClicked(resource)" class="item-link item-content">
-	                    <!-- div class="item-media"><img ng-src="{{resource.posters.thumbnail}}" width="80"></div -->
-	                    <div class="item-inner">
-	                      <div class="item-title-row">
-	                        <div class="item-title">{{resource.name}} </div>
-	                      </div>
-	                      <div class="item-text">     
-	                          {{resource.address.address_1}}, {{resource.address.city}}<br>
-	                          Open {{resource.days}}  {{resource.hours}}</div>
-	                    </div>
-	                  </a>
-	                </li>
-	              </ul>
-	            </div> <!-- list block media list -->
-            </div> <!-- content -->
-          </div> <!-- page -->
-
-
-          <!-- Detail Page -->
-          <div data-page="detailsPage" class="page cached" ng-controller="DetailPageController">
-            <!-- Page content-->
-            <div class="page-content" ng-model="resource">
-                <div style="width:100%; text-align:right; padding:10px" ><a href="#" ng-click="onAddToFavorites()" style="margin:20px">  <i class="fa fa-thumb-tack fa-lg"></i> &nbsp;<span ng-if="resource.isFavorite">Remove From Favorites</span><span ng-if="! resource.isFavorite">Add to Favorites</span> </a></div>
-                <div class="card">
-                   
-                  <div class="card-header">{{resource.name}}</div>
-                  <div class="card-content">
-                    <div class="card-content-inner"><p>{{resource.description}} </p>
-	                    <p><b>{{resource.address.address_1}}, {{resource.address.city}} </b><br>
-	                    phone: <span ng-repeat="phone  in resource.phones "><a href="tel:{{phone.number}}">{{phone.number}}</a> <br><br>
-	                         <a ng-if="resource.website!=null"    href="{{resource.website}}" target='_blank' class="external" >website</a>
-	                    </p>
-	                    <p> Open {{resource.days}}  {{resource.hours}}</p>
-                    </div>
-                                      
-                  </div>
-                </div> <!-- card -->
-                
-                <!-- services  -->
-                <div class="content-block-title"   ng-if="resource.services[0]" >Services</div>
-                <div  ng-repeat="service in resource.services "          class="card">
-                  	<div class="card-header">{{service.name}}</div>
-                  	<div class="card-content">
-                  	 	<div class="card-content-inner">
-	                  		<p>{{service.description}}</p>
-	                  		<b>How to apply:</b>
-	                  		<p>{{service.application_process}}</p>
-                  		</div>
-                  	</div>
-                  	
-                 </div> <!-- card -->
-                
-                
-                 <div class="card">
-                  	<div class="card-header">Reviews</div>
-                  	<div class="card-content">
-                  	
-                  		<div class="list">
-                    		<ul ng-repeat="comment in comments ">
-                     			<li><div class="item-content">{{comment.body}}</div></li>
-                     		</ul>
-                    	</div>
-                  		<div class="card-footer"><a class="link" ng-click="onCommentClicked(resource)"  href="#commentPage">Write a Review</a></div>
-                  	
-                  	</div>
-                  	
-                 </div> <!-- card -->
-                
-            </div>
-          </div>
-          
- 		<!-- Comment Page -->
-        	<div data-page="commentPage" class="page cached" ng-controller="CommentPageController">
-            <!-- Page content-->
-            <div class="page-content" >
-            	<form name="userForm" ng-submit="submitForm()">
-            	<input type=hidden name=id value="{{comment.resource_id}}"/>
-            	<input type=hidden name=type value="{{comment.resource_type}}"/>
-            	
-            	<div class="content-block">
-            		Write A Review
-            	</div>
-            	<div class="list-block">
-              		<ul>
-              			<li>
-	            		<div class="item-content">
-		            		<div class="item-inner">
-			            		<!-- div class="item-title label"> comment</div-->
-			            		<div class="item-input">
-			            			<textarea placeholder="your review goes here" ng-model="comment.body"></textarea>
-			            		</div>
-			            	</div>
-	            		</div>	
-	            		</li>
-             		</ul>
-            	</div>
-            	
-            
-            	
-            	<div class="content-block">
-            		<div>You can rate this organization</div>
-            		<p class="buttons-row">
-            			<a href="#" ng-click="onRate(1)" class="button" ng-class="comment.stars==1 ? 'button active':'button'" ><i class="fa fa-star"></i></a>
-            			<a href="#" ng-click="onRate(2)" class="button" ng-class="comment.stars==2 ? 'button active':'button'"><i class="fa fa-star"></i><i class="fa fa-star "></i></a>
-            			<a href="#" ng-click="onRate(3)" class="button" ng-class="comment.stars==3 ? 'button active':'button'"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></a>
-            			<a href="#" ng-click="onRate(4)" class="button" ng-class="comment.stars==4 ? 'button active':'button'"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></a>
-            		</p>
-            	</div>
-            	<div class="content-block">		
-            		<label style="font-size:15px"><input style="width:18px; height:18px;" type="checkbox" name='needs_updating'>This listing is out of date</label>
-            	</div>           		
-            	
-            	<div class="content-block">
-            		<div class="row">
-            			<div class="col-50"><input type="submit" class="button button-big active"    value="Submit"/></div>
-            			<div class="col-50"><a href="#" class="button button-big link back" >Cancel</a></div>
-            		</div>
-            	</div>
-            	</form>
-          	</div> <!-- page-content -->
-        </div><!-- comment page -->
-      	
-      	</div> <!-- pages -->
-				
-
-		<div class="toolbar hide">
-		    <div class="toolbar-inner">
-		        <div id="google_translate_element"></div><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,ar,es,fa,hmn,hy,ja,ko,lo,tl,vi,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, autoDisplay: false}, 'google_translate_element');
+<style>
+.goog-te-banner-frame.skiptranslate {
+	display: none !important;
 }
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
-		        
-		   
-		    </div>
+
+body {
+	top: 0px !important;
+}
+
+.button-green {
+	background-color: #009900 !important;
+} /*  #77c043  */
+.button-turqois {
+	background-color: #00aae8 !important;
+}
+</style>
+</head>
+<body>
+	<!-- class="theme-green" -->
+
+	<div class="statusbar-overlay"></div>
+	
+	<!-- panel-overlay -->
+	<div class="panel-overlay"></div>
+	
+	<!-- left panel -->
+	<div class="panel panel-left panel-cover" style="background: #efeff4;">
+		<!--  #efeff4   side panels left -->
+		<div class="content-block" >
+
+			<div id="panel_emergency" class="paneldiv">
+				<p>Emergency</p>
+				<p>	<a href="#indexPage" onclick="globalCat='medical' "	class="button button-round button-fill  button-green close-panel">Medical</a>			</p>
+				<p>	<a href="#indexPage" onclick="globalCat='mental_health' "class="button button-round button-fill  button-green close-panel">mental health</a></p>
+			</div>
+
+			<div id="panel_safety" class="paneldiv">
+				<p>Safety</p>
+				<p>	<a href="#indexPage" onclick="globalCat='domestic_violence' " class="button button-round button-fill  button-green close-panel">Domestic Violence</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='human_trafficking' " class="button button-round button-fill  button-green close-panel">Human	Trafficking</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='sex_trafficking' "	class="button button-round button-fill  button-green close-panel">Sex Trafficking</a></p>
+			</div>
+
+			<div id="panel_housing"  class="paneldiv">
+				<p>Housing</p>
+				<p>	<a href="#indexPage" onclick="globalCat='shelter' "	class="button button-round button-fill  button-green close-panel">Shelter</a>				</p>
+				<p>	<a href="#indexPage" onclick="globalCat='affordable_housing' " class="button button-round button-fill  button-green close-panel">Affordable Housing</a>				</p>
+				<p>	<a href="#indexPage" onclick="globalCat='transitional_housing' " class="button button-round button-fill  button-green close-panel">Transitional	Housing</a>				</p>
+				<p>	<a href="#indexPage" onclick="globalCat='supportive_Housing' " class="button button-round button-fill  button-green close-panel">Permanent	Supportive Housing</a>	</p>
+			</div>
+
+
+			<div id="panel_food" class="paneldiv">
+				<p>Food</p>
+				<p>	<a href="#indexPage" onclick="globalCat='meals' " class="button button-round button-fill  button-green close-panel">Hot meals</a>				</p>
+				<p>	<a href="#indexPage" onclick="globalCat='food_closets' " class="button button-round button-fill  button-green close-panel">Food pantries</a></p>
+				<p>	<a href="#indexPage" onclick="globalCat='ebt' "	class="button button-round button-fill  button-green close-panel">EBT</a></p>
+				<p>	<a href="#indexPage" onclick="globalCat='wic' "	class="button button-round button-fill  button-green close-panel">WIC</a>	</p>
+			</div>
+
+			<div id="panel_healthcare" class="paneldiv">
+				<p>Healthcare</p>
+				<p>	<a href="#indexPage" onclick="globalCat='clinics' "	class="button button-round button-fill  button-green close-panel">Community	Clinics</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='std' "	class="button button-round button-fill  button-green close-panel">STD Testing and Treatment</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='immunizations' "class="button button-round button-fill  button-green close-panel">Immunization</a>	</p>
+			</div>
+
+			<div id="panel_mental" class="paneldiv">
+				<p>Mental Health</p>
+				<p>	<a href="#indexPage" onclick="globalCat='crisis' "class="button button-round button-fill  button-green close-panel">Crisis Support</a></p>
+				<p>	<a href="#indexPage" onclick="globalCat='amental_health' " class="button button-round button-fill  button-green close-panel">Adult	Mental Health</a></p>
+				<p>	<a href="#indexPage" onclick="globalCat='cmental_health' " class="button button-round button-fill  button-green close-panel">Children's Mental Health</a></p>
+				<p>	<a href="#indexPage" onclick="globalCat='substance_use' " class="button button-round button-fill  button-green close-panel">Substance	Use</a>	</p>
+				<p> <a href="#indexPage" onclick="globalCat='groups' "	class="button button-round button-fill  button-green close-panel">Support Groups</a></p>
+			</div>
+
+
+			<p style="margin-top: 40px"><a href="#"	class="button button-round button-fill button-green close-panel">Cancel</a>	</p>
+
 		</div>
+	</div>
+	<!-- end of left panel -->
+
+	<!--  popover menu    -->
+	<div class="popover popover-links">
+		<div class="popover-inner">
+			<div class="list-block">
+				<ul>
+					<li><a class="list-button item-link close-popover external"	href="/"> Home</a></li>
+					<li><a class="list-button item-link close-popover"href="#favoritesPage">My Favorites</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 
-    </div>
-    
-  </body>
+
+	<div class="views">
+		<div class="view view-main">
+
+			<!-- Navbar -->
+			<div class="navbar no-border">
+				<div class="navbar-inner" data-page="frontPage">
+					<div class="left sliding"></div>
+					<div class="center sliding">SacSOS</div>
+					<div class="right "><a href="#" class="open-popover"> <i style="padding: 10px"	class="fa fa-bars fa-lg"></i></a></div>
+				</div>
+
+				<div class="navbar-inner cached" data-page="indexPage">
+					<div class="left sliding"><a href="index" class="link back"> <iclass="fa fa-chevron-left""></i><span>Back</span></a></div>
+					<div class="center sliding">{{title}}</div>
+					<div class="right "><a href="#" class="open-popover"> <i style="padding: 10px" class="fa fa-bars fa-lg"></i></a></div>
+				</div>
+
+				<div class="navbar-inner cached" data-page="favoritesPage">
+					<div class="left sliding"><a href="index" class="link back"> <iclass="fa fa-chevron-left""></i><span>Back</span></a></div>
+					<div class="center sliding">My Favorites</div>
+					<div class="right "><a href="#" class="open-popover"> <i style="padding: 10px"	class="fa fa-bars fa-lg"></i></a></div>
+				</div>
+
+				<div class="navbar-inner cached" data-page="detailsPage">
+					<div class="left sliding"><a href="index" class="link back"> <i	class="fa fa-chevron-left"></i><span>Back</span></a></div>
+					<div class="center sliding">Details</div>
+					<div class="right "><a href="#" class="open-popover"> <i style="padding: 10px"	class="fa fa-bars fa-lg"></i></a></div>
+				</div>
+
+				<div class="navbar-inner cached" data-page="commnentPage">
+					<div class="left sliding"><a href="index" class="link back"> <i	class="fa fa-chevron-left"></i><span>Back</span></a></div>
+					<div class="center sliding">Comment</div>
+					<div class="right "><a href="#" class="open-popover"> <i style="padding: 10px"class="fa fa-bars fa-lg"></i></a></div>
+				</div>
+
+			</div>
+
+
+			<!-- Pages -->
+			<div class="pages navbar-through toolbar-through">
+
+				<!-- front page-->
+				<div data-page="frontPage" class="page " ng-controller="FrontPageController">
+					<!-- Page content-->
+					<div class="page-content">
+
+
+						<img src="/img/b_wtower_bridge_sacramento2_720.png"
+							style="width: 100%">
+						<div class="content-block" style="margin: 20px 0">
+							<p>Sac SOS is a continuously updated list of free and
+								low-cost resources available to Sacramento residents</p>
+						</div>
+
+						<div class="content-block">
+							<p class="buttons-row">
+								<input style="padding-left: 10px;" type="text"
+									placeholder="search" ng-model="search_text"> <a
+									href="#" ng-click="onSearch()"
+									class="button button-fill button-green">search</a>
+							</p>
+						</div>
+
+
+						<div class="content-block" style="margin: 10px 0">
+							<p>
+								<a href="#indexPage" onclick="globalCat='youth'"
+									class="button button-round button-fill button-big button-green">Youth</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_emergency')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Emergency</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_safety')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Safety</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_housing')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Housing/Shelter</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_food')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Food</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_healthcare')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Healthcare</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_mental')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Mental Health</a>
+							</p>
+							<p>
+								<a href="#indexPage" onclick="globalCat='panel_legal'"
+									class="button button-round button-fill button-big button-green">Legal
+									Service</a>
+							</p>
+							<p>
+								<a href="#indexPage" onclick="globalCat='employment'"
+									class="button button-round button-fill button-big button-green">Employment</a>
+							</p>
+							<p>
+								<a href="#" ng-click="globalPanel('panel_education')"
+									class="button button-round button-fill button-big button-green open-panel"
+									data-panel="left">Education/Training</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Listing Page -->
+				<div data-page="indexPage" class="page cached"
+					ng-controller="IndexPageController">
+
+					<!-- Page content-->
+					<div class="page-content ">
+
+						<div class="content-block" style="margin: 20px 0">
+							<p class="buttons-row">
+								<a href="#" ng-click="onOpenTodayClicked(1)" class="button"
+									ng-class="openToday ? 'button active':'button'">Open Today</a>
+								<a href="#" ng-click="onOpenTodayClicked(0)" class="button"
+									ng-class="openToday ? 'button':'button active'">All</a>
+							</p>
+						</div>
+						<div id="google-map1" style="height: 200px"></div>
+
+
+						<div class=" list-block media-list " style="margin: 0">
+
+							<ul ng-repeat="resource in resources ">
+								<!-- | openFilter : openToday  -->
+								<li><a href="#detailsPage"
+									ng-click="onItemClicked(resource)"
+									class="item-link item-content"> <!-- div class="item-media"><img ng-src="{{resource.posters.thumbnail}}" width="80"></div -->
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title">({{markers[resource.slug].label}})
+													{{resource.name}}</div>
+											</div>
+											<div class="item-text">
+												{{resource.address.address_1}}, {{resource.address.city}}<br>
+												<span>{{markers[resource.slug].distance}} mile</span>&nbsp;
+												Open {{resource.days}} {{resource.hours}}
+											</div>
+										</div>
+								</a></li>
+							</ul>
+						</div>
+						<!-- list block media list -->
+					</div>
+					<!-- content -->
+				</div>
+				<!-- page -->
+
+
+				<!-- Favorites Page -->
+				<div data-page="favoritesPage" class="page cached"
+					ng-controller="FavoritesPageController">
+
+					<!-- Page content-->
+					<div class="page-content ">
+						<div class="content-block" style="margin: 20px 0">
+							<p>These are the listings you marked as favorite</p>
+						</div>
+
+						<div class=" list-block media-list " style="margin: 0">
+
+							<ul ng-repeat="resource in resources ">
+								<!-- | openFilter : openToday  -->
+								<li><a href="#detailsPage"
+									ng-click="onItemClicked(resource)"
+									class="item-link item-content"> <!-- div class="item-media"><img ng-src="{{resource.posters.thumbnail}}" width="80"></div -->
+										<div class="item-inner">
+											<div class="item-title-row">
+												<div class="item-title">{{resource.name}}</div>
+											</div>
+											<div class="item-text">
+												{{resource.address.address_1}}, {{resource.address.city}}<br>
+												Open {{resource.days}} {{resource.hours}}
+											</div>
+										</div>
+								</a></li>
+							</ul>
+						</div>
+						<!-- list block media list -->
+					</div>
+					<!-- content -->
+				</div>
+				<!-- page -->
+
+
+				<!-- Detail Page -->
+				<div data-page="detailsPage" class="page cached"
+					ng-controller="DetailPageController">
+
+					<div class="page-content" ng-model="resource">
+						<div style="width: 100%; text-align: right; padding: 10px">
+							<a href="#" ng-click="onAddToFavorites()" style="margin: 20px">
+								<i class="fa fa-thumb-tack fa-lg"></i> &nbsp;<span
+								ng-if="resource.isFavorite">Remove From Favorites</span><span
+								ng-if="! resource.isFavorite">Add to Favorites</span>
+							</a>
+						</div>
+						<div class="card">
+
+							<div class="card-header">{{resource.name}}</div>
+							<div class="card-content">
+								<div class="card-content-inner">
+									<p>{{resource.description}}</p>
+									<p>
+										<b>{{resource.address.address_1}},
+											{{resource.address.city}} </b><br> phone: <span
+											ng-repeat="phone  in resource.phones "><a
+											href="tel:{{phone.number}}">{{phone.number}}</a> <br>
+										<br> <a ng-if="resource.website!=null"
+											href="{{resource.website}}" target='_blank' class="external">website</a>
+									</p>
+									<p>Open {{resource.days}} {{resource.hours}}</p>
+								</div>
+
+							</div>
+						</div>
+						<!-- card -->
+
+						<!-- services  -->
+						<div class="content-block-title" ng-if="resource.services[0]">Services</div>
+						<div ng-repeat="service in resource.services " class="card">
+							<div class="card-header">{{service.name}}</div>
+							<div class="card-content">
+								<div class="card-content-inner">
+									<p>{{service.description}}</p>
+									<b>How to apply:</b>
+									<p>{{service.application_process}}</p>
+								</div>
+							</div>
+
+						</div>
+						<!-- card -->
+
+
+						<div class="card">
+							<div class="card-header">Reviews</div>
+							<div class="card-content">
+
+								<div class="list">
+									<ul ng-repeat="comment in comments ">
+										<li><div class="item-content">{{comment.body}}</div></li>
+									</ul>
+								</div>
+								<div class="card-footer">
+									<a class="link" ng-click="onCommentClicked(resource)"
+										href="#commentPage">Write a Review</a>
+								</div>
+
+							</div>
+
+						</div>
+						<!-- card -->
+
+					</div>
+				</div>
+
+				<!-- Comment Page -->
+				<div data-page="commentPage" class="page cached"
+					ng-controller="CommentPageController">
+					<!-- Page content-->
+					<div class="page-content">
+						<form name="userForm" ng-submit="submitForm()">
+							<input type=hidden name=id value="{{comment.resource_id}}" /> <input
+								type=hidden name=type value="{{comment.resource_type}}" />
+
+							<div class="content-block">Write A Review</div>
+							<div class="list-block">
+								<ul>
+									<li>
+										<div class="item-content">
+											<div class="item-inner">
+												<!-- div class="item-title label"> comment</div-->
+												<div class="item-input">
+													<textarea placeholder="your review goes here"
+														ng-model="comment.body"></textarea>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+
+
+							<div class="content-block">
+								<div>You can rate this organization</div>
+								<p class="buttons-row">
+									<a href="#" ng-click="onRate(1)" class="button"
+										ng-class="comment.stars==1 ? 'button active':'button'"><i
+										class="fa fa-star"></i></a> <a href="#" ng-click="onRate(2)"
+										class="button"
+										ng-class="comment.stars==2 ? 'button active':'button'"><i
+										class="fa fa-star"></i><i class="fa fa-star "></i></a> <a href="#"
+										ng-click="onRate(3)" class="button"
+										ng-class="comment.stars==3 ? 'button active':'button'"></i><i
+										class="fa fa-star"></i><i class="fa fa-star"></i></a> <a href="#"
+										ng-click="onRate(4)" class="button"
+										ng-class="comment.stars==4 ? 'button active':'button'"></i><i
+										class="fa fa-star"></i><i class="fa fa-star"></i><i
+										class="fa fa-star"></i></a>
+								</p>
+							</div>
+							<div class="content-block">
+								<label style="font-size: 15px"><input
+									style="width: 18px; height: 18px;" type="checkbox"
+									name='needs_updating'>This listing is out of date</label>
+							</div>
+
+							<div class="content-block">
+								<div class="row">
+									<div class="col-50">
+										<input type="submit" class="button button-big active"
+											value="Submit" />
+									</div>
+									<div class="col-50">
+										<a href="#" class="button button-big link back">Cancel</a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- page-content -->
+				</div>
+				<!-- comment page -->
+
+			</div>
+			<!-- pages -->
+
+
+			<div class="toolbar">
+				<div class="toolbar-inner">
+					<div id="google_translate_element"></div>
+					<script type="text/javascript">
+						function googleTranslateElementInit() {
+							new google.translate.TranslateElement(
+									{
+										pageLanguage : 'en',
+										includedLanguages : 'en,ar,es,fa,hmn,hy,ja,ko,lo,tl,vi,zh-CN,zh-TW',
+										layout : google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+										autoDisplay : false
+									}, 'google_translate_element');
+						}
+					</script>
+					<script type="text/javascript"
+						src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+				</div>
+			</div>
+
+
+		</div>
+</body>
 </html>

@@ -8,6 +8,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
   'use strict';
   
   var pages = {
+    search :{title: "Search",category:''},
+    
 	youth :{title: "Youth",category:'Youth'}, //
 	
 	// emergency
@@ -83,29 +85,27 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
   
   hrApp.fw7.app.onPageInit('indexPage', function(page) { 
 	  initScope(page);
-	  /*
-	  $scope.page = pages[category];
-	  $rootScope.title = $scope.page.title;
-    // 	console.log('onPageInit2 with: '+ category); 	       	
- 		getResourceData();   // run function 
- 		*/
   });
   hrApp.fw7.app.onPageReinit('indexPage', function(page) { 
 	  initScope(page);
    });
   
- /*InitService.addEventListener('ready', function () {
-	});
-*/
+
   
     function initScope(page){
     	if(globalCat=='' && globalKeyword =='')
     		return;
+    	
     	$scope.resources = {};
     	$scope.markers = {};
     	$scope.page = pages[globalCat];
    	  	$rootScope.title = $scope.page.title;
-   	  	getResourceData();  
+   	  	
+   	  	getResourceData(); 
+   	    if(globalKeyword !=''){
+   	    	$rootScope.title = '"'+globalKeyword+'"';
+   	    	globalKeyword =''; //reset the search
+   	    }
     }
   
   
