@@ -38,6 +38,8 @@
     <script type="text/javascript" src="js/controller/FavoritesPageController.js"></script>
  
   <style>
+  		.goog-te-banner-frame.skiptranslate {display: none !important;} 
+		body { top: 0px !important; }
        .button-green {background-color:#009900 !important;} /*  #77c043  */
        .button-turqois {background-color:#00aae8 !important;}
   </style>
@@ -74,8 +76,8 @@
      		
      			<div id="panel_food">
 	     			<p>Food </p>
-	     			<p><a href="#indexPage" onclick="globalCat='meal' " class="button button-round button-fill  button-green close-panel">Hot meals</a></p>
-	     			<p><a href="#indexPage" onclick="globalCat='pantry' " class="button button-round button-fill  button-green close-panel">Food pantries</a></p>
+	     			<p><a href="#indexPage" onclick="globalCat='meals' " class="button button-round button-fill  button-green close-panel">Hot meals</a></p>
+	     			<p><a href="#indexPage" onclick="globalCat='food_closets' " class="button button-round button-fill  button-green close-panel">Food pantries</a></p>
 	     			<p><a href="#indexPage" onclick="globalCat='ebt' " class="button button-round button-fill  button-green close-panel">EBT</a></p>
 				    <p><a href="#indexPage" onclick="globalCat='wic' " class="button button-round button-fill  button-green close-panel">WIC</a></p>
 				</div>
@@ -110,7 +112,7 @@
    		<div class="popover-inner">
    			<div class="list-block">
    				<ul>
-				   	<li><a class="list-button item-link close-popover "href="/"> Home</a>
+				   	<li><a class="list-button item-link close-popover external"href="/"> Home</a>
 				   	<li><a class="list-button item-link close-popover"href="#favoritesPage">My Favorites</a>
 			   	</ul>
    			</div>
@@ -186,8 +188,7 @@
       		   </div>
             </div>
           </div>
-						          
-        
+						                  
           
           <!-- Listing Page -->
           <div data-page="indexPage" class="page cached" ng-controller="IndexPageController">     
@@ -232,6 +233,7 @@
             <!-- Page content-->
             <div class="page-content ">   
                 <div> These are the listings you marked as favorite</div>
+                                                          
                 
 	             <div class=" list-block media-list " style="margin:0">
 	                  
@@ -253,7 +255,6 @@
 	            </div> <!-- list block media list -->
             </div> <!-- content -->
           </div> <!-- page -->
-
 
 
           <!-- Detail Page -->
@@ -310,7 +311,7 @@
           </div>
           
  		<!-- Comment Page -->
-          <div data-page="commentPage" class="page cached" ng-controller="CommentPageController">
+        	<div data-page="commentPage" class="page cached" ng-controller="CommentPageController">
             <!-- Page content-->
             <div class="page-content" >
             	<form name="userForm" ng-submit="submitForm()">
@@ -359,9 +360,21 @@
             	</form>
           	</div> <!-- page-content -->
         </div><!-- comment page -->
-      </div> <!-- pages -->
+      	
+      	</div> <!-- pages -->
+				
 
-
+		<div class="toolbar hide">
+		    <div class="toolbar-inner">
+		        <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,ar,es,fa,hmn,hy,ja,ko,lo,tl,vi,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, autoDisplay: false}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+		        
+		   
+		    </div>
+		</div>
 
 
     </div>
