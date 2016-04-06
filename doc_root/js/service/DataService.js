@@ -32,23 +32,17 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
  };
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
  
-  pub.getLocations = function (category, lat_lng, keyword) {
-	  //var queryString = encodeURI("?action=index&controller=locations&keyword="+ keyword +"&lat_lng="+ lat_lng.lat+','+lat_lng.lng); 	  
-	  var keywordStr = "";
-	  var categoryStr = "";
-	  
-	  if(keyword)
-		  keywordStr = "&keyword="+keyword;	 
-	  
-	  if(category)
-		  categoryStr = "&category="+category;
-	  
-	  
-	  var queryString = encodeURI("?radius=20&lat_lng="+ lat_lng.lat+','+lat_lng.lng+ categoryStr+ keywordStr); 
-
-	  console.log(queryString);	  	  
-	  return $http({
-	        url: 'http://api.helphubsac.org/api/search'+ queryString,
+ 	pub.getLocations = function (params) {
+    	 
+ 	var queryString='';
+	for(var key in params){
+		queryString +='&'+ key + '=' + params[key];
+	}
+	queryString = encodeURI(queryString.substr(1));
+	 
+	console.log(queryString);	  	  
+	return $http({
+	        url: 'http://api.helphubsac.org/api/search?'+ queryString,
 	        method: "GET",
 	        withCredentials: true,
 	        headers: { 'Content-Type': 'application/json; charset=utf-8' }

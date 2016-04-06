@@ -201,9 +201,10 @@ body {
 					<!-- Page content-->
 					<div class="page-content">
 
-
+ 
 						<img src="/img/b_wtower_bridge_sacramento2_720.png"
-							style="width: 100%">
+							style="width: 100%; " />
+
 						<div class="content-block" style="margin: 20px 0">
 							<p>Sac SOS is a continuously updated list of free and
 								low-cost resources available to Sacramento residents</p>
@@ -211,64 +212,22 @@ body {
 
 						<div class="content-block">
 							<p class="buttons-row">
-								<input style="padding-left: 10px;" type="text"
-									placeholder="search" ng-model="search_text"> <a
-									href="#" ng-click="onSearch()"
-									class="button button-fill button-green">search</a>
+								<input style="padding-left: 10px;" type="text"	placeholder="search" ng-model="search_text"> 
+								<a href="#" ng-click="onSearch()" class="button button-fill button-green">search</a>
 							</p>
 						</div>
 
 
 						<div class="content-block" style="margin: 10px 0">
-							<p>
-								<a href="#indexPage" onclick="globalCat='youth'"
-									class="button button-round button-fill button-big button-green">Youth</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_emergency')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Emergency</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_safety')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Safety</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_housing')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Housing/Shelter</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_food')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Food</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_healthcare')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Healthcare</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_mental')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Mental Health</a>
-							</p>
-							<p>
-								<a href="#indexPage" onclick="globalCat='legal'"
-									class="button button-round button-fill button-big button-green">Legal
-									Service</a>
-							</p>
-							<p>
-								<a href="#indexPage" onclick="globalCat='employment'"
-									class="button button-round button-fill button-big button-green">Employment</a>
-							</p>
-							<p>
-								<a href="#" ng-click="globalPanel('panel_education')"
-									class="button button-round button-fill button-big button-green open-panel"
-									data-panel="left">Education/Training</a>
-							</p>
-
+							<p>	<a href="#indexPage" onclick="globalCat='youth'"class="button button-round button-fill button-big button-green">Youth</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_emergency')" class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Safety</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_housing')"	class="button button-round button-fill button-big button-green open-panel"data-panel="left">Housing/Shelter</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_food')"	class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Food</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_healthcare')"	class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Healthcare</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_mental')"	class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Mental Health</a>	</p>
+							<p>	<a href="#indexPage" onclick="globalCat='legal'"	class="button button-round button-fill button-big button-green">Legal Service</a>	</p>
+							<p>	<a href="#indexPage" onclick="globalCat='employment'" class="button button-round button-fill button-big button-green">Employment</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_education')" class="button button-round button-fill button-big button-green open-panel" data-panel="left">Education/Training</a></p>
 						</div>
 					</div>
 				</div>
@@ -295,12 +254,11 @@ body {
 						<div class=" list-block media-list " style="margin: 0">
 
 							<ul ng-repeat="resource in resources ">
-								<!-- | openFilter : openToday  -->
 								<li ng-if="resource.open_today || allListings">
 									<a href="#detailsPage" ng-click="onItemClicked(resource)"class="item-link item-content"> 
 										<div class="item-inner">
 											<div class="item-title-row">
-												<div class="item-title">({{markers[resource.slug].label}})	{{resource.name}}</div>
+												<div class="item-title">{{markers[resource.slug].label}}	{{resource.name}}</div>
 											</div>
 											<div class="item-text">												
 												<span>{{markers[resource.slug].distance}} miles</span>&nbsp; &nbsp;
