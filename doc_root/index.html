@@ -220,7 +220,8 @@ body {
 
 						<div class="content-block" style="margin: 10px 0">
 							<p>	<a href="#indexPage" onclick="globalCat='youth'"class="button button-round button-fill button-big button-green">Youth</a></p>
-							<p>	<a href="#" ng-click="globalPanel('panel_emergency')" class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Safety</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_emergency')" class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Emergency</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_safety')" class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Safety</a></p>
 							<p>	<a href="#" ng-click="globalPanel('panel_housing')"	class="button button-round button-fill button-big button-green open-panel"data-panel="left">Housing/Shelter</a></p>
 							<p>	<a href="#" ng-click="globalPanel('panel_food')"	class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Food</a></p>
 							<p>	<a href="#" ng-click="globalPanel('panel_healthcare')"	class="button button-round button-fill button-big button-green open-panel"	data-panel="left">Healthcare</a></p>
@@ -455,30 +456,28 @@ body {
 				</div>
 				<!-- comment page -->
 
-			</div>
-			<!-- pages -->
+			</div>	<!-- end of pages -->
 
-
+			<!-- language toolbar -->
 			<div class="toolbar">
-				<div class="toolbar-inner">
+				<div class="toolbar-inner">				
 					<div id="google_translate_element"></div>
 					<script type="text/javascript">
-						function googleTranslateElementInit() {
-							new google.translate.TranslateElement(
-									{
-										pageLanguage : 'en',
-										includedLanguages : 'en,ar,es,fa,hmn,hy,ja,ko,lo,tl,vi,zh-CN,zh-TW',
-										layout : google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-										autoDisplay : false
-									}, 'google_translate_element');
-						}
+					function googleTranslateElementInit() {
+	  					new google.translate.TranslateElement(
+	  							{
+	  								pageLanguage: 'en', 
+	  								includedLanguages: 'ar,en,es,fa,hmn,hy,ko,lo,tl,vi,zh-CN,zh-TW', 
+	  								layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, 
+	  								autoDisplay: false
+	  							}, 'google_translate_element');
+					}
 					</script>
-					<script type="text/javascript"
-						src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
-				</div>
-			</div>
+					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>					
+					
+				</div><!-- toolbar inner -->
+				
+			</div><!-- end of language toolbar -->
 
 
 		</div>

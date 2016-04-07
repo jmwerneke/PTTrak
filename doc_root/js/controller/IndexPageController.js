@@ -24,7 +24,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	sex_trafficking:{title:'Sex Trafficking',  params:{category:'Sex Trafficking'}},//
 
 	//housing 
-	shelter: {title: "Shelter", params:{category:'shelter'}},
+	shelter: {title: "Shelter", params:{ keyword:'shelter'}},
 	affordable_housing: {title: "Affordble Housing", params:{category:'Affordable Housing'}},
 	transitional_housing: {title: "Transitional Housing", params:{category:'transitional_housing'}},
 	supportive_Housing: {title: "Permanent Supportive Housing", params:{category:'Permanent Supportive Housing'}},
@@ -88,9 +88,9 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
    	  	$rootScope.title = $scope.page.title;
    	  	
    	  	var params = $scope.page.params;
-   	  	if(params.lat_lng && params.lat_lng == '_')
+   	  	if(params.lat_lng )
    	  		params.lat_lng = myLatLng.lat+','+myLatLng.lng;
-   	  	if(params.keyword && params.keyword == '_')
+   	  	if(params.keyword && globalKeyword != '') //&& params.keyword == '_')
    	  		params.keyword = globalKeyword;
    	  	
    	  	getResourceData(params); 

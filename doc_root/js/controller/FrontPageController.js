@@ -9,6 +9,7 @@ hrApp.angular.controller('FrontPageController', ['$scope', '$http', 'InitService
   $scope.onSearch = function () {
 	  	globalCat     = 'search';
 	  	globalKeyword = $scope.search_text;
+	  	console.log('set keyword '+ globalKeyword);
 	    // goto the index page
 	  	hrApp.fw7.views[0].router.load({pageName: 'indexPage'});
   }

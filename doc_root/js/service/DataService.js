@@ -31,7 +31,9 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	 return $http.get('get.php?table=comments&resource_id='+ resource_id + '&resource_type='+resource_type);
  };
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
- 
+ //http://api.helphubsac.org/api/search?category=Youth
+ //http://api.helphubsac.org/api/locations/loaves-fishes
+ //http://api.helphubsac.org/api/organizations
  	pub.getLocations = function (params) {
     	 
  	var queryString='';
