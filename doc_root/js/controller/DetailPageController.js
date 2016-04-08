@@ -4,8 +4,8 @@
 hrApp.angular.controller('DetailPageController', ['$scope', '$http', 'InitService', 'DataService', function ($scope, $http, InitService, DataService) {
   'use strict';
   
-  $scope.onCommentClicked = function () {
-	    DataService.commentClicked($scope.resource);
+  $scope.onreviewClicked = function () {
+	    DataService.reviewClicked($scope.resource);
 	  }
   
   $scope.onAddToFavorites = function () {
@@ -19,15 +19,15 @@ hrApp.angular.controller('DetailPageController', ['$scope', '$http', 'InitServic
   
   //$scope.emailBody = encodeURIComponent( $scope.resource.description);
   
-  $scope.comments= [];
+  $scope.reviews= [];
   
   DataService.addEventListener('resourceClicked', function (resource) {
     $scope.resource = resource;
     console.log(resource);
     
-    DataService.getComments(resource.id, resource.type).then(function (result) {
-        console.log(result.data.comments);
-        $scope.comments = result.data.comments;
+    DataService.getreviews(resource.id, resource.type).then(function (result) {
+        console.log(result.data.reviews);
+        $scope.reviews = result.data.reviews;
       }, function (err) {
         console.error(err);
     });

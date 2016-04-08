@@ -54,7 +54,7 @@ https://github.com/codeforamerica/ohana-api/blob/master/data/sample-csv/taxonomy
 <script type="text/javascript"
 	src="js/controller/DetailPageController.js"></script>
 <script type="text/javascript"
-	src="js/controller/CommentPageController.js"></script>
+	src="js/controller/ReviewPageController.js"></script>
 <script type="text/javascript"
 	src="js/controller/FavoritesPageController.js"></script>
 <script type="text/javascript"
@@ -195,7 +195,7 @@ body {
 
 				<div class="navbar-inner cached" data-page="commnentPage">
 					<div class="left sliding"><a href="index" class="link back"> <i	class="fa fa-chevron-left"></i><span>Back</span></a></div>
-					<div class="center sliding">Comment</div>
+					<div class="center sliding">Review</div>
 					<div class="right "><a href="#" class="open-popover"> <i style="padding: 10px"class="fa fa-bars fa-lg"></i></a></div>
 				</div>
 
@@ -385,13 +385,13 @@ body {
 							<div class="card-content">
 
 								<div class="list">
-									<ul ng-repeat="comment in comments ">
-										<li><div class="item-content">{{comment.body}}</div></li>
+									<ul ng-repeat="review in reviews ">
+										<li><div class="item-content">{{review.body}}</div></li>
 									</ul>
 								</div>
 								<div class="card-footer">
-									<a class="link" ng-click="onCommentClicked(resource)"
-										href="#commentPage">Write a Review</a>
+									<a class="link" ng-click="onreviewClicked(resource)"
+										href="#reviewPage">Write a Review</a>
 								</div>
 
 							</div>
@@ -402,14 +402,14 @@ body {
 					</div>
 				</div>
 
-				<!-- Comment Page -->
-				<div data-page="commentPage" class="page cached"
-					ng-controller="CommentPageController">
+				<!-- review Page -->
+				<div data-page="reviewPage" class="page cached"
+					ng-controller="ReviewPageController">
 					<!-- Page content-->
 					<div class="page-content">
 						<form name="userForm" ng-submit="submitForm()">
-							<input type=hidden name=id value="{{comment.resource_id}}" /> <input
-								type=hidden name=type value="{{comment.resource_type}}" />
+							<input type=hidden name=id value="{{review.resource_id}}" /> <input
+								type=hidden name=type value="{{review.resource_type}}" />
 
 							<div class="content-block">Write A Review</div>
 							<div class="list-block">
@@ -417,10 +417,10 @@ body {
 									<li>
 										<div class="item-content">
 											<div class="item-inner">
-												<!-- div class="item-title label"> comment</div-->
+												<!-- div class="item-title label"> review</div-->
 												<div class="item-input">
 													<textarea placeholder="your review goes here"
-														ng-model="comment.body"></textarea>
+														ng-model="review.body"></textarea>
 												</div>
 											</div>
 										</div>
@@ -434,16 +434,16 @@ body {
 								<div>You can rate this organization</div>
 								<p class="buttons-row">
 									<a href="#" ng-click="onRate(1)" class="button"
-										ng-class="comment.stars==1 ? 'button active':'button'"><i
+										ng-class="review.stars==1 ? 'button active':'button'"><i
 										class="fa fa-star"></i></a> <a href="#" ng-click="onRate(2)"
 										class="button"
-										ng-class="comment.stars==2 ? 'button active':'button'"><i
+										ng-class="review.stars==2 ? 'button active':'button'"><i
 										class="fa fa-star"></i><i class="fa fa-star "></i></a> <a href="#"
 										ng-click="onRate(3)" class="button"
-										ng-class="comment.stars==3 ? 'button active':'button'"></i><i
+										ng-class="review.stars==3 ? 'button active':'button'"></i><i
 										class="fa fa-star"></i><i class="fa fa-star"></i></a> <a href="#"
 										ng-click="onRate(4)" class="button"
-										ng-class="comment.stars==4 ? 'button active':'button'"></i><i
+										ng-class="review.stars==4 ? 'button active':'button'"></i><i
 										class="fa fa-star"></i><i class="fa fa-star"></i><i
 										class="fa fa-star"></i></a>
 								</p>
@@ -469,7 +469,7 @@ body {
 					</div>
 					<!-- page-content -->
 				</div>
-				<!-- comment page -->
+				<!-- review page -->
 
 			</div>	<!-- end of pages -->
 

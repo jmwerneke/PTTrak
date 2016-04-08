@@ -10,7 +10,8 @@ $params = (object) $_GET;
 	$table = $params->table;
 	if($params->table=='reviews')
 		$ret= getReviews($db, $params);
-
+    else 
+    	throw new Exception("unknown table $table"); 
 	
     $result= ['total'=>count($ret) ];
     $result[$table]= $ret;
@@ -22,7 +23,7 @@ function getReviews($db, $params)
 	$resource_id   = intval($params->resource_id);
 	$resource_type = $params->resource_type;
 		
-	return $db->query("SELECT * FROM comments where resource_id = $resource_id  AND resource_type = '$resource_type' ");
+	return $db->query("SELECT * FROM reviews where resource_id = $resource_id  AND resource_type = '$resource_type' ");
 }
 
 

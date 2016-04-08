@@ -1,24 +1,24 @@
 /*jslint browser: true*/
 /*global console, hrApp*/
 
-hrApp.angular.controller('CommentPageController', ['$scope', '$http', 'InitService', 'DataService', function ($scope, $http, InitService, DataService) {
+hrApp.angular.controller('ReviewPageController', ['$scope', '$http', 'InitService', 'DataService', function ($scope, $http, InitService, DataService) {
   'use strict';
   
   $scope.onRate = function(rating){
-	 $scope.comment.stars=rating;
+	 $scope.review.stars=rating;
 	 console.log(rating+' stars'); 
   }
   
-  $scope.comment = {stars:0};
+  $scope.review = {stars:0};
   
   // calling our submit function.
     $scope.submitForm = function() {
-    	console.log('click submit comment');
+    	console.log('click submit review');
     // Posting data to php file
     $http({
       method  : 'POST',
       url     : 'save.php',
-      data    : $scope.comment, //forms user object
+      data    : $scope.review, //forms user object
       headers : {'Content-Type': 'application/x-www-form-urlencoded'} 
      })
       .success(function(data) {
@@ -34,20 +34,20 @@ hrApp.angular.controller('CommentPageController', ['$scope', '$http', 'InitServi
     	  hrApp.fw7.views[0].router.back();
     	  hrApp.fw7.app.addNotification({
     	        title: 'Thank You',
-    	        message: 'Your Comment was received'
+    	        message: 'Your review was received'
     	    });
       }); 
     	  
     }; // end of submitForm()
   
   
-  DataService.addEventListener('commentClicked', function (resource) {
+  DataService.addEventListener('reviewClicked', function (resource) {
     $scope.resource = resource;
-    $scope.comment.table = 'comments';
-    $scope.comment.resource_id = resource.id;
-    $scope.comment.resource_type = resource.type;
-    $scope.comment.rating = 0;
-    console.log('leaving a comment for '+resource.type+' '+resource.id);
+    $scope.review.table = 'reviews';
+    $scope.review.resource_id = resource.id;
+    $scope.review.resource_type = resource.type;
+    $scope.review.rating = 0;
+    console.log('leaving a review for '+resource.type+' '+resource.id);
   });
   
 }]);

@@ -7,7 +7,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   var pub = {},
     eventListeners = {
       'resourceClicked' : []
-     ,'commentClicked' : []
+     ,'reviewClicked' : []
     };
   
   pub.addEventListener = function (eventName, callback) {
@@ -20,15 +20,15 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
     }
   };
   
-  pub.commentClicked = function (resource) {
-	    for (var i=0; i<eventListeners.commentClicked.length; i++) {
-	      eventListeners.commentClicked[i](resource);
+  pub.reviewClicked = function (resource) {
+	    for (var i=0; i<eventListeners.reviewClicked.length; i++) {
+	      eventListeners.reviewClicked[i](resource);
 	    }
  };
   
  
- pub.getComments = function(resource_id, resource_type){
-	 return $http.get('get.php?table=comments&resource_id='+ resource_id + '&resource_type='+resource_type);
+ pub.getreviews = function(resource_id, resource_type){
+	 return $http.get('get.php?table=reviews&resource_id='+ resource_id + '&resource_type='+resource_type);
  };
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
  //http://api.helphubsac.org/api/search?category=Youth
@@ -121,7 +121,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 }]);
 
 
-//======================================================  local storage
+
 
 
 
