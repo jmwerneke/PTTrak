@@ -10,5 +10,5 @@ create table `reviews`
 `rating` int not null default 0,
 `body` text,
 primary key (id)
-unique key `reviews_u1` 
+
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;
