@@ -14,11 +14,11 @@ include_once 'db.php';
 $db = new db();
 
 $ret;
-if($params->table == 'comments')
+if($params->table == 'reviews')
 	$ret= saveReview($db, $params);
 
 
-if($ret==false){
+if($ret===false){
 	die($db->error);
 }
 
