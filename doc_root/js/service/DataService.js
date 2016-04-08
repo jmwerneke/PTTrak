@@ -4,6 +4,8 @@
 hrApp.angular.factory('DataService', ['$http', function ($http) {
   'use strict';
 
+  var locationCache ={};
+  
   var pub = {},
     eventListeners = {
       'resourceClicked' : []
@@ -50,9 +52,8 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	        headers: { 'Content-Type': 'application/json; charset=utf-8' }
 	    });	  	  
   };
-  
+  /*
   pub.getDetailInfo = function(slug){
-	  //http://api.helphubsac.org/api/locations/weave
 	  return $http({
 	        url: 'http://api.helphubsac.org/api/locations/'+ slug,
 	        method: "GET",
@@ -60,6 +61,69 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	        headers: { 'Content-Type': 'application/json; charset=utf-8'  }
 	    });	  
   }
+  */
+  
+  pub.getDetailInfo = function(slug, resourceList){
+	  if(locationCache[slug]){
+		  //console.log("get "+slug + " from cache !!!!!");
+		  return locationCache.slug;
+	  }
+	  //console.log("get "+slug + " from server");
+	  var l= $http({
+		        url: 'http://api.helphubsac.org/api/locations/'+ slug,
+		        method: "GET",
+		        withCredentials: true,
+		        headers: { 'Content-Type': 'application/json; charset=utf-8'  }
+	    	}).then(function (result) {
+	    		    var r = result.data;
+	    			r = extractSchedule(r);
+	    			r.description = fixPhoneNumber(r.description);
+	    			resourceList[r.slug] = r;
+			    	locationCache[slug]= r; // store it in the cache
+			    	
+	        	});
+	      
+  }
+  
+  function extractSchedule(resource)
+	{
+		var weekdays= ['Sun ','Mon ','Tue ','Wed ','Thu ','Fri ','Sat ','Sun '];
+		var schedules = resource.regular_schedules;
+		if(!schedules)
+			return resource;
+		
+		var today = new Date(); 
+		today= today.getDay();
+		
+		var days= [];
+		var open_today= '';
+		
+		for(var idx in schedules){
+			var s = schedules[idx];
+			if(s.weekday == today){				
+				var closes = s.closes_at.substr(11,2);
+				if(closes >12)
+					closes = (closes -12 )+' PM';
+				open_today += s.opens_at.substr(11,2) +' to '+ closes + ' ';
+			}
+			if(days.indexOf(s.weekday) == -1)
+				days.push(s.weekday);
+		}
+		var open_days='';
+		for(var idx in days)
+			open_days += weekdays[days[idx]];
+		
+		resource.open_days = open_days;
+		resource.open_today = open_today; 
+		return resource;
+	}
+	
+	function fixPhoneNumber(str){
+		var patt = /\(?(\d{3})\)?[ -\.](\d{3})[ -\.](\d{4})/ig ;
+		var repl = "<a href='tel:($1) $2-$3' class='external' >($1) $2-$3</a>";		
+		return str.replace(patt, repl);
+	}
+	
   
 //======================================================  local storage
   

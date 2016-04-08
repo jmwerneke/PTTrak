@@ -343,12 +343,11 @@ body {
 								<div class="card-content-inner">
 									<p>{{resource.description}}</p>
 									<p>
-										<b>{{resource.address.address_1}},
-											{{resource.address.city}} </b><br> phone: <span
-											ng-repeat="phone  in resource.phones "><a
-											href="tel:{{phone.number}}">{{phone.number}}</a> <br>
-										<br> <a ng-if="resource.website!=null"
-											href="{{resource.website}}" target='_blank' class="external">website</a>
+										<span ng-if="resource.address.address_1"><b>{{resource.address.address_1}}, {{resource.address.city}} </b></span><br>
+										    <span	ng-repeat="phone  in resource.phones ">
+													<a	href="tel:{{phone.number}}">{{phone.number}}</a> <br>
+											</span>	
+										<br> <a ng-if="resource.website!=null"	href="{{resource.website}}" target='_blank' class="external">{{resource.website}}</a>
 									</p>
 									<p>Open {{resource.days}} {{resource.hours}}</p>
 								</div>

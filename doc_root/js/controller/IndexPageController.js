@@ -126,7 +126,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    			
 	    			console.log('received: '+idx +' '+r.slug);
 	    			$scope.resources[r.slug]= r;
-	    			getResourceDetails(r);
+	    			DataService.getDetailInfo(r.slug, $scope.resources);
 	    		}
 	    	}, 
 	    	function (err) {
@@ -158,7 +158,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 		return olocs;
 	}
 	
-	
+	/*
 	function getResourceDetails(resource){
 		DataService.getDetailInfo(resource.slug)
     	.then(function (result) {
@@ -169,45 +169,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
     	});
 		
 	}
+	*/
 	
 	
-	function extractSchedule(resource)
-	{
-		var weekdays= ['Sun ','Mon ','Tue ','Wed ','Thu ','Fri ','Sat ','Sun '];
-		var schedules = resource.regular_schedules;
-		if(!schedules)
-			return resource;
-		
-		var today = new Date(); 
-		today= today.getDay();
-		
-		var days= [];
-		var open_today= '';
-		
-		for(var idx in schedules){
-			var s = schedules[idx];
-			if(s.weekday == today){				
-				var closes = s.closes_at.substr(11,2);
-				if(closes >12)
-					closes = (closes -12 )+' PM';
-				open_today += s.opens_at.substr(11,2) +' to '+ closes + ' ';
-			}
-			if(days.indexOf(s.weekday) == -1)
-				days.push(s.weekday);
-		}
-		var open_days='';
-		for(var idx in days)
-			open_days += weekdays[days[idx]];
-		
-		resource.open_days = open_days;
-		resource.open_today = open_today; 
-		return resource;
-	}
-	
-	function fixPhoneNumber(str){
-		var patt = /\(?(\d{3})\)?[ -\.](\d{3})[ -\.](\d{4})/ig ;
-		var repl = "<a href='tel:($1) $2-$3' >($1) $2-$3</a>";		
-		return str.replace(patt, repl);
-	}
 	
 }]);

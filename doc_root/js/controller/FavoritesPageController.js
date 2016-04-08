@@ -6,29 +6,14 @@
 hrApp.angular.controller('FavoritesPageController', ['$scope', '$rootScope', '$http', 'InitService', 'DataService', 'GMapService', function ($scope, $rootScope, $http, InitService, DataService, GMapService) {
   'use strict';
   
-  $scope.openToday=true;
+
   
   $scope.onItemClicked = function (resource) {
     DataService.resourceClicked(resource);
   }
   
   $scope.resources = {};
-  $scope.markers = {};
-  
-  
-//Angular event listener. Gets called when user clicks on
-  $scope.onOpenTodayClicked= function(today){
-	  if(today>0){
-		  $scope.openToday=true;
-		  console.error('todays resources');
-	  }
-	  else{
-		  $scope.openToday=false;
-		  console.error('all resources');
-	  }
-	
-  };
-  
+
   
   hrApp.fw7.app.onPageInit('favoritesPage', function(page) { 
 	  initScope(page);
@@ -40,7 +25,6 @@ hrApp.angular.controller('FavoritesPageController', ['$scope', '$rootScope', '$h
     
     function initScope(page){
     	$scope.resources = {};
-    	$scope.markers = {};
    	  	getResourceData();  
     }
     
@@ -58,7 +42,7 @@ hrApp.angular.controller('FavoritesPageController', ['$scope', '$rootScope', '$h
 	function getResourceDetails(slug){
 		DataService.getDetailInfo(slug)
     	.then(function (result) {	 
-    		result.data.isFavorite= true;
+    		result.data.isFavorite = true;
     		$scope.resources[slug] = result.data;
     		console.log(result.data);
     	});
