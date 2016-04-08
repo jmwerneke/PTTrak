@@ -25,7 +25,7 @@ hrApp.angular.controller('DetailPageController', ['$scope', '$http', 'InitServic
     $scope.resource = resource;
     console.log(resource);
     
-    DataService.getReviews(resource.id, resource.type).then(function (result) {
+    DataService.getReviews(resource.id, 'location').then(function (result) {
         console.log(result.data.reviews);
         $scope.reviews = result.data.reviews;
       }, function (err) {
