@@ -15,10 +15,13 @@ class db
 		$this->errno = $this->error='';
 		
 		$result = $this->conn->query($sql);
-		if($result==false){
+		if($result===false){
 			$this->errno = $this->conn->errno;
 			$this->error = $this->conn->error;
+			return false;
 		}
+		if($result === TRUE)
+			return true;
 		return $result->fetch_all(MYSQLI_ASSOC);
 	}
 	
