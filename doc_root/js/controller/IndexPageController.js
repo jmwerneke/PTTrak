@@ -57,6 +57,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
   } ;
   
+  $scope.currentCategory='';
+  
   $scope.allListings=true;
   
   $scope.onItemClicked = function (resource) {
@@ -81,6 +83,12 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
     	
     	if(globalCat=='' && globalKeyword =='')
     		return;
+    	
+    	if($scope.currentCategory == globalCat && globalCat != 'search')
+    		return;
+    	$scope.currentCategory = globalCat;
+    	
+    	
     	
     	$scope.resources = {};
     	$scope.markers = {};

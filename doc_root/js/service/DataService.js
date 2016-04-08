@@ -46,7 +46,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	 
 	console.log(queryString);	  	  
 	return $http({
-	        url: 'http://api.helphubsac.org/api/search?'+ queryString,
+	        url: 'http://api.sacsos.org/api/search?'+ queryString,
 	        method: "GET",
 	        withCredentials: true,
 	        headers: { 'Content-Type': 'application/json; charset=utf-8' }
@@ -62,15 +62,15 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    });	  
   }
   */
-  
+  // helphubsac
   pub.getDetailInfo = function(slug, resourceList){
 	  if(locationCache[slug]){
 		  //console.log("get "+slug + " from cache !!!!!");
-		  return locationCache.slug;
+		  resourceList[slug]= locationCache.slug;
 	  }
 	  //console.log("get "+slug + " from server");
 	  var l= $http({
-		        url: 'http://api.helphubsac.org/api/locations/'+ slug,
+		        url: 'http://api.sacsos.org/api/locations/'+ slug,
 		        method: "GET",
 		        withCredentials: true,
 		        headers: { 'Content-Type': 'application/json; charset=utf-8'  }
@@ -78,7 +78,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    		    var r = result.data;
 	    			r = extractSchedule(r);
 	    			r.description = fixPhoneNumber(r.description);
-	    			resourceList[r.slug] = r;
+	    			resourceList[slug] = r;
 			    	locationCache[slug]= r; // store it in the cache
 			    	
 	        	});
