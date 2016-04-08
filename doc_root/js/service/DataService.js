@@ -66,7 +66,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   pub.getDetailInfo = function(slug, resourceList){
 	  if(locationCache[slug]){
 		  //console.log("get "+slug + " from cache !!!!!");
-		  resourceList[slug]= locationCache.slug;
+		  resourceList[slug]= locationCache[slug];
 	  }
 	  //console.log("get "+slug + " from server");
 	  var l= $http({

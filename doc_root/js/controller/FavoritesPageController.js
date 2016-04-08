@@ -29,24 +29,15 @@ hrApp.angular.controller('FavoritesPageController', ['$scope', '$rootScope', '$h
     }
     
 	function getResourceData(){
-		var locations = DataService.getFavorites();
+		var location_slugs = DataService.getFavorites();
 		
-		for(var idx in locations){		    		
-			var r= locations[idx];		
-			$scope.resources[r]= r;
-			getResourceDetails(r);
+		for(var idx in location_slugs){		    		
+			var slug= location_slugs[idx];		
+			//$scope.resources[r]= r;
+			DataService.getDetailInfo(slug, $scope.resources);
+			//getResourceDetails(r);
 		}
 	}
 	
-	
-	function getResourceDetails(slug){
-		DataService.getDetailInfo(slug)
-    	.then(function (result) {	 
-    		result.data.isFavorite = true;
-    		$scope.resources[slug] = result.data;
-    		console.log(result.data);
-    	});
-		
-	}
 	
 }]);
