@@ -45,7 +45,7 @@ hrApp.angular.controller('ReviewPageController', ['$scope', '$http', 'InitServic
     $scope.resource = resource;
     $scope.review.table = 'reviews';
     $scope.review.resource_id = resource.id;
-    $scope.review.resource_type = resource.type;
+    $scope.review.resource_type = 'location';
     $scope.review.rating = 0;
     console.log('leaving a review for '+resource.type+' '+resource.id);
   });
