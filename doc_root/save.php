@@ -9,36 +9,23 @@ $params = json_decode($postdata);
 //if(empty($_POST))
 //	die ('empty');
 
-$fname= '../hresources.sqlite';
-if(!file_exists($fname))
-	die("cant find $fname");
-$db = new SQLite3($fname);
+include_once 'db.php';
 
-/*	
-	$results = $db->query('SELECT * FROM kitchens');
-	while ($row = $results->fetchArray()) {
-		var_dump($row);
-	}
-*/	
+$db = new db();
 
 $ret;
-
-
 if($params->table == 'comments')
-	$ret= saveComment($db, $params);
+	$ret= saveReview($db, $params);
 
-	
-$error= $db->lastErrorMsg();
-$db->close();
 
 if($ret==false){
-	die($error);
+	die($db->error);
 }
 
 die("ok");
 	
 		
-function saveComment($db,$params){		
+function saveReview($db,$params){		
 	
 	$resource_id = intval($params->resource_id);
 	$type = $params->resource_type;

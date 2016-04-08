@@ -16,6 +16,9 @@ hrApp.angular.controller('DetailPageController', ['$scope', '$http', 'InitServic
 	   $scope.resource.isFavorite = ! $scope.resource.isFavorite;
   }
   
+  
+  //$scope.emailBody = encodeURIComponent( $scope.resource.description);
+  
   $scope.comments= [];
   
   DataService.addEventListener('resourceClicked', function (resource) {

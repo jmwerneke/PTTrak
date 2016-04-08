@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html ng-app="hrApp">
 <head>
-<!--   joan 470 0917     hillary: 519 0574 http://api.helphubsac.org/admin/sign_in -->
+<!--   
+https://openreferral.org
+Human Service Data Specification HSDS
+http://about.auntbertha.com/openeligibility https://github.com/auntbertha/openeligibility/blob/master/taxonomy
+joan 470 0917     hillary: 519 0574 
+http://api.helphubsac.org/admin/sign_in
+
+ohanna's taxonomy  (the openeligibility taxonomy)
+https://github.com/codeforamerica/ohana-api/blob/master/data/sample-csv/taxonomy.csv
+-->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -317,8 +326,7 @@ body {
 
 
 				<!-- Detail Page -->
-				<div data-page="detailsPage" class="page cached"
-					ng-controller="DetailPageController">
+				<div data-page="detailsPage" class="page cached" ng-controller="DetailPageController">
 
 					<div class="page-content" ng-model="resource">
 						<div style="width: 100%; text-align: right; padding: 10px">
@@ -364,7 +372,14 @@ body {
 						</div>
 						<!-- card -->
 
-
+						<!-- Email this 
+						<div style="width: 100%; text-align: right; padding: 10px">
+							<a href="mailto:somebody@test.com?subject={{resource.title}}&body=test" style="margin: 20px">
+								<i class="fa fa-envelope fa-lg"></i> &nbsp;<span>Email this</span>
+							</a>
+						</div>
+-->
+						<!-- REVIEWS  -->
 						<div class="card">
 							<div class="card-header">Reviews</div>
 							<div class="card-content">

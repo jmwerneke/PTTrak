@@ -162,7 +162,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	function getResourceDetails(resource){
 		DataService.getDetailInfo(resource.slug)
     	.then(function (result) {
-    		var resource = extractSchedule(result.data)
+    		var resource = extractSchedule(result.data);
+    		resource.description = fixPhoneNumber(resource.description);
     		$scope.resources[resource.slug] = resource;
     		console.log(result.data);
     	});
@@ -201,6 +202,12 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 		resource.open_days = open_days;
 		resource.open_today = open_today; 
 		return resource;
+	}
+	
+	function fixPhoneNumber(str){
+		var patt = /\(?(\d{3})\)?[ -\.](\d{3})[ -\.](\d{4})/ig ;
+		var repl = "<a href='tel:($1) $2-$3' >($1) $2-$3</a>";		
+		return str.replace(patt, repl);
 	}
 	
 }]);
