@@ -284,6 +284,14 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
  	background: #b8a772;	
  }
  
+ /* =============================== spopover menu  */
+ .layout-darkg .popover{
+   background: #f1ede5;
+ }
+ .layout-darkg .popover .list-block  .item-link.list-button{
+     color: #005826;
+    
+ }
  /* =============================== side panel */
  .layout-darkg .panel{
  	background: #f1ede5;
@@ -312,7 +320,13 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
 
 .page-content.light{
 	background: #f1ede5;
+	color:  #333334;
 }
+
+.layout-darkg .light .content-block{
+	color:  #333334;
+}
+
 .light .button.active{
 	background: #005826;
 	color:  #f1ede5;

@@ -25,7 +25,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 
 	//housing 
 	shelter: {title: "Shelter", params:{ keyword:'shelter'}},
-	affordable_housing: {title: "Affordble Housing", params:{category:'Affordable Housing'}},
+	affordable_housing: {title: "Affordable Housing", params:{category:'Affordable Housing'}},
 	transitional_housing: {title: "Transitional Housing", params:{category:'transitional_housing'}},
 	supportive_Housing: {title: "Permanent Supportive Housing", params:{category:'Permanent Supportive Housing'}},
 	
