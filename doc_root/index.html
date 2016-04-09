@@ -83,20 +83,23 @@ body {
 		<div class="content-block" >
 
 			<div id="panel_emergency" class="paneldiv">
-				<p>Emergency</p>
-				<p>	<a href="#indexPage" onclick="globalCat='medical' "	class="button button-round button-fill  button-green close-panel">Medical</a>			</p>
-				<p>	<a href="#indexPage" onclick="globalCat='mental_health' "class="button button-round button-fill  button-green close-panel">mental health</a></p>
+			    <div class="content-block-title" >Emergency</div>
+			    <div class="content-block inset"> <div class="content-block-inner">
+				<p>If you are experiencing a live threatening experience please call <b>911</b> </p>
+				</div></div>
+				<p>	<a href="#indexPage" onclick="globalCat='medical' "	class="button button-big button-round button-big button-fill button-green close-panel">Medical</a>			</p>
+				<p>	<a href="#indexPage" onclick="globalCat='mental_health' "class="button button-big button-round button-fill  button-green close-panel">mental health</a></p>
 			</div>
 
 			<div id="panel_safety" class="paneldiv">
-				<p>Safety</p>
-				<p>	<a href="#indexPage" onclick="globalCat='domestic_violence' " class="button button-round button-fill  button-green close-panel">Domestic Violence</a>	</p>
-				<p>	<a href="#indexPage" onclick="globalCat='human_trafficking' " class="button button-round button-fill  button-green close-panel">Human	Trafficking</a>	</p>
-				<p>	<a href="#indexPage" onclick="globalCat='sex_trafficking' "	class="button button-round button-fill  button-green close-panel">Sex Trafficking</a></p>
+				<div class="content-block-title" >Safety</div>
+				<p>	<a href="#indexPage" onclick="globalCat='domestic_violence' " class="button button-big button-round button-fill  button-green close-panel">Domestic Violence</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='human_trafficking' " class="button button-big button-round button-fill  button-green close-panel">Human	Trafficking</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='sex_trafficking' "	class="button button-big button-round button-fill  button-green close-panel">Sex Trafficking</a></p>
 			</div>
 
 			<div id="panel_housing"  class="paneldiv">
-				<p>Housing</p>
+				<div class="content-block-title" >Housing</div>
 				<p>	<a href="#indexPage" onclick="globalCat='shelter' "	class="button button-round button-fill  button-green close-panel">Shelter</a>				</p>
 				<p>	<a href="#indexPage" onclick="globalCat='affordable_housing' " class="button button-round button-fill  button-green close-panel">Affordable Housing</a>				</p>
 				<p>	<a href="#indexPage" onclick="globalCat='transitional_housing' " class="button button-round button-fill  button-green close-panel">Transitional	Housing</a>				</p>
@@ -105,7 +108,7 @@ body {
 
 
 			<div id="panel_food" class="paneldiv">
-				<p>Food</p>
+				<div class="content-block-title" >Food</div>
 				<p>	<a href="#indexPage" onclick="globalCat='meals' " class="button button-round button-fill  button-green close-panel">Hot meals</a>				</p>
 				<p>	<a href="#indexPage" onclick="globalCat='food_closets' " class="button button-round button-fill  button-green close-panel">Food pantries</a></p>
 				<p>	<a href="#indexPage" onclick="globalCat='ebt' "	class="button button-round button-fill  button-green close-panel">EBT</a></p>
@@ -113,14 +116,14 @@ body {
 			</div>
 
 			<div id="panel_healthcare" class="paneldiv">
-				<p>Healthcare</p>
+				<div class="content-block-title" >Healthcare</div>
 				<p>	<a href="#indexPage" onclick="globalCat='clinics' "	class="button button-round button-fill  button-green close-panel">Community	Clinics</a>	</p>
 				<p>	<a href="#indexPage" onclick="globalCat='std' "	class="button button-round button-fill  button-green close-panel">STD Testing and Treatment</a>	</p>
 				<p>	<a href="#indexPage" onclick="globalCat='immunization' "class="button button-round button-fill  button-green close-panel">Immunization</a>	</p>
 			</div>
 
 			<div id="panel_mental" class="paneldiv">
-				<p>Mental Health</p>
+				<div class="content-block-title" >Mental Health</div>
 				<p>	<a href="#indexPage" onclick="globalCat='crisis' "class="button button-round button-fill  button-green close-panel">Crisis Support</a></p>
 				<p>	<a href="#indexPage" onclick="globalCat='amental_health' " class="button button-round button-fill  button-green close-panel">Adult	Mental Health</a></p>
 				<p>	<a href="#indexPage" onclick="globalCat='cmental_health' " class="button button-round button-fill  button-green close-panel">Children's Mental Health</a></p>
@@ -129,14 +132,14 @@ body {
 			</div>
 
 			<div id="panel_education" class="paneldiv">
-				<p>Education/Training</p>
+				<div class="content-block-title" >Education/Training</div>
 				<p>	<a href="#indexPage" onclick="globalCat='vocational' "	class="button button-round button-fill  button-green close-panel">Vocational Training</a>	</p>
 				<p>	<a href="#indexPage" onclick="globalCat='school_districts' "	class="button button-round button-fill  button-green close-panel">School Districts</a>	</p>
 				<p>	<a href="#indexPage" onclick="globalCat='colleges' "class="button button-round button-fill  button-green close-panel">Community Colleges</a>	</p>
 			</div>
 
 
-			<p style="margin-top: 40px"><a href="#"	class="button button-round button-fill button-green close-panel">Cancel</a>	</p>
+			<p style="margin-top: 80px"><a href="#"	class="button button-round button-fill button-green close-panel">Cancel</a>	</p>
 
 		</div>
 	</div>
@@ -240,7 +243,7 @@ body {
 					ng-controller="IndexPageController">
 
 					<!-- Page content-->
-					<div class="page-content ">
+					<div class="page-content light">
 
 						<div class="content-block" style="margin: 20px 0">
 							<p class="buttons-row">
@@ -286,7 +289,7 @@ body {
 					ng-controller="FavoritesPageController">
 
 					<!-- Page content-->
-					<div class="page-content ">
+					<div class="page-content light">
 						<div class="content-block" style="margin: 20px 0">
 							<p>These are the listings you marked as favorite</p>
 						</div>

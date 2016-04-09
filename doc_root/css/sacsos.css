@@ -17,12 +17,12 @@
 Framework7 Layouts Themes
 ==========================*/
 /*
-Gold     : #b8a772
-Green    : #005826
-offwhite : #f1ede5
-
+Gold     : #b8a772;
+Green    : #005826;
+offwhite : #f1ede5;
+dark yellow  #eac768, #f1daa1; 
 --- orinal colors:
-background-color: #131313; repl #008000;                    color: #ffffff;
+background-color: #131313; repl #b8a772                    color: #ffffff;
 background:       #1c1d1f;                      color: #dddddd;
 background-color: #005826;  repl #005826;       color: #dddddd; 
 background-color: #29292f;    
@@ -36,7 +36,7 @@ background      : #f1ede5; repl: #b8a772
 .navbar.layout-darkg,
 .layout-darkg .subnavbar,
 .subnavbar.layout-darkg {
-  background-color: #008000; 
+  background-color: #b8a772; 
   color: #ffffff;
 }
 .layout-darkg .navbar:after,
@@ -47,7 +47,7 @@ background      : #f1ede5; repl: #b8a772
 }
 .layout-darkg .toolbar,
 .toolbar.layout-darkg {
-  background-color: #008000;
+  background-color: #b8a772;
   color: #ffffff;
 }
 .layout-darkg .toolbar:before,
@@ -56,7 +56,7 @@ background      : #f1ede5; repl: #b8a772
 }
 .layout-darkg .picker-calendar-week-days {
   color: #fff;
-  background-color: #008000;
+  background-color: #b8a772;
 }
 .layout-darkg .popover .picker-modal .picker-center-highlight:before,
 .layout-darkg .picker-modal.picker-modal-inline .picker-center-highlight:before {
@@ -123,7 +123,7 @@ background      : #f1ede5; repl: #b8a772
 .layout-darkg .page,
 .layout-darkg .login-screen-content,
 .page.layout-darkg,
-.layout-darkg .panel,
+/*.layout-darkg .panel, */
 .panel.layout-darkg {
   background-color: #005826;
   color: #dddddd;
@@ -142,6 +142,7 @@ background      : #f1ede5; repl: #b8a772
 .layout-darkg .content-block-inner:before {
   background-color: #393939;
 }
+/*
 .layout-darkg .content-block-inner:after {
   background-color: #393939;
 }
@@ -165,6 +166,7 @@ background      : #f1ede5; repl: #b8a772
 .list-block.layout-darkg.notifications > ul {
   background: none;
 }
+*/
 .layout-darkg .card {
   background: #1c1d1f;
 }
@@ -279,7 +281,58 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
  }
 
  .gold-button.button.button-fill {
- 	background: #b8a772;
-  	
+ 	background: #b8a772;	
  }
  
+ /* =============================== side panel */
+ .layout-darkg .panel{
+ 	background: #f1ede5;
+ 	color: #333334;
+ }
+ .panel .button.button-fill{
+ 	background:  #005826;
+ 	color: #fff;
+ }
+ .layout-darkg .panel .content-block-title {
+   color: #333334;
+ }
+ 
+/* =============================== listing page */ 
+.list-block .item-link {
+	/*color: #333334; */
+	color:  #005826;
+}
+.list-block .item-text{
+	color: #333334;
+}
+.red {
+	color: #800000;
+}
+
+
+.page-content.light{
+	background: #f1ede5;
+}
+.light .button.active{
+	background: #005826;
+	color:  #f1ede5;
+}
+.light .button{
+	border: 1px solid  #005826; 
+	color:  #005826;
+}
+
+/* =============================== detail page */
+.layout-darkg .card {
+    background: #f1ede5;
+    color: #333334;
+}
+
+A {
+	color: #f1daa1;
+}
+
+.layout-darkg .card A{
+    color: #800000;
+}
+
