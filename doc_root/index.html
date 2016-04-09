@@ -12,12 +12,10 @@ ohanna's taxonomy  (the openeligibility taxonomy)
 https://github.com/codeforamerica/ohana-api/blob/master/data/sample-csv/taxonomy.csv
 -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="viewport"	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <title>Sac Homeless Resources</title>
 
@@ -26,10 +24,9 @@ https://github.com/codeforamerica/ohana-api/blob/master/data/sample-csv/taxonomy
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
 -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css">
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.css">
+<!-- link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/css/framework7.ios.colors.min.css"-->
+<link rel="stylesheet"	href="css/sacsos.css">
 
 
 
@@ -41,25 +38,18 @@ https://github.com/codeforamerica/ohana-api/blob/master/data/sample-csv/taxonomy
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3ays483Ixy2Gr76BAvjGZBrls4j6ZOUI"></script>
 <!-- async defer &callback=aaa -->
 
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/js/framework7.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+<script type="text/javascript"	src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/js/framework7.min.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/service/InitService.js"></script>
 <script type="text/javascript" src="js/service/DataService.js"></script>
 <script type="text/javascript" src="js/service/MapService.js"></script>
-<script type="text/javascript"
-	src="js/controller/IndexPageController.js"></script>
-<script type="text/javascript"
-	src="js/controller/DetailPageController.js"></script>
-<script type="text/javascript"
-	src="js/controller/ReviewPageController.js"></script>
-<script type="text/javascript"
-	src="js/controller/FavoritesPageController.js"></script>
-<script type="text/javascript"
-	src="js/controller/FrontPageController.js"></script>
-
+<script type="text/javascript"	src="js/controller/IndexPageController.js"></script>
+<script type="text/javascript"	src="js/controller/DetailPageController.js"></script>
+<script type="text/javascript"	src="js/controller/ReviewPageController.js"></script>
+<script type="text/javascript"	src="js/controller/FavoritesPageController.js"></script>
+<script type="text/javascript"	src="js/controller/FrontPageController.js"></script>
+<!--
 <style>
 .goog-te-banner-frame.skiptranslate {
 	display: none !important;
@@ -69,15 +59,17 @@ body {
 	top: 0px !important;
 }
 
+
 .button-green {
 	background-color: #009900 !important;
 } /*  #77c043  */
 .button-turqois {
 	background-color: #00aae8 !important;
 }
-</style>
+</style -->
+
 </head>
-<body>
+<body class=" layout-darkg">
 	<!-- class="theme-green" -->
 
 	<div class="statusbar-overlay"></div>
@@ -86,7 +78,7 @@ body {
 	<div class="panel-overlay"></div>
 	
 	<!-- left panel -->
-	<div class="panel panel-left panel-cover" style="background: #efeff4;">
+	<div class="panel panel-left panel-cover" style="backgro__und: #efeff4;">
 		<!--  #efeff4   side panels left -->
 		<div class="content-block" >
 
@@ -211,8 +203,8 @@ body {
 					<div class="page-content">
 
  
-						<img src="/img/b_wtower_bridge_sacramento2_720.png"
-							style="width: 100%; " />
+						<img src="img/sacsos_480.png"
+							style="width: 100%; background-color:white; " />
 
 						<div class="content-block" style="margin: 20px 0">
 							<p>Sac SOS is a continuously updated list of free and
@@ -222,7 +214,7 @@ body {
 						<div class="content-block">
 							<p class="buttons-row">
 								<input style="padding-left: 10px;" type="text"	placeholder="search" ng-model="search_text"> 
-								<a href="#" ng-click="onSearch()" class="button button-fill button-green">search</a>
+								<a href="#" ng-click="onSearch()" class="gold-button button button-fill ">search</a>
 							</p>
 						</div>
 

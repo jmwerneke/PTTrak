@@ -1,0 +1,285 @@
+@CHARSET "UTF-8";
+/**
+ * Framework7 1.0.6
+ * Full Featured Mobile HTML Framework For Building iOS Apps
+ * 
+ * http://www.idangero.us/framework7
+ * 
+ * Copyright 2015, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Licensed under MIT
+ * 
+ * Released on: May 1, 2015
+ */
+/*==========================
+Framework7 Layouts Themes
+==========================*/
+/*
+Gold     : #b8a772
+Green    : #005826
+offwhite : #f1ede5
+
+--- orinal colors:
+background-color: #131313; repl #008000;                    color: #ffffff;
+background:       #1c1d1f;                      color: #dddddd;
+background-color: #005826;  repl #005826;       color: #dddddd; 
+background-color: #29292f;    
+background-color: #333333; 
+background-color: #393939;
+background-color: #444444;
+background      : #f1ede5; repl: #b8a772
+*/
+/* === Dark layout === */
+.layout-darkg .navbar,
+.navbar.layout-darkg,
+.layout-darkg .subnavbar,
+.subnavbar.layout-darkg {
+  background-color: #008000; 
+  color: #ffffff;
+}
+.layout-darkg .navbar:after,
+.navbar.layout-darkg:after,
+.layout-darkg .subnavbar:after,
+.subnavbar.layout-darkg:after {
+  background-color: #333333;
+}
+.layout-darkg .toolbar,
+.toolbar.layout-darkg {
+  background-color: #008000;
+  color: #ffffff;
+}
+.layout-darkg .toolbar:before,
+.toolbar.layout-darkg:before {
+  background-color: #333333;
+}
+.layout-darkg .picker-calendar-week-days {
+  color: #fff;
+  background-color: #008000;
+}
+.layout-darkg .popover .picker-modal .picker-center-highlight:before,
+.layout-darkg .picker-modal.picker-modal-inline .picker-center-highlight:before {
+  background-color: #333333;
+}
+.layout-darkg .popover .picker-modal .picker-center-highlight:after,
+.layout-darkg .picker-modal.picker-modal-inline .picker-center-highlight:after {
+  background-color: #333333;
+}
+.layout-darkg .popover .picker-modal .picker-item.picker-selected,
+.layout-darkg .picker-modal.picker-modal-inline .picker-item.picker-selected {
+  color: #fff;
+}
+.layout-darkg .popover .picker-modal .picker-calendar-week-days,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-week-days {
+  color: #fff;
+}
+.layout-darkg .popover .picker-modal .picker-calendar-day,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-day {
+  color: #fff;
+}
+.layout-darkg .popover .picker-modal .picker-calendar-day.picker-calendar-day-prev,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-day.picker-calendar-day-prev,
+.layout-darkg .popover .picker-modal .picker-calendar-day.picker-calendar-day-next,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-day.picker-calendar-day-next {
+  color: #777;
+}
+.layout-darkg .popover .picker-modal .picker-calendar-day.picker-calendar-day-disabled,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-day.picker-calendar-day-disabled {
+  color: #555;
+}
+.layout-darkg .popover .picker-modal .picker-calendar-day.picker-calendar-day-today span,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-day.picker-calendar-day-today span {
+  background: #444;
+}
+.layout-darkg .popover .picker-modal .picker-calendar-week-days:after,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-week-days:after,
+.layout-darkg .popover .picker-modal .picker-calendar-row:after,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-row:after {
+  background-color: #333333;
+}
+.layout-darkg .popover .picker-modal .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+.layout-darkg .picker-modal.picker-modal-inline .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+.layout-darkg .popover .picker-modal .picker-calendar-week-days ~ .picker-calendar-months:before,
+.layout-darkg .picker-modal.picker-modal-inline .picker-calendar-week-days ~ .picker-calendar-months:before {
+  background-color: #333333;
+}
+.layout-darkg .popover .picker-modal .toolbar:after {
+  background-color: #333333;
+}
+.layout-darkg .photo-browser .navbar,
+.photo-browser.layout-darkg .navbar,
+.layout-darkg .view[data-page="photo-browser-slides"] .navbar,
+.view[data-page="photo-browser-slides"].layout-darkg .navbar,
+.layout-darkg .photo-browser .toolbar,
+.photo-browser.layout-darkg .toolbar,
+.layout-darkg .view[data-page="photo-browser-slides"] .toolbar,
+.view[data-page="photo-browser-slides"].layout-darkg .toolbar {
+  background: rgba(19, 19, 19, 0.95);
+}
+.layout-darkg .tabbar a:not(.active) {
+  color: #ffffff;
+}
+.layout-darkg .page,
+.layout-darkg .login-screen-content,
+.page.layout-darkg,
+.layout-darkg .panel,
+.panel.layout-darkg {
+  background-color: #005826;
+  color: #dddddd;
+}
+.layout-darkg .content-block-title {
+  color: #ffffff;
+}
+.layout-darkg .content-block,
+.content-block.layout-darkg {
+  color: #bbbbbb;
+}
+.layout-darkg .content-block-inner {
+  background: #1c1d1f;
+  color: #dddddd;
+}
+.layout-darkg .content-block-inner:before {
+  background-color: #393939;
+}
+.layout-darkg .content-block-inner:after {
+  background-color: #393939;
+}
+.layout-darkg .list-block ul,
+.list-block.layout-darkg ul {
+  background: #1c1d1f;
+}
+.layout-darkg .list-block ul:before,
+.list-block.layout-darkg ul:before {
+  background-color: #393939;
+}
+.layout-darkg .list-block ul:after,
+.list-block.layout-darkg ul:after {
+  background-color: #393939;
+}
+.layout-darkg .list-block.inset ul,
+.list-block.layout-darkg.inset ul {
+  background: #1c1d1f;
+}
+.layout-darkg .list-block.notifications > ul,
+.list-block.layout-darkg.notifications > ul {
+  background: none;
+}
+.layout-darkg .card {
+  background: #1c1d1f;
+}
+.layout-darkg .card-header:after {
+  background-color: #393939;
+}
+.layout-darkg .card-footer {
+  color: #bbbbbb;
+}
+.layout-darkg .card-footer:before {
+  background-color: #393939;
+}
+.layout-darkg .popover,
+.popover.layout-darkg {
+  background: rgba(0, 0, 0, 0.8);
+}
+.layout-darkg .popover .popover-angle:after,
+.popover.layout-darkg .popover-angle:after {
+  background: rgba(0, 0, 0, 0.8);
+}
+.layout-darkg .popover .list-block ul,
+.popover.layout-darkg .list-block ul {
+  background: none;
+}
+.layout-darkg .actions-popover .list-block ul:before {
+  background-color: #393939;
+}
+.layout-darkg .actions-popover .list-block ul:after {
+  background-color: #393939;
+}
+.layout-darkg .actions-popover .actions-popover-label:after {
+  background-color: #393939;
+}
+.layout-darkg li.sorting {
+  background-color: #29292f;
+}
+.layout-darkg .swipeout-actions-left a,
+.layout-darkg .swipeout-actions-right a {
+  background-color: #444444;
+}
+.layout-darkg .item-inner:after,
+.layout-darkg .list-block ul ul li:last-child .item-inner:after {
+  background-color: #393939;
+}
+.layout-darkg .item-after {
+  color: #bbbbbb;
+}
+html:not(.watch-active-state) .layout-darkg .item-link:active,
+html:not(.watch-active-state) .layout-darkg label.label-checkbox:active,
+html:not(.watch-active-state) .layout-darkg label.label-radio:active,
+.layout-darkg .item-link.active-state,
+.layout-darkg label.label-checkbox.active-state,
+.layout-darkg label.label-radio.active-state {
+  background-color: #29292f;
+}
+.layout-darkg .item-link.list-button:after {
+  background-color: #393939;
+}
+.layout-darkg .list-block-label {
+  color: #bbbbbb;
+}
+.layout-darkg .item-divider,
+.layout-darkg .list-group-title {
+  background: #1a1a1a;
+  color: #bbbbbb;
+}
+.layout-darkg .item-divider:before,
+.layout-darkg .list-group-title:before {
+  background-color: #393939;
+}
+.layout-darkg .searchbar {
+  background: #333333;
+}
+.layout-darkg .searchbar:after {
+  background-color: #333333;
+}
+.layout-darkg .list-block input[type="text"],
+.list-block.layout-darkg input[type="text"],
+.layout-darkg .list-block input[type="password"],
+.list-block.layout-darkg input[type="password"],
+.layout-darkg .list-block input[type="email"],
+.list-block.layout-darkg input[type="email"],
+.layout-darkg .list-block input[type="tel"],
+.list-block.layout-darkg input[type="tel"],
+.layout-darkg .list-block input[type="url"],
+.list-block.layout-darkg input[type="url"],
+.layout-darkg .list-block input[type="date"],
+.list-block.layout-darkg input[type="date"],
+.layout-darkg .list-block input[type="datetime-local"],
+.list-block.layout-darkg input[type="datetime-local"],
+.layout-darkg .list-block input[type="number"],
+.list-block.layout-darkg input[type="number"],
+.layout-darkg .list-block select,
+.list-block.layout-darkg select,
+.layout-darkg .list-block textarea,
+.list-block.layout-darkg textarea {
+  color: #ffffff;
+}
+.layout-darkg .label-switch .checkbox {
+  background-color: #393939;
+}
+.layout-darkg .label-switch .checkbox:before {
+  background-color: #1c1d1f;
+}
+.layout-darkg .range-slider input[type="range"]:after {
+  background: #1c1d1f;
+}
+ /* ==================== overtideing styles in ios =========================================== */
+ .button.button-fill{
+ 	background: #f1ede5;
+  	color: #333334;
+ }
+
+ .gold-button.button.button-fill {
+ 	background: #b8a772;
+  	
+ }
+ 
