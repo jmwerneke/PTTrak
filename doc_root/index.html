@@ -265,23 +265,25 @@ body {
 									<a href="#detailsPage" ng-click="onItemClicked(resource)"class="item-link item-content"> 
 										<div class="item-inner">
 											<div class="item-title-row">
-												<div class="item-title">{{markers[resource.slug].label}}	{{resource.name}}</div>
+												<div class="item-title">{{resource.label}}	{{resource.name}}</div>
 											</div>
 											<div class="item-text">		
-											    <span ng-if="resource.distance == 0">		HOTLINE								     
-												<!-- 		<a	href="tel:{{resource.phone[0].number}}">{{resource.phone[0].number}}</a> &nbsp; &nbsp; -->														
-											    </span>
-											    <span ng-if="resource.distance > 0" class="red">{{markers[resource.slug].distance}} miles</span>										
+											   												 
 												
-												&nbsp; &nbsp;  
+												<span ng-if="!resource.rating">(not rated yet)</span>
+												<span ng-if="resource.rating==1" style="color:#eac768;"><i class="fa fa-star"></i></span>
+												<span ng-if="resource.rating==2" style="color:#eac768;"><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+												<span ng-if="resource.rating==3" style="color:#eac768;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+												<span ng-if="resource.rating==4" style="color:#eac768;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+												&nbsp;												
+												 <span ng-if="resource.distance == 0">		HOTLINE								     
+												<!-- 		{{resource.phone[0].number}} &nbsp; &nbsp; -->														
+											    </span>
+											    <span ng-if="resource.distance > 0" class="red">{{resource.distance}} miles</span>		
+												&nbsp;		
 												<span ng-if="resource.open_today">Open Today {{resource.open_today}}</span>
 												<span ng-if="! resource.open_today && resource.open_days">Open {{resource.open_days}}</span>
-												
-												<span ng-if="resource.rating==1"><i class="fa fa-star"></i></span>
-												<span ng-if="resource.rating==2"><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
-												<span ng-if="resource.rating==3"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
-												<span ng-if="resource.rating==4"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
-												<br>
+												<br>			
 												<span ng-if="resource.distance > 0"> {{resource.address.address_1}}, {{resource.address.city}}</span>
 											</div>
 										</div>

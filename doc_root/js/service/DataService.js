@@ -52,25 +52,48 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 		        headers: { 'Content-Type': 'application/json; charset=utf-8' }
 		    });	  	  
   };
+  
+  
+  pub.getRatings = function(idList){	
+	  
+	  var l= $http.get('get.php?table=ratings&ids='+ idList )
+	  		.then(function (result) {
+	  			var ratings = result.data.ratings;
+	  			console.log('locatins cache');
+	  			console.log(locationCache);
+	  			if(ratings){
+		  			for(var idx in ratings){
+		  				var rating = ratings[idx]; 		
+		  				console.log('location-id '+rating.location_id +'   rating '+rating.rating);
+		  				var resource = locationCache[rating.location_id];
+		  				resource.rating = rating.rating;	    	
+		  			}
+	  			}
+	  		});    
+  }
+  
   /*
-  pub.getDetailInfo = function(slug){
+  pub.getDetailInfo = function(id){
 	  return $http({
-	        url: 'http://api.helphubsac.org/api/locations/'+ slug,
+	        url: 'http://api.helphubsac.org/api/locations/'+ id,
 	        method: "GET",
 	        withCredentials: true,
 	        headers: { 'Content-Type': 'application/json; charset=utf-8'  }
 	    });	  
   }
   */
+  
+  
   // helphubsac
-  pub.getDetailInfo = function(slug, resourceList){
-	  if(locationCache[slug]){
-		  //console.log("get "+slug + " from cache !!!!!");
-		  resourceList[slug]= locationCache[slug];
+  pub.getDetailInfo = function(id, resourceList){
+	  if(locationCache[id]){
+		  //console.log("get "+id + " from cache !!!!!");
+		  resourceList[id]= locationCache[id];
 	  }
-	  //console.log("get "+slug + " from server");
+	  locationCache[id] =resourceList[id];
+	  //console.log("get "+id + " from server");
 	  var l= $http({
-		        url: 'http://api.sacsos.org/api/locations/'+ slug,
+		        url: 'http://api.sacsos.org/api/locations/'+ id,
 		        method: "GET",
 		        withCredentials: true,
 		        headers: { 'Content-Type': 'application/json; charset=utf-8'  }
@@ -78,13 +101,15 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    		    var r = result.data;
 	    			r = extractSchedule(r);
 	    			r.description = fixPhoneNumber(r.description);
-	    			r.rating= Math.round(Math.random()*5);
+	    			//r.rating= Math.round(Math.random()*5);
 	    			
-	    			var oldResource = resourceList[slug]; // copy data that was added to the old resource before we overwrite it
+	    			var oldResource = resourceList[id]; // copy data that was added to the old resource before we overwrite it
 	    			r.distance= oldResource.distance;
+	    			r.label = oldResource.label;
+	    			r.rating = oldResource.rating;
 	    				
-	    			resourceList[slug] = r;
-			    	locationCache[slug]= r; // store it in the cache			    	
+	    			resourceList[id] = r;
+			    	locationCache[id]= r; // store it in the cache			    	
 	        	});
 	      
   }
@@ -145,7 +170,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   }
   
   pub.addToFavorites= function(resource){
-	  var slug = resource.slug;
+	  var id = resource.id;
 	  resource.isfavorite= true;
 	  
 	  if(typeof(Storage) == "undefined") {
@@ -154,18 +179,18 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	  
 	  var favorites = localStorage.getItem("favorites");
 	  if(! favorites)
-		  favorites = [slug];
+		  favorites = [id];
 	  else{
 		  favorites = angular.fromJson(favorites);
-		  if(favorites.indexOf(slug) == -1)
-		  	favorites.push(slug);
+		  if(favorites.indexOf(id) == -1)
+		  	favorites.push(id);
   	  }
 	  localStorage.setItem("favorites", angular.toJson(favorites));	  
   }
   
   pub.removeFromFavorites= function(resource){
 	  resource.isFavorite= false;
-	  var slug = resource.slug;
+	  var id = resource.id;
 	  if(typeof(Storage) == "undefined") {
 		    // Code for localStorage/sessionStorage.
 		  console.log("local storage not supported");
@@ -178,7 +203,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	  else
 		  favorites = angular.fromJson(favorites);
 	  
-	  var newFavorites = favorites.filter(function(e){return e!== slug })
+	  var newFavorites = favorites.filter(function(e){return e!== id })
 	  
 	  localStorage.setItem("favorites", angular.toJson(newFavorites));
 	  

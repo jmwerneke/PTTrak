@@ -121,22 +121,29 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	    		var labelIndex = 0;
 	    		GMapService.initMap('google-map1');
+	    		
+	    		var idList =[];
+	    		
 	    		for(var idx in locations){		    		
-	    			var r= locations[idx];	
+	    			var r= locations[idx];
+	    			idList.push(r.id);
+	    			
 	    			// save the markers and distances in a separate array, since the locations are overwritten
 	    			if(idx < 26 && angular.isNumber(r.latitude) && angular.isNumber(r.latitude)){
 	    				var label = labels[labelIndex++ % labels.length];	    				
 	    				var m = GMapService.placeMarker(r.latitude,r.longitude, label)
-	    				$scope.markers[r.slug]= {label: '('+label+')', distance:r.distance, marker: m };
+	    				//$scope.markers[r.id]= {label: '('+label+')', distance:r.distance, marker: m };
 	    				r.label= '('+label+')';
 	    		    }
-	    			else
-	    		    	$scope.markers[r.slug]= {label: '', distance:r.distance };
+	    			//else
+	    				
+	    		    	//$scope.markers[r.id]= {label: '', distance:r.distance };
 	    			
-	    			console.log('received: '+idx +' '+r.slug);
-	    			$scope.resources[r.slug]= r;
-	    			DataService.getDetailInfo(r.slug, $scope.resources);
+	    			console.log('received: '+idx +' '+r.id);
+	    			$scope.resources[r.id]= r;
+	    			DataService.getDetailInfo(r.id, $scope.resources);
 	    		}
+	    		DataService.getRatings(idList);
 	    	}, 
 	    	function (err) {
 	    		console.error('error getting data '+err);
@@ -154,7 +161,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 			if(angular.isNumber(r.latitude) ){
 				var deltaLat = Math.abs(r.latitude - myLat) * 68; //62.5; //1/0.016;
 				var deltaLng = Math.abs(r.longitude - myLng) * 57; //52.6; //1/0.019;
-				//console.log(r.slug +' dlat: '+deltaLat +'   dlng: '+deltaLng);
+				//console.log(r.id +' dlat: '+deltaLat +'   dlng: '+deltaLng);
 				r.distance= Math.round(Math.pow(Math.pow(deltaLat,2) + Math.pow(deltaLng,2), 0.5) *10)/10;
 			}
 			else
@@ -169,11 +176,11 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
 	/*
 	function getResourceDetails(resource){
-		DataService.getDetailInfo(resource.slug)
+		DataService.getDetailInfo(resource.id)
     	.then(function (result) {
     		var resource = extractSchedule(result.data);
     		resource.description = fixPhoneNumber(resource.description);
-    		$scope.resources[resource.slug] = resource;
+    		$scope.resources[resource.id] = resource;
     		console.log(result.data);
     	});
 		

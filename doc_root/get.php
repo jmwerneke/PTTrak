@@ -22,18 +22,20 @@ $params = (object) $_GET;
 			
 function getReviews($db, $params)
 {
-	$resource_id   = intval($params->resource_id);
+	$resource_id   = $db->escape($params->resource_id);
 	$resource_type = $db->escape($params->resource_type);
 		
-	return $db->query("SELECT * FROM reviews where resource_id = $resource_id  AND resource_type = '$resource_type' ");
+	return $db->query("SELECT * FROM reviews where resource_id = '$resource_id'  AND resource_type = '$resource_type' ");
 }
 
 function getRatings($db,$params){
 	$idstr='';
-	$ids= explode(',',$params['ids']);
+	$ids= explode(",",$params->ids);
+	$ids= array_unique($ids);
 	foreach($ids as $id)
-		$idstr .= ",".intval($id);
-	$idstr= substr($idstr,1);
-	
-	return $db->query("SELECT * FROM ratings where location_id IN ($idstr) ");
+		$idstr .= "','".intval($id);
+	$idstr= substr($idstr,3);
+	$sql= "SELECT * FROM ratings where location_id IN ('$idstr') ";
+	//die($sql);
+	return $db->query($sql);
 }

@@ -29,12 +29,12 @@ hrApp.angular.controller('FavoritesPageController', ['$scope', '$rootScope', '$h
     }
     
 	function getResourceData(){
-		var location_slugs = DataService.getFavorites();
+		var location_ids = DataService.getFavorites();
 		
-		for(var idx in location_slugs){		    		
-			var slug= location_slugs[idx];		
+		for(var idx in location_ids){		    		
+			var id= location_ids[idx];		
 			//$scope.resources[r]= r;
-			DataService.getDetailInfo(slug, $scope.resources);
+			DataService.getDetailInfo(id, $scope.resources);
 			//getResourceDetails(r);
 		}
 	}
