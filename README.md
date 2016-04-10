@@ -7,7 +7,7 @@ This repository includes the two files that **must be included** in all project 
 Sacramento County Hack4Sac Project to provide Homeless Resource Information for Sacramento County Area and way to engage community organizations and volunteers to provide resources.  
 
 ### Project Name
-SacHomeless
+SacSOS - (SacHomeless)
 
 ### Project Description
 SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals and provides a way to engage the community organizations and volunteers to provide resources.
@@ -19,13 +19,14 @@ SacHomeless provides Homeless_resources information for the Sacramento County ar
 - Kevin Fries
 - Emily Quinn Finney 
 - Jared Garst
-- Hillary Gaines - customer/client experience
+- Hillary Gaines - customer/client experience gaines.household@icloud.com
+- Kayla Granderson - customer/client experience 
 
 ### Stakeholder Engagement
 - Julie Field - Dept. of Human Services, Sacramento County 
 - Veronica Beaty - The People's Guide, veronica@sachousingalliance.org 
 - Dave Coburn - Pilgrimage Sacramento - Corburn180@gmail.com 
-- Hillary Gaines - 
+- Hillary Gaines - EMQ FamiliesFirst 
 
 ### Developer Documentation
 
