@@ -3,3 +3,4 @@
 *~
 *.log
 *.sqlite
+config.ini

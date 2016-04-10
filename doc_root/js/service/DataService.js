@@ -38,19 +38,19 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
  //http://api.helphubsac.org/api/organizations
  	pub.getLocations = function (params) {
     	 
- 	var queryString='';
-	for(var key in params){
-		queryString +='&'+ key + '=' + params[key];
-	}
-	queryString = encodeURI(queryString.substr(1));
-	 
-	console.log(queryString);	  	  
-	return $http({
-	        url: 'http://api.sacsos.org/api/search?'+ queryString,
-	        method: "GET",
-	        withCredentials: true,
-	        headers: { 'Content-Type': 'application/json; charset=utf-8' }
-	    });	  	  
+	 	var queryString='';
+		for(var key in params){
+			queryString +='&'+ key + '=' + params[key];
+		}
+		queryString = encodeURI(queryString.substr(1));
+		 
+		console.log(queryString);	  	  
+		return $http({
+		        url: 'http://api.sacsos.org/api/search?'+ queryString,
+		        method: "GET",
+		        withCredentials: true,
+		        headers: { 'Content-Type': 'application/json; charset=utf-8' }
+		    });	  	  
   };
   /*
   pub.getDetailInfo = function(slug){
@@ -78,9 +78,13 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    		    var r = result.data;
 	    			r = extractSchedule(r);
 	    			r.description = fixPhoneNumber(r.description);
+	    			r.rating= Math.round(Math.random()*5);
+	    			
+	    			var oldResource = resourceList[slug]; // copy data that was added to the old resource before we overwrite it
+	    			r.distance= oldResource.distance;
+	    				
 	    			resourceList[slug] = r;
-			    	locationCache[slug]= r; // store it in the cache
-			    	
+			    	locationCache[slug]= r; // store it in the cache			    	
 	        	});
 	      
   }
@@ -142,6 +146,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   
   pub.addToFavorites= function(resource){
 	  var slug = resource.slug;
+	  resource.isfavorite= true;
 	  
 	  if(typeof(Storage) == "undefined") {
 		  return;
@@ -159,6 +164,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   }
   
   pub.removeFromFavorites= function(resource){
+	  resource.isFavorite= false;
 	  var slug = resource.slug;
 	  if(typeof(Storage) == "undefined") {
 		    // Code for localStorage/sessionStorage.
@@ -185,39 +191,16 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 }]);
 
 
-
-
-
-
-
-
-//======================================================
-///filter
-hrApp.angular.filter('openFilter', function() {
-	    return function(items, openToday) {
-	    	/*
-	        var i, c, txt = "";
-	        x = x.split("")
-	        for (i = 0; i < x.length; i++) {
-	            c = x[i];
-	            if (i % 2 == 0) {
-	                c = c.toUpperCase();
-	            }
-	            txt += c;
-	        }
-	        return txt;
-	        */
-	/*    	
-	    	if(openToday){
-	    		var ret=[];
-	    		var idx=0;
-	    		for(var i in items){
-	    			if(idx++ <2)
-	    				ret.push(i);
-	    		}
-	    		return ret;
-	    	}
-	    	else */
-	    		return items;
-	    };
+/* cant do html 
+hrApp.angular.filter('myFilter', function() {
+	return function(rating) {
+		var out='<i class="fa fa-star"></i>';
+			if(!rating)
+				return 'not rated';
+			while(rating-- > 0)
+				out +='<i class="fa fa-star"></i>';
+		 return out;
+    };
 });
+*/
+

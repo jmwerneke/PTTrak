@@ -5,12 +5,18 @@ class db
 	public $errno;
 	public $error;
 	function __construct()
-	{
+	{		
+		
 		$this->conn = new mysqli('localhost', 'sacsos_user', 'ilike7', 'sacsos');
 		// GRANT ALL PRIVILEGES ON *.* TO `sacsos_user`@`*` identified by 'ilike7';
 		//GRANT ALL PRIVILEGES ON *.* TO `sacsos_user`@`localhost` identified by 'ilike7';
 	}
 
+	function escape($str)
+	{
+		return $this->conn->real_escape_string($str);
+	}
+	
 	function query($sql){
 		$this->errno = $this->error='';
 		
@@ -22,7 +28,12 @@ class db
 		}
 		if($result === TRUE)
 			return true;
-		return $result->fetch_all(MYSQLI_ASSOC);
+		//return $result->fetch_all(MYSQLI_ASSOC);
+		
+		$array = array();
+		while($row = $result->fetch_assoc())
+			$array[] = $row;
+		return $array;
 	}
 	
 	

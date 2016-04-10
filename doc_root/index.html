@@ -42,6 +42,8 @@ https://github.com/codeforamerica/ohana-api/blob/master/data/sample-csv/taxonomy
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
 <script type="text/javascript"	src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.3.1/js/framework7.min.js"></script>
+    <script src="//code.angularjs.org/1.4.7/angular-sanitize.js"></script>
+
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript" src="js/service/InitService.js"></script>
 <script type="text/javascript" src="js/service/DataService.js"></script>
@@ -90,7 +92,7 @@ body {
 				<p>If you are experiencing a live threatening experience please call <b>911</b> </p>
 				</div></div>
 				<p>	<a href="#indexPage" onclick="globalCat='medical' "	class="button button-big button-round button-big button-fill button-green close-panel">Medical</a>			</p>
-				<p>	<a href="#indexPage" onclick="globalCat='mental_health' "class="button button-big button-round button-fill  button-green close-panel">mental health</a></p>
+				<p>	<a href="#indexPage" onclick="globalCat='mental_health' "class="button button-big button-round button-fill  button-green close-panel">Mental Health</a></p>
 			</div>
 
 			<div id="panel_safety" class="paneldiv">
@@ -105,7 +107,7 @@ body {
 				<p>	<a href="#indexPage" onclick="globalCat='shelter' "	class="button button-round button-fill  button-green close-panel">Shelter</a>				</p>
 				<p>	<a href="#indexPage" onclick="globalCat='affordable_housing' " class="button button-round button-fill  button-green close-panel">Affordable Housing</a>				</p>
 				<p>	<a href="#indexPage" onclick="globalCat='transitional_housing' " class="button button-round button-fill  button-green close-panel">Transitional	Housing</a>				</p>
-				<p>	<a href="#indexPage" onclick="globalCat='supportive_Housing' " class="button button-round button-fill  button-green close-panel">Permanent	Supportive Housing</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='supportive_Housing' " class="button button-round button-fill  button-green close-panel">Permanent Supportive Housing</a>	</p>
 			</div>
 
 
@@ -249,10 +251,8 @@ body {
 
 						<div class="content-block" style="margin: 20px 0">
 							<p class="buttons-row">
-								<a href="#" ng-click="allListings=false;" class="button"
-									ng-class="allListings ? 'button ':'button active'">Open Today</a>
-								<a href="#" ng-click="allListings=true" class="button"
-									ng-class="allListings ? 'button active':'button '">All</a>
+								<a href="#" ng-click="allListings=false;" class="button" ng-class="allListings ? 'button ':'button active'">Open Today</a>
+								<a href="#" ng-click="allListings=true" class="button"	ng-class="allListings ? 'button active':'button '">All</a>
 							</p>
 						</div>
 						<div id="google-map1" style="height: 200px"></div>
@@ -267,12 +267,22 @@ body {
 											<div class="item-title-row">
 												<div class="item-title">{{markers[resource.slug].label}}	{{resource.name}}</div>
 											</div>
-											<div class="item-text">												
-												<span>{{markers[resource.slug].distance}} miles</span>&nbsp; &nbsp;
+											<div class="item-text">		
+											    <span ng-if="resource.distance == 0">		HOTLINE								     
+												<!-- 		<a	href="tel:{{resource.phone[0].number}}">{{resource.phone[0].number}}</a> &nbsp; &nbsp; -->														
+											    </span>
+											    <span ng-if="resource.distance > 0" class="red">{{markers[resource.slug].distance}} miles</span>										
+												
+												&nbsp; &nbsp;  
 												<span ng-if="resource.open_today">Open Today {{resource.open_today}}</span>
 												<span ng-if="! resource.open_today && resource.open_days">Open {{resource.open_days}}</span>
+												
+												<span ng-if="resource.rating==1"><i class="fa fa-star"></i></span>
+												<span ng-if="resource.rating==2"><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+												<span ng-if="resource.rating==3"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+												<span ng-if="resource.rating==4"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
 												<br>
-												{{resource.address.address_1}}, {{resource.address.city}}
+												<span ng-if="resource.distance > 0"> {{resource.address.address_1}}, {{resource.address.city}}</span>
 											</div>
 										</div>
 									</a>
@@ -407,7 +417,7 @@ body {
 							<input type=hidden name=id value="{{review.resource_id}}" /> <input
 								type=hidden name=type value="{{review.resource_type}}" />
 
-							<div class="content-block">Write A Review</div>
+							<div class="content-block">We encourage you to write a review. Also, if you notice that our listing is incorrect, please make sure to check the box below. </div>
 							<div class="list-block">
 								<ul>
 									<li>
@@ -429,19 +439,16 @@ body {
 							<div class="content-block">
 								<div>You can rate this organization</div>
 								<p class="buttons-row">
-									<a href="#" ng-click="onRate(1)" class="button"
-										ng-class="review.stars==1 ? 'button active':'button'"><i
-										class="fa fa-star"></i></a> <a href="#" ng-click="onRate(2)"
-										class="button"
-										ng-class="review.stars==2 ? 'button active':'button'"><i
-										class="fa fa-star"></i><i class="fa fa-star "></i></a> <a href="#"
-										ng-click="onRate(3)" class="button"
-										ng-class="review.stars==3 ? 'button active':'button'"></i><i
-										class="fa fa-star"></i><i class="fa fa-star"></i></a> <a href="#"
-										ng-click="onRate(4)" class="button"
-										ng-class="review.stars==4 ? 'button active':'button'"></i><i
-										class="fa fa-star"></i><i class="fa fa-star"></i><i
-										class="fa fa-star"></i></a>
+									<a href="#" ng-click="onRate(1)" class="button"	ng-class="review.rating==1 ? 'button active':'button'"><i class="fa fa-star"></i></a> 
+									<a href="#" ng-click="onRate(2)" class="button"	ng-class="review.rating==2 ? 'button active':'button'"><i class="fa fa-star"></i>
+																																		  <i class="fa fa-star"></i></a>
+									<a href="#"	ng-click="onRate(3)" class="button"	ng-class="review.rating==3 ? 'button active':'button'"><i class="fa fa-star"></i>
+																																		  <i class="fa fa-star"></i>
+																																		  <i class="fa fa-star"></i></a> 
+									<a href="#" ng-click="onRate(4)" class="button"	ng-class="review.rating==4 ? 'button active':'button'"><i class="fa fa-star"></i>
+																																		<i class="fa fa-star"></i>
+																																		<i class="fa fa-star"></i>
+																																		<i class="fa fa-star"></i></a>
 								</p>
 							</div>
 							<div class="content-block">

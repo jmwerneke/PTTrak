@@ -20,7 +20,10 @@ Framework7 Layouts Themes
 Gold     : #b8a772;
 Green    : #005826;
 offwhite : #f1ede5;
-dark yellow  #eac768, #f1daa1; 
+dark yellow  #eac768;
+
+yellow for links #f1daa1;
+ 
 --- orinal colors:
 background-color: #131313; repl #b8a772                    color: #ffffff;
 background:       #1c1d1f;                      color: #dddddd;
@@ -133,7 +136,7 @@ background      : #f1ede5; repl: #b8a772
 }
 .layout-darkg .content-block,
 .content-block.layout-darkg {
-  color: #bbbbbb;
+  color:   #f1ede5; /*  #bbbbbb; */
 }
 .layout-darkg .content-block-inner {
   background: #1c1d1f;
@@ -274,6 +277,8 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
 .layout-darkg .range-slider input[type="range"]:after {
   background: #1c1d1f;
 }
+
+
  /* ==================== overtideing styles in ios =========================================== */
  .button.button-fill{
  	background: #f1ede5;
@@ -292,6 +297,7 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
      color: #005826;
     
  }
+ 
  /* =============================== side panel */
  .layout-darkg .panel{
  	background: #f1ede5;
@@ -305,7 +311,7 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
    color: #333334;
  }
  
-/* =============================== listing page */ 
+/* =============================== listing page    xgn3yb98ev2tf5 */ 
 .list-block .item-link {
 	/*color: #333334; */
 	color:  #005826;
@@ -314,7 +320,7 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
 	color: #333334;
 }
 .red {
-	color: #800000;
+	color: #a00000;
 }
 
 
@@ -327,6 +333,7 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
 	color:  #333334;
 }
 
+/* ==== buttons ===*/
 .light .button.active{
 	background: #005826;
 	color:  #f1ede5;
@@ -335,6 +342,16 @@ html:not(.watch-active-state) .layout-darkg label.label-radio:active,
 	border: 1px solid  #005826; 
 	color:  #005826;
 }
+
+ .button.active{
+	background: #f1daa1;;
+	color:   #005826;
+}
+ .button{
+	border: 1px solid  #f1daa1;
+	color:  #f1daa1;
+}
+
 
 /* =============================== detail page */
 .layout-darkg .card {
@@ -349,4 +366,13 @@ A {
 .layout-darkg .card A{
     color: #800000;
 }
+/*  ======================= review page === */
+.layout-darkg .list-block textarea {
+	color: #333334;
+}
 
+/* ====================== notifications ===== */
+ .notification-item .item-text{
+   color: #f1ede5;
+ }
+ 

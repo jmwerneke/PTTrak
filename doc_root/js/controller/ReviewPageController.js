@@ -5,11 +5,11 @@ hrApp.angular.controller('ReviewPageController', ['$scope', '$http', 'InitServic
   'use strict';
   
   $scope.onRate = function(rating){
-	 $scope.review.stars=rating;
+	 $scope.review.rating=rating;
 	 console.log(rating+' stars'); 
   }
   
-  $scope.review = {stars:0};
+  $scope.review = {rating:0};
   
   // calling our submit function.
     $scope.submitForm = function() {

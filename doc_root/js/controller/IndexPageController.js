@@ -127,7 +127,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    			if(idx < 26 && angular.isNumber(r.latitude) && angular.isNumber(r.latitude)){
 	    				var label = labels[labelIndex++ % labels.length];	    				
 	    				var m = GMapService.placeMarker(r.latitude,r.longitude, label)
-	    				$scope.markers[r.slug]= {label: '('+label+')', distance:r.distance, marker: m };	    				
+	    				$scope.markers[r.slug]= {label: '('+label+')', distance:r.distance, marker: m };
+	    				r.label= '('+label+')';
 	    		    }
 	    			else
 	    		    	$scope.markers[r.slug]= {label: '', distance:r.distance };
