@@ -14,7 +14,7 @@ SacHomeless provides Homeless_resources information for the Sacramento County ar
 
 ### Team Members
 - Team Leader Name Joanne Werneke, joannemwerneke@gmail.com
-- Jeff Roush, 
+- Jeff Roush
 - Michael Tel, michael@hollyhox.com
 - Kevin Fries
 - Emily Quinn Finney 
@@ -32,8 +32,13 @@ SacHomeless provides Homeless_resources information for the Sacramento County ar
 
 
 ### Additional Information (optional)
-We are using the Ohana standard api and tools
-There is also a mobil web version 
+
+Our code changes were made to several repositories:
+
+ * A mobile site, the source code for which is in the doc_root directory of this repository
+ * A forked copy of the [Ohana api site](https://github.com/SacHomeless/ohana-api.git)
+ * A forked copy of the [Ohana Web Search project](https://github.com/SacHomeless/ohana-web-search.git)
+ * Our [Ohana Client](https://github.com/SacHomeless/ohana-client.git), a Ruby script for uploading data.
 
 ## Submission Instructions
 
