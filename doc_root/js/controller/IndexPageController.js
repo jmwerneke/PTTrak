@@ -19,7 +19,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	mental_health :{title: "Mental Health", params:{category:'Mental Health'}},
 
 	//safety
-	domestic_violence:{title:'Domestic Violence',  params:{category:'domestic_violence'}},//
+	domestic_violence:{title:'Domestic Violence',  params:{category:'Domestic Violence'}},//
 	human_trafficking:{title:'Human Trafficking',  params:{category:'Human Trafficking'}},//
 	sex_trafficking:{title:'Sex Trafficking',  params:{category:'Sex Trafficking'}},//
 
@@ -33,7 +33,9 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	meals :{title: "Hot Meals", params:{lat_lng:'_', category:'Hot Meals'}},
 	food_closets :{title: "Food Closets",  params:{category:'Food Closets'}},
 	wic :{title: "WIC",  params:{category:'WIC'}},
-	ebt :{title: "EBT", params:{lat_lng:'_', keyword:'ebt', org_name:'ebt'}},   //
+	ebt_food :{title: "EBT Food", params:{category:'EBT Food',lat_lng:'_', org_name:'ebt'}},   //
+	ebt_restaurant :{title: "EBT Restaurant", params:{category:'EBT REstaurant',lat_lng:'_', org_name:'ebt'}},   //
+	ebt_cash :{title: "EBT Cash", params:{category:'EBT Cash',lat_lng:'_', org_name:'ebt'}},   //
 	
 	//healthcare
 	clinics:{title: 'Community Clinics', params:{category:'Community Clinics'}},
@@ -51,7 +53,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
 	employment:{title:"Employment", params:{category:'employment'}},
 	
-	vocational: {title: "Vocational", params:{category:'Vocational Training'}},
+	vocational: {title: "Vocational", params:{category:'Vocational'}},
 	school_districts: {title: "School Districts", params:{category:'School Districts'}},
 	colleges: {title: "Community Colleges", params:{category:'Community Colleges'}}	
 	
@@ -90,8 +92,8 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
     	
     	
     	
-    	$scope.resources = {};
-    	$scope.markers = {};
+    	$scope.resources = {}; // the ordered (by distance) list of locations 
+    	//$scope.markers = {};
     	$scope.page = pages[globalCat];
    	  	$rootScope.title = $scope.page.title;
    	  	
@@ -126,6 +128,11 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    		
 	    		for(var idx in locations){		    		
 	    			var r= locations[idx];
+	    			var locationId= 'loc'+r.id;
+	    			if($scope.resources[locationId]){
+	    				console.log('duplicate '+locationId);
+	    				continue;
+	    			}
 	    			idList.push(r.id);
 	    			
 	    			// save the markers and distances in a separate array, since the locations are overwritten
@@ -140,7 +147,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	    		    	//$scope.markers[r.id]= {label: '', distance:r.distance };
 	    			
 	    			console.log('received: '+idx +' '+r.id);
-	    			$scope.resources[r.id]= r;
+	    			$scope.resources['loc'+r.id]= r; // prepended 'loc' to the number to keep it sorted in the same order
 	    			DataService.getDetailInfo(r.id, $scope.resources);
 	    		}
 	    		DataService.getRatings(idList);

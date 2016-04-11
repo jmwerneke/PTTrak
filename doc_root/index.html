@@ -115,8 +115,9 @@ body {
 				<div class="content-block-title" >Food</div>
 				<p>	<a href="#indexPage" onclick="globalCat='meals' " class="button button-big button-round button-fill  button-green close-panel">Hot meals</a>				</p>
 				<p>	<a href="#indexPage" onclick="globalCat='food_closets' " class="button button-big button-round button-fill  button-green close-panel">Food pantries</a></p>
-				<p>	<a href="#indexPage" onclick="globalCat='ebt' "	class="button button-big button-round button-fill  button-green close-panel">EBT</a></p>
-				<p>	<a href="#indexPage" onclick="globalCat='wic' "	class="button button-big button-round button-fill  button-green close-panel">WIC</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='ebt_food' "	class="button button-big button-round button-fill  button-green close-panel">EBT Food</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='ebt_restaurant' "class="button button-big button-round button-fill  button-green close-panel">EBT Restaurant</a>	</p>
+	  		    <p>	<a href="#indexPage" onclick="globalCat='wic' "	class="button button-big button-round button-fill  button-green close-panel">WIC</a>	</p>
 			</div>
 
 			<div id="panel_healthcare" class="paneldiv">
@@ -142,6 +143,13 @@ body {
 				<p>	<a href="#indexPage" onclick="globalCat='colleges' "class="button button-big button-round button-fill  button-green close-panel">Community Colleges</a>	</p>
 			</div>
 
+			<div id="panel_assistance" class="paneldiv">
+				<div class="content-block-title" >Public  Assistance</div>
+				<p>	<a href="#indexPage" onclick="globalCat='ebt_cash' "	class="button button-big button-round button-fill  button-green close-panel">EBT Cash</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='ebt_food' "	class="button button-big button-round button-fill  button-green close-panel">EBT Food</a>	</p>
+				<p>	<a href="#indexPage" onclick="globalCat='ebt_restaurant' "class="button button-big button-round button-fill  button-green close-panel">EBT Restaurant</a>	</p>
+	  		    <p>	<a href="#indexPage" onclick="globalCat='wic' "	class="button button-big button-round button-fill  button-green close-panel">WIC</a>	</p>
+				</div>
 
 			<p style="margin-top: 80px"><a href="#"	class="button button-round button-fill button-green close-panel">Cancel</a>	</p>
 
@@ -237,6 +245,7 @@ body {
 							<p>	<a href="#indexPage" onclick="globalCat='legal'"	class="button button-round button-fill button-big button-green">Legal Service</a>	</p>
 							<p>	<a href="#indexPage" onclick="globalCat='employment'" class="button button-round button-fill button-big button-green">Employment</a></p>
 							<p>	<a href="#" ng-click="globalPanel('panel_education')" class="button button-round button-fill button-big button-green open-panel" data-panel="left">Education/Training</a></p>
+							<p>	<a href="#" ng-click="globalPanel('panel_assistance')" class="button button-round button-fill button-big button-green open-panel" data-panel="left">Public  Assistance</a></p>
 						</div>
 					</div>
 				</div>
@@ -277,7 +286,7 @@ body {
 												<span ng-if="resource.rating==4" style="color:#eac768;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
 												&nbsp;												
 												 <span ng-if="resource.distance == 0">		HOTLINE								     
-												<!-- 		{{resource.phone[0].number}} &nbsp; &nbsp; -->														
+													<!-- 	{{resource.phone[0].number}} &nbsp; &nbsp; -->														
 											    </span>
 											    <span ng-if="resource.distance > 0" class="red">{{resource.distance}} miles</span>		
 												&nbsp;		
@@ -372,6 +381,9 @@ body {
 							<div class="card-content">
 								<div class="card-content-inner">
 									<p>{{service.description}}</p>
+										    <span	ng-repeat="phone  in service.phones ">
+													<a	href="tel:{{phone.number}}">{{phone.number}}</a> <br>
+											</span>	
 									<b>How to apply:</b>
 									<p>{{service.application_process}}</p>
 								</div>

@@ -33,7 +33,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	 return $http.get('get.php?table=reviews&resource_id='+ resource_id + '&resource_type='+resource_type);
  };
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
- //http://api.helphubsac.org/api/search?category=Youth
+ //http://api.sacsos.org/api/search?category=EBT+Food
  //http://api.helphubsac.org/api/locations/loaves-fishes
  //http://api.helphubsac.org/api/organizations
  	pub.getLocations = function (params) {
@@ -54,8 +54,7 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   };
   
   
-  pub.getRatings = function(idList){	
-	  
+  pub.getRatings = function(idList){		  
 	  var l= $http.get('get.php?table=ratings&ids='+ idList )
 	  		.then(function (result) {
 	  			var ratings = result.data.ratings;
@@ -65,7 +64,8 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 		  			for(var idx in ratings){
 		  				var rating = ratings[idx]; 		
 		  				console.log('location-id '+rating.location_id +'   rating '+rating.rating);
-		  				var resource = locationCache[rating.location_id];
+		  				var locationId = 'loc'+rating.location_id;
+		  				var resource = locationCache[locationId];
 		  				resource.rating = rating.rating;	    	
 		  			}
 	  			}
@@ -86,11 +86,12 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
   
   // helphubsac
   pub.getDetailInfo = function(id, resourceList){
-	  if(locationCache[id]){
+	  var locationId = 'loc'+id;
+	  if(locationCache[locationId]){
 		  //console.log("get "+id + " from cache !!!!!");
-		  resourceList[id]= locationCache[id];
+		  resourceList[locationId]= locationCache[locationId];
 	  }
-	  locationCache[id] =resourceList[id];
+	  locationCache[locationId] =resourceList[locationId];
 	  //console.log("get "+id + " from server");
 	  var l= $http({
 		        url: 'http://api.sacsos.org/api/locations/'+ id,
@@ -103,13 +104,13 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    			r.description = fixPhoneNumber(r.description);
 	    			//r.rating= Math.round(Math.random()*5);
 	    			
-	    			var oldResource = resourceList[id]; // copy data that was added to the old resource before we overwrite it
+	    			var oldResource = resourceList[locationId]; // copy data that was added to the old resource before we overwrite it
 	    			r.distance= oldResource.distance;
 	    			r.label = oldResource.label;
 	    			r.rating = oldResource.rating;
 	    				
-	    			resourceList[id] = r;
-			    	locationCache[id]= r; // store it in the cache			    	
+	    			resourceList[locationId] = r;
+			    	locationCache[locationId]= r; // store it in the cache			    	
 	        	});
 	      
   }
