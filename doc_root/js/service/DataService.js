@@ -32,11 +32,13 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
  pub.getReviews = function(resource_id, resource_type){
 	 return $http.get('get.php?table=reviews&resource_id='+ resource_id + '&resource_type='+resource_type);
  };
+ 
+ 
  // http://api.helphubsac.org/api/search?action=index&controller=locations&keyword=meal&location=95831&org_name=&radius=2
  //http://api.sacsos.org/api/search?category=EBT+Food
  //http://api.helphubsac.org/api/locations/loaves-fishes
  //http://api.helphubsac.org/api/organizations
- 	pub.getLocations = function (params) {
+ pub.getLocations = function (params) {
     	 
 	 	var queryString='';
 		for(var key in params){
@@ -89,7 +91,10 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	  var locationId = 'loc'+id;
 	  if(locationCache[locationId]){
 		  //console.log("get "+id + " from cache !!!!!");
-		  resourceList[locationId]= locationCache[locationId];
+		  var r = locationCache[locationId];
+		  var oldResource = resourceList[locationId];
+		  r.label = oldResource.label;  // label changes with every search
+		  resourceList[locationId]= r;
 	  }
 	  locationCache[locationId] =resourceList[locationId];
 	  //console.log("get "+id + " from server");
