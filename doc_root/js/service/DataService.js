@@ -93,7 +93,9 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 		  //console.log("get "+id + " from cache !!!!!");
 		  var r = locationCache[locationId];
 		  var oldResource = resourceList[locationId];
-		  r.label = oldResource.label;  // label changes with every search
+		  if(oldResource){
+			  r.label = oldResource.label;  // label changes with every search
+		  }
 		  resourceList[locationId]= r;
 	  }
 	  locationCache[locationId] =resourceList[locationId];
@@ -110,10 +112,11 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 	    			//r.rating= Math.round(Math.random()*5);
 	    			
 	    			var oldResource = resourceList[locationId]; // copy data that was added to the old resource before we overwrite it
-	    			r.distance= oldResource.distance;
-	    			r.label = oldResource.label;
-	    			r.rating = oldResource.rating;
-	    				
+	    			if(oldResource){
+		    			if(oldResource.distance) r.distance= oldResource.distance;
+		    			if(oldResource.label) r.label = oldResource.label;
+		    			if(oldResource.rating)r.rating = oldResource.rating;
+	    			}
 	    			resourceList[locationId] = r;
 			    	locationCache[locationId]= r; // store it in the cache			    	
 	        	});
