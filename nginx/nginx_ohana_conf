@@ -1,0 +1,37 @@
+# This is the nginx configuration file used on the server
+# that hosts our forks of the Ohana api and Ohana web sites.
+# Ohana_web and Ohana_api are both Rails apps, served up by
+# running puma from the command line. For our current
+# use, we're running them in separate tmux sessions and using
+# nginx to proxy requests to them.
+
+upstream ohana_web {
+  server 127.0.0.1:3001;
+  keepalive 8;
+}
+
+server {
+  listen 80;
+  
+  server_name sacsos.org www.sacsos.org;
+  
+  location / {
+    proxy_pass http://ohana_web;
+  }
+}
+
+upstream ohana_api {
+  server 127.0.0.1:8080;
+  keepalive 8;
+}
+
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server ipv6only=on;
+  
+  server_name api.sacsos.org;
+  
+  location / {
+    proxy_pass http://ohana_api;
+  }
+}
