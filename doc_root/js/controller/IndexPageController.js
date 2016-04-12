@@ -51,7 +51,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
 	legal: {title: "Legal Services", params:{category:'Legal Services'}},
 	
-	employment:{title:"Employment", params:{category:'employment'}},
+	employment:{title:"Employment", params:{keyword:'employment'}},
 	
 	vocational: {title: "Vocational", params:{category:'Vocational'}},
 	school_districts: {title: "School Districts", params:{category:'School Districts'}},
