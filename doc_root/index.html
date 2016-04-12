@@ -291,7 +291,7 @@ body {
 											    </span>
 											    <span ng-if="resource.distance > 0" class="red">{{resource.distance}} miles</span>		
 												&nbsp;		
-												<span ng-if="resource.open_today">Open Today {{resource.open_today}}</span>
+												<span ng-if="resource.open_today">Open Today <b>{{resource.open_today}}</b></span>
 												<span ng-if="! resource.open_today && resource.open_days">Open {{resource.open_days}}</span>
 												<br>			
 												<span ng-if="resource.distance > 0"> {{resource.address.address_1}}, {{resource.address.city}}</span>
