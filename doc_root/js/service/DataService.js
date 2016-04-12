@@ -153,6 +153,17 @@ hrApp.angular.factory('DataService', ['$http', function ($http) {
 		
 		resource.open_days = open_days;
 		resource.open_today = open_today; 
+		
+		// check for hotlines
+		for(var idx in resource.phones){
+			var s = resource.phones[idx];
+			if(s.number_type == 'hotline'){
+				resource.open_today = " Hotline: "+s.number;
+			}
+		}
+		
+		
+		
 		return resource;
 	}
 	

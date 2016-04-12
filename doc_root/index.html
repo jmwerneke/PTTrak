@@ -364,7 +364,7 @@ body {
 									<p>
 										<span ng-if="resource.address.address_1"><b>{{resource.address.address_1}}, {{resource.address.city}} </b></span><br>
 										    <span	ng-repeat="phone  in resource.phones ">
-													<a	href="tel:{{phone.number}}">{{phone.number}}</a> <br>
+													<a	href="tel:{{phone.number}}">{{phone.number}}</a> {{phone.number_type}} <br>
 											</span>	
 										<br> <a ng-if="resource.website!=null"	href="{{resource.website}}" target='_blank' class="external">{{resource.website}}</a>
 									</p>
@@ -383,7 +383,7 @@ body {
 								<div class="card-content-inner">
 									<p>{{service.description}}</p>
 										    <span	ng-repeat="phone  in service.phones ">
-													<a	href="tel:{{phone.number}}">{{phone.number}}</a> <br>
+													<a	href="tel:{{phone.number}}">{{phone.number}}</a> {{phone.number_type}}<br>
 											</span>	
 									<b>How to apply:</b>
 									<p>{{service.application_process}}</p>
