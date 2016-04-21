@@ -31,7 +31,7 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
 	
 	//food
 	meals :{title: "Hot Meals", params:{lat_lng:'_', category:'Hot Meals'}},
-	food_closets :{title: "Food Closets",  params:{category:'Food Closets'}},
+	food_closets :{title: "Food Closets",  params:{category:'Food Pantries'}},
 	wic :{title: "WIC",  params:{category:'WIC'}},
 	ebt_food :{title: "EBT Food", params:{category:'EBT Food',lat_lng:'_', org_name:'ebt'}},   //
 	ebt_restaurant :{title: "EBT Restaurant", params:{keyword:'EBT REstaurant',lat_lng:'_', org_name:'ebt'}},   //
