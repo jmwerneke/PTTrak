@@ -90,7 +90,9 @@ hrApp.angular.controller('IndexPageController', ['$scope', '$rootScope', '$http'
     		return;
     	$scope.currentCategory = globalCat;
     	
-    	
+    	// call google analytics
+    	ga('set', 'page', globalCat + '.html');
+    	ga('send', 'pageview');
     	
     	$scope.resources = {}; // the ordered (by distance) list of locations 
     	//$scope.markers = {};
