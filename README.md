@@ -1,32 +1,26 @@
-This repository includes the two files that **must be included** in all project submissions for Sacramento County's [Hack4Sac Civic Tech Challenge](http://hack4sac.saccounty.net/):
+This repository includes the two files that **must be included** in all project submissions for Startup Weekend Health Challenge Sacramento:
 
 1. this `README` containing instructions and information to include in your submission; and,
 2. a `LICENSE` that allows anyone to do anything they want with your code as long as they provide attribution back to you and don’t hold you liable.
 
 ## Project Information
-Sacramento County Hack4Sac Project to provide Homeless Resource Information for Sacramento County Area and way to engage community organizations and volunteers to provide resources.  
+Project to provide App that integrates with Fitbit and Apple Watch wearables to track Physical Therapy progress both for Medical Professionals and people who are participating in a physical therapy program to monitor their progress toward a goal.
 
 ### Project Name
-SacSOS - (SacHomeless)
+PTTrak
 
 ### Project Description
-SacHomeless provides Homeless_resources information for the Sacramento County area to homeless people, advocates, and social services professionals and provides a way to engage the community organizations and volunteers to provide resources.
+PTTrak provides Accountability information to Medical Professionals and clients who participate in a physical therapy program.   
 
 ### Team Members
-- Team Leader Name Joanne Werneke, joannemwerneke@gmail.com
-- Jeff Roush
-- Michael Tel, michael@hollyhox.com
-- Kevin Fries
-- Emily Quinn Finney 
-- Jared Garst
-- Hillary Gaines - customer/client experience gaines.household@icloud.com
-- Kayla Granderson - customer/client experience 
+- Joanne Werneke, joannemwerneke@gmail.com
+- Zackary Harmany
+- Archi Desai
+- Payal Karia
 
 ### Stakeholder Engagement
-- Julie Field - Dept. of Human Services, Sacramento County 
-- Veronica Beaty - The People's Guide, veronica@sachousingalliance.org 
-- Dave Coburn - Pilgrimage Sacramento - Corburn180@gmail.com 
-- Hillary Gaines - EMQ FamiliesFirst 
+- Physical Thearpy & Medical Professionals
+- Patient's in Physical Therapy
 
 ### Developer Documentation
 
@@ -36,9 +30,6 @@ SacHomeless provides Homeless_resources information for the Sacramento County ar
 Our code changes were made to several repositories:
 
  * A mobile site, the source code for which is in the doc_root directory of this repository
- * A forked copy of the [Ohana api site](https://github.com/SacHomeless/ohana-api.git)
- * A forked copy of the [Ohana Web Search project](https://github.com/SacHomeless/ohana-web-search.git)
- * Our [Ohana Client](https://github.com/SacHomeless/ohana-client.git), a Ruby script for uploading data.
 
 ## Submission Instructions
 
@@ -46,7 +37,7 @@ Our code changes were made to several repositories:
 By forking this repository, we'll be able to find your project which will allow the judges to review your submission. Please note that cloning this repository or copying the contents of this `README` to your project will not allow us to find your project. Learn more about [how to fork a project repository](https://help.github.com/articles/fork-a-repo/).
 
 ### Step 2: Rename Your New Project Repository
-You probably want your project to have a name other than `Hack4Sac`, so go ahead and rename your project repository. Also, feel free to edit the description and URL of your deployed app at the top of your repository on GitHub.
+You probably want your project to have a name other than PTTrak, so go ahead and rename your project repository. Also, feel free to edit the description and URL of your deployed app at the top of your repository on GitHub.
 
 ### Step 3: Add Your Project Files
 As long as you keep this `README.md` file in your repository, hack away on your project to your heart's content.
@@ -55,11 +46,9 @@ As long as you keep this `README.md` file in your repository, hack away on your 
 Add your project name, description, and team members at the top of this file by [committing changes](https://help.github.com/articles/adding-a-file-to-a-repository-from-the-command-line/). In the `LICENSE` file, replace `[fullname]` with the name of the individual(s) or team you want attributed to your project. *Hint: a [commit history](https://github.com/rust-lang/rust/commits/master/README.md) will provide valuable information to the judges about the work your team invested in developing your particular solution.*
 
 ### Step 5: Submit Your Project
-Guess what? If you've already forked this repository, then you've already submitted your project. On April 12, 2016, the judges will review all of [the repositories listed here](https://github.com/SacCounty/Hack4Sac/network/members). If your repository is not listed, [please let us know](mailto:hack4sac@saccounty.net).
 
 **IMPORTANT: If you haven't already done so, make sure you've joined the Hack4Sac Slack Community**
-- [Sign up](http://slackin.saccounty.net)
-- [Login](https://hackforsac.slack.com)
+
 
 ### Optional: Waffle.io Hackshop Tools
 
